@@ -1,0 +1,29 @@
+List Bugs Aplikasi Pengolahan Data LPANTB
+
+* Jenis Kasus
+	* Bagian Lain tersimpan tapi tidak tampil pada halaman ubah
+	  atau halaman yang menampilkan kembali jenis kasus yang telah di centang
+	  pada tiap form.
+
+* PreAddView
+	* Pada setiap form tidak bisa menampilkan secara lengkap List anak (view design, height & width)
+	* Pada setiap form tidak bisa menampilkan secara spesifik nama yang di inputkan (autocomplete error)
+
+* Tanggal
+	* Pada setiap form tanggal tidak bisa menyimpan hanya tahun 
+	  saja atau bulan dan tahun saja tanpa hari (single input mode, separate field for month, day, year)
+	* Perlu diganti dari Input type Text menjadi Select Option untuk kemudahan pemilihan tanggal 
+
+*FormKA5
+	* Input textArea "catatan untuk intervensi" belum ada
+
+*FormKA6 - Pendampingan
+	* Input text terlalu kecil, perlu untuk di perpanjang
+
+
+*TextArea
+	* Setiap textarea harus memiliki simple wysiwyg untuk kemudahan penulisan informasi
+
+*Form
+	* Setiap Form belum memiliki Sign (Tanda Tangan Pelapor/Koordinator/Ketua/dll)
+

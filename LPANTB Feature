@@ -1,0 +1,22 @@
+LPANTB Feature
+
+*User
+  ""User Crud
+  ""nama, jabatan, username, password, email...
+  ""level ==> admin, operator, staff, guest
+
+*Lokasi 
+  ""Provinsi (CRUD)
+  ""Kabupaten/Kota (CRUD)
+  ""Kecamatan (CRUD)
+  ""Desa/Lurah (CRUD)
+
+*Form
+	*FormKA1
+	*FormKA2
+	*FormKA3
+	*FormKA4
+	*FormKA5
+	*FormKA6
+	*FormKA7
+
