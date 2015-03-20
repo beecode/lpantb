@@ -1,0 +1,26 @@
+
+
+  *Table
+    * Data yang paling baru di inputkan pada table ditampilkan paling awal pada setiap form
+    * Pagination 10 data per halaman
+
+  *Filter Search
+    * ditambahkan berdasarkan bulan dan tahun
+    * secara default filter sudah terpasang di radio button nama anak
+
+  *NO LKA
+    *No LKA adalah nomer pertama masuknya kasus kedalam LPA. Jadi Nomer LKA tidak akan berubah
+     pada tiap form yang telah di inputkan seterusnya
+    *No LKA bisa di edit, tapi langsung tampil ketika baru dibuka=>dimulai dari form ka3 dst
+
+  *Tanggal pada setiap form dibuat secara otomatis mengikuti waktu system
+  *Checkbox kurang jelas (tampilan nya), kotak checkbox nya kurang jelas garis nya perlu diberikan border
+
+  *Form KA6
+    *Pendampingan bisa di print per 1 record, di dalam nya terdapat tanda tangan pelaksana.
+     Pelaksana pada pendampingan per record bisa berjumlah lebih dari satu.
+    *Pelasana sebaiknya di simpan dalam table pada database dalam bentuk json object atau json array
+     untuk mempermudah flexibilitas penambahan multi input type text menggunakan javascript
+    *Input Pelaksana berjumlah lebih dari satu menggunakan javascript
+
+  *Access Management
