@@ -15,35 +15,51 @@
     <!-- Main content -->
 
     <section class="content invoice">
-        <!-- title row -->
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="page-header">
-                    <span class="fa fa-edit"></span>
-                    Laporan Kasus Anak
-                    <span class="pull-right small"><label class="label label-danger">Form KA2</label></span>
-                </h2>
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12" style="margin-bottom:3px;">
+          <img src="{{ asset('images/kop.png');}}" alt="" width="100%"/>
+          <!-- <hr style="margin:1px; border-bottom: 3px solid #000;"> -->
+          <!-- <hr style="margin:1px; border-bottom: 1px solid #000;"> -->
+        </div>
+      </div>
 
-            </div>
-
-        </div><!-- /.col -->
+      <div class="row">
+          <div class="col-xs-11 col-offset-1" style="text-align:center; padding-left:50px;">
+              <span class="" style="margin-bottom:2px;">
+                  <h4 style="margin:0px;">
+                    <strong>Laporan Kasus Anak</strong>
+                  </h4>
+              </span>
+          </div>
+          <div class="col-xs-1">
+            <span class="pull-right small" style="margin-bottom:2px;">
+              <label class="label label-danger"  style="margin:0px;">Form KA2</label>
+            </span>
+          </div>
+      </div><!-- /.col -->
 
         <!-- info row -->
         <div class="row invoice-info">
-            <div class="col-xs-12" style="padding-bottom: 10px;">
-                <span class="pull-left">
-                    <label>No. LKA {{$data->no_lka}}</label> 
-
-                </span>
-                <span class="pull-right">
-                    <label>Tanggal  {{date('d-m-Y',strtotime($data->tanggal))}}</label> 
-                </span>
-                <span class="clearfix"></span>
-            </div>
+          <div class="col-xs-12">
+              <span class="pull-left">
+                <h6 style="margin:1px; padding:1px;">
+                    No. LKA {{$data->no_lka}}
+                  </h6>
+              </span>
+              <span class="pull-right">
+                  <h6 style="margin:1px; padding:1px;">
+                    {{date('l, d F Y',strtotime($data->tanggal))}}
+                  </h6>
+              </span>
+              <span class="clearfix"></span>
+              <br>
+          </div>
 
             @include('formka2.detail.sumber')
             @include('formka2.detail.anak')
             @include('formka2.detail.ringkasan')
+            @include('formka2.detail.sign')
 
         </div><!-- /.row -->
 

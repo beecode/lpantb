@@ -12,7 +12,7 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
 class TindakLanjut extends Eloquent {
 
     protected $table = "tindak_lanjut";
-    public $timestamps = false;
+    // public $timestamps = false;
     private $ns = "App\\Models\\";
 
     public function Anak() {

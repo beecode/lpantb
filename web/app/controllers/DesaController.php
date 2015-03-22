@@ -25,19 +25,19 @@ class DesaController extends BaseController {
             'page_title' => 'Desa',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Desa::paginate(6),
+            'table' => Desa::paginate(10),
         ];
         return View::make('desa.view', $data);
     }
 
     /**
      * masih bermasalah bagian search ini
-     * 
+     *
      * @return type
      */
     public function search() {
         $keyword = Input::get('keyword');
-        $desa = DesaDAO::search($keyword)->paginate(6);
+        $desa = DesaDAO::search($keyword)->paginate(10);
         $data = [
             'page_title' => 'Desa',
             'panel_title' => 'Search View',

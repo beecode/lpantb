@@ -23,9 +23,9 @@
                         <td>{{strftime( "%A, %d-%B-%Y", strtotime($val->tanggal))}}</td>
                         <td>
                             {{$anak->nama}}
-                            <a href="{{URL::to('lpantb/anak/detailview/'.$anak->id)}}" 
+                            <a href="{{URL::to('lpantb/anak/detailview/'.$anak->id)}}"
                                class="btn btn-sm btn-info pull-right" title="Detail Anak">
-                                <span class=" glyphicon glyphicon-th-list"></span> 
+                                <span class=" glyphicon glyphicon-th-list"></span>
                             </a>
                         </td>
                         <td>
@@ -45,17 +45,17 @@
 
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-info" title="Detail" 
+                                <a class="btn btn-small btn-info" title="Detail"
                                    href="{{ URL::to('/lpantb/formka3/detailview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-th-list"></span> 
+                                    <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
-                                <a class="btn btn-small btn-warning" title="Update" 
+                                <a class="btn btn-small btn-warning" title="Update"
                                    href="{{ URL::to('/lpantb/formka3/updateview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-edit"></span> 
+                                    <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
+                                <a class="btn btn-small btn-danger" title="Delete"
                                    href="{{ URL::to('/lpantb/formka3/delete/'.$val->id) }}">
-                                    <span class="glyphicon glyphicon-trash"></span> 
+                                    <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
                         </td>
@@ -74,11 +74,14 @@
 
 <script type="text/javascript">
     $(".table").dataTable({
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bSort": true,
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
         "bInfo": true,
-        "bAutoWidth": false
+        // "bSort": true,
+        "bAutoWidth": false,
+        "order":[[2,'desc']],
+        "aaSorting":[[2,'desc']],
+        "ordering": true,
     });
 </script>

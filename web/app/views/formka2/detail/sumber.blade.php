@@ -4,7 +4,9 @@ $sumber = $anak->sumber_informasi->first();
 ?>
 
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Sumber Informasi</p>
+  <h5>
+    <strong>Sumber Informasi</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>
@@ -14,7 +16,7 @@ $sumber = $anak->sumber_informasi->first();
                 </tr>
                 <tr>
                     <th>Tanggal Informasi  </th>
-                    <td>{{date('d-m-Y',strtotime($sumber->tanggal))}}</td>
+                    <td>{{date('l, d F Y',strtotime($sumber->tanggal))}}</td>
                 </tr>
                 <tr>
                     <th>Dasar Rujukan</th>

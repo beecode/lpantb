@@ -50,7 +50,7 @@ $jenis = $anak->jenis_kasus;
                     <th>Hasil Yang Dicapai</th>
                     <th>Rencana Tindak Lanjut</th>
                     <th>Keterangan</th>
-                    <th class="text-center">Aksi</th>
+                    <th class="text-center" style="width:130px;">Aksi</th>
                 </tr>
             </thead>
             <tbody class="small">
@@ -68,17 +68,17 @@ $jenis = $anak->jenis_kasus;
 
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <!--                                <a class="btn btn-small btn-info" title="Detail" 
-                                                                   href="{{ URL::to('/lpantb/formka6/pendampingan/detailview/'.$val->id) }}">
-                                                                    <span class=" glyphicon glyphicon-th-list"></span> 
-                                                                </a>-->
-                                <a class="btn btn-small btn-warning" title="Update" 
-                                   href="{{ URL::to('/lpantb/formka6/pendampingan/updateview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-edit"></span> 
+                               <a class="btn btn-small btn-info" title="Detail"
+                                   href="{{ URL::to('/lpantb/formka6/pendampingan/detailview/'.$val->id) }}">
+                                    <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
+                                <a class="btn btn-small btn-warning" title="Update"
+                                   href="{{ URL::to('/lpantb/formka6/pendampingan/updateview/'.$val->id) }}">
+                                    <span class=" glyphicon glyphicon-edit"></span>
+                                </a>
+                                <a class="btn btn-small btn-danger" title="Delete"
                                    href="{{ URL::to('/lpantb/formka6/pendampingan/delete/'.$val->id) }}">
-                                    <span class="glyphicon glyphicon-trash"></span> 
+                                    <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
                         </td>
@@ -96,11 +96,14 @@ $jenis = $anak->jenis_kasus;
 
 <script type="text/javascript">
     $(".table").dataTable({
-        "bPaginate": false,
+        "bPaginate": true,
         "bLengthChange": false,
         "bFilter": false,
-        "bSort": true,
         "bInfo": true,
-        "bAutoWidth": false
+        // "bSort": true,
+        "bAutoWidth": false,
+        "order":[[2,'desc']],
+        "aaSorting":[[2,'desc']],
+        "ordering": true,
     });
 </script>

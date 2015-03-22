@@ -23,14 +23,10 @@
         @endif
         <div class="box box-primary">
             <div  class="box-body">
-                @include('formka1.view.search')
+                <!-- @include('formka1.view.search') -->
                 @include('formka1.view.button')
+                <div class="clearfix"></div>
                 @include('formka1.view.table')
-            </div>
-            <div class="box-footer">
-                <div class="text-center">
-                    <?php echo $table->appends(array_except(Input::query(), Paginator::getPageName()))->links() ?>
-                </div>
             </div>
         </div>
     </section>

@@ -37,7 +37,7 @@ class FormKA4Controller extends BaseController {
         $data = [
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka4')->paginate(5),
+            'table' => Form::where('nama', '=', 'ka4')->get(),
         ];
         $data = array_merge($data, $this->basic);
         return View::make('formka4.view', $data);
@@ -190,7 +190,7 @@ class FormKA4Controller extends BaseController {
             'page_title' => 'Kasus Anak 4 (KA4)',
             'panel_title' => 'Search View',
             'location' => 'search',
-            'table' => $result->paginate(6),
+            'table' => $result->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka4.view', $data);
     }

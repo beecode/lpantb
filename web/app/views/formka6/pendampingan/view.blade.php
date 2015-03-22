@@ -27,11 +27,6 @@
                 @include('formka6.pendampingan.view.button')
                 @include('formka6.pendampingan.view.table')
             </div>
-            <div class="box-footer">
-                <div class="text-center">
-                    <?php echo $table->appends(array_except(Input::query(), Paginator::getPageName()))->links() ?>
-                </div>
-            </div>
         </div>
     </section>
 </aside>

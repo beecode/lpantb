@@ -30,7 +30,7 @@ class FormKA2Controller extends BaseController {
             'page_title' => 'Kasus Anak 2 (KA2)',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka2')->paginate(5),
+            'table' => Form::where('nama', '=', 'ka2')->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka2.view', $data);
     }
@@ -150,7 +150,7 @@ class FormKA2Controller extends BaseController {
             'page_title' => 'Kasus Anak 2 (KA2)',
             'panel_title' => 'Search View',
             'location' => 'search',
-            'table' => $result->paginate(6),
+            'table' => $result->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka2.view', $data);
     }

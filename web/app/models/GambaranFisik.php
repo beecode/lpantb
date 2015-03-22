@@ -12,7 +12,7 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
 class GambaranFisik extends Eloquent {
 
     protected $table = "gambaran_fisik";
-    public $timestamps = false;
+    // public $timestamps = false;
     private $ns = "App\\Models\\";
 
     public function Anak() {

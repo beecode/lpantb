@@ -12,7 +12,7 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
 class Intervensi extends Eloquent {
 
     protected $table = "intervensi";
-    public $timestamps = false;
+    // public $timestamps = false;
     private $ns = "App\\Models\\";
 
     public function Anak() {

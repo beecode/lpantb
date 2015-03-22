@@ -30,7 +30,7 @@ class AnakController extends BaseController {
             'page_title' => 'Anak',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Anak::paginate(5),
+            'table' => Anak::orderBy('created_at','desc')->paginate(10),
         ];
         return View::make('anak.view', $data);
     }
@@ -86,7 +86,7 @@ class AnakController extends BaseController {
         $keyword = Input::get('keyword');
         $filter = Input::get('filter');
 
-        $result = Anak::orderBy('created_at', 'asc');
+        $result = Anak::orderBy('created_at', 'desc');
 
         if ($keyword != NULL) {
             if ($filter == "kode" || $filter == NULL) {
@@ -107,7 +107,7 @@ class AnakController extends BaseController {
             'page_title' => 'Anak',
             'panel_title' => 'Search View',
             'location' => 'search',
-            'table' => $result->paginate(6),
+            'table' => $result->paginate(10),
         ];
         return View::make('anak.view', $data);
     }

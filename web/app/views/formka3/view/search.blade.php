@@ -1,11 +1,11 @@
-<div class="pull-right col-sm-5">  
+<!-- <div class="pull-right col-sm-6">
     <form  method="GET" style="margin-right: 0px; padding-left: 0px;"
            action="{{ URL::to('/lpantb/formka3/search') }}" >
 
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control" type="search" name="keyword" 
-                       placeholder="Kode|No LKA|Anak|Jenis Kasus|Tindak Lanjut">
+                <input class="form-control" type="search" name="keyword"
+                       placeholder="Kode|No LKA|Anak|Jenis Kasus|Tindak Lanjut|Tanggal">
                 <span class="input-group-btn">
                     <button class="btn btn-info btn-flat" type="submit">
                         <i class="fa fa-search"></i>&nbsp;
@@ -33,7 +33,7 @@
                     <input type="radio" name="filter" value="lka"/> LKA
                 </label>
                 <label style="margin-left: 5px; padding-left: 5px;">
-                    <input type="radio" name="filter" value="anak"/> Anak
+                    <input type="radio" name="filter" value="anak" checked/> Anak
                 </label>
                 <label style="margin-left: 5px; padding-left: 5px;">
                     <input type="radio" name="filter" value="jenis"/> Jenis Kasus
@@ -41,8 +41,10 @@
                  <label style="margin-left: 5px; padding-left: 5px;">
                     <input type="radio" name="filter" value="tindak"/> Tindak Lanjut
                 </label>
-
+                <label style="margin-left: 5px; padding-left: 5px;">
+                    <input type="radio" name="filter" value="tanggal"> Tanggal
+                </label>
             </div>
         </div>
     </form>
-</div>
+</div> -->

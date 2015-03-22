@@ -27,11 +27,6 @@
                 @include('formka7.view.button')
                 @include('formka7.view.table')
             </div>
-            <div class="box-footer">
-                <div class="text-center">
-                    <?php echo $table->appends(array_except(Input::query(), Paginator::getPageName()))->links() ?>
-                </div>
-            </div>
         </div>
     </section>
 </aside>

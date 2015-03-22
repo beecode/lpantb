@@ -31,7 +31,7 @@ class FormKA1Controller extends BaseController {
             'page_title' => 'Kasus Anak 1 (KA1)',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka1')->orderBy('tanggal', 'asc')->paginate(5),
+            'table' => Form::where('nama', '=', 'ka1')->orderBy('created_at', 'desc')->get(),
         ];
         return View::make('formka1.view', $data);
     }
@@ -146,9 +146,16 @@ class FormKA1Controller extends BaseController {
                 });
             } else if ($filter == "lka") {
                 $result = $result->where('no_lka', 'LIKE', '%' . $keyword . '%');
+            } else if ($filter == "tanggal") {
+                $split = explode('-',$keyword);
+
+                $tanggal = date("Y-m-d", strtotime($keyword));
+                Session::flash('message', "$split[0],");
+                $result = $result->where('tanggal', 'LIKE', $tanggal);
             } else if ($filter == "kode" || $filter == NULL) {
                 $result = $result->where('id', '=', $keyword);
             }
+
         }
 
         $data = [
@@ -156,7 +163,8 @@ class FormKA1Controller extends BaseController {
             'page_title' => 'Kasus Anak 1 (KA1)',
             'panel_title' => 'Search View',
             'location' => 'search',
-            'table' => $result->paginate(6),
+            'filter'=>$filter,
+            'table' => $result->orderBy('created_at', 'desc')->get(),
         ];
         return View::make('formka1.view', $data);
     }

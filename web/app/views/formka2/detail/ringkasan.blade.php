@@ -1,14 +1,25 @@
 <?php if (!empty($data->ringkasan_kasus)) { ?>
     <div class="col-xs-12">
-        <p class="lead">Ringkasan Kasus</p>
+      <div class="ringkasan">
+        <h5>
+          <strong>Ringkasan Kasus</strong>
+        </h5>
+        <hr style="margin-top:0px;margin-bottom:6px;">
         <p>{{$data->ringkasan_kasus}}</p>
+      </div>
     </div>
 <?php } ?>
 
-<?php if (!empty($data->catatan)) { ?>
-    <div class="col-xs-12">
-        <p class="lead">Catatan</p>
-        <p>{{$data->catatan}}</p>
-    </div>
-<?php } ?>
-<br/>
+<style>
+.ringkasan{
+  height: 34%px;
+}
+.ringkasan p {
+  font-size: 11px;
+  text-align: justify;
+
+}
+</style>
+
+
+<!-- <br/> -->

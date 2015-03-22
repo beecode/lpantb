@@ -12,6 +12,6 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
 class Agama extends Eloquent {
 
     protected $table = "agama";
-    public $timestamps = false;
+    // public $timestamps = false;
 
 }

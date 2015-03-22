@@ -22,7 +22,7 @@ class AgamaController extends BaseController implements FeatureInterface {
             'page_title' => 'Data Agama',
             'panel_title' => 'Tabel',
             'location' => 'view',
-            'table' => Agama::paginate(6),
+            'table' => Agama::orderBy('created_at','desc')->paginate(10),
         ];
         return View::make('agama.view', $data);
     }
@@ -93,7 +93,8 @@ class AgamaController extends BaseController implements FeatureInterface {
         $keyword = Input::get('keyword');
         $ag = Agama::where('nama', 'LIKE', '%' . $keyword . '%')
                 ->orWhere('id', 'LIKE', '%' . $keyword . '%')
-                ->paginate(6);
+                ->orderBy('created_at','desc')
+                ->paginate(10);
         $data = [
             'location' => 'search',
             'table' => $ag,

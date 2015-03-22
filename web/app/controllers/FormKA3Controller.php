@@ -30,7 +30,7 @@ class FormKA3Controller extends BaseController {
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka3')->paginate(5),
+            'table' => Form::where('nama', '=', 'ka3')->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka3.view', $data);
     }
@@ -145,7 +145,7 @@ class FormKA3Controller extends BaseController {
         $keyword = Input::get('keyword');
         $filter = Input::get('filter');
 
-        $result = Form::where('nama', '=', 'ka3')->orderBy('tanggal', 'asc');
+        $result = Form::where('nama', '=', 'ka3')->orderBy('tanggal', 'desc');
 
         if ($keyword != NULL) {
             if ($filter == "kode" || $filter == NULL) {
@@ -176,7 +176,7 @@ class FormKA3Controller extends BaseController {
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Search View',
             'location' => 'search',
-            'table' => $result->paginate(6),
+            'table' => $result->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka3.view', $data);
     }

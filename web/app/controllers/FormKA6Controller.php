@@ -28,7 +28,7 @@ class FormKA6Controller extends BaseController {
             'page_title' => 'Kasus Anak 6 (KA6)',
             'panel_title' => 'Pendapingan Table View',
             'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka6')->paginate(5),
+            'table' => Form::where('nama', '=', 'ka6')->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka6.view', $data);
     }
@@ -167,7 +167,7 @@ class FormKA6Controller extends BaseController {
             'page_title' => 'Kasus Anak 6 (KA6)',
             'panel_title' => 'Search View',
             'location' => 'search',
-            'table' => $result->paginate(6),
+            'table' => $result->orderBy('created_at','desc')->get(),
         ];
         return View::make('formka6.view', $data);
     }

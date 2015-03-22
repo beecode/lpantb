@@ -17,10 +17,8 @@ use Illuminate\Support\Facades\Redirect;
 $con = 'App\\Controllers\\';
 Route::get('/', $con. 'FrontController@home');
 
-// dashboard
-Route::get('/lpantb/dashboard', $con . 'DashboardController@home')->before('auth');
-
 require "routes/login.php";
+require "routes/dashboard.php";
 require "routes/anak.php";
 require "routes/files.php";
 require "routes/formka1.php";
@@ -42,10 +40,3 @@ require "routes/user.php";
 require "routes/agama.php";
 require "routes/location.php";
 require "routes/serviceQuery.php";
-
-
-
-
-
-
-

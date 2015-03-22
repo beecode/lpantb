@@ -6,10 +6,11 @@
             Kembali
         </a>
     <?php } ?>
-    <a class="btn btn-default" 
+    <a class="btn btn-default"
        href="{{URL::to('/lpantb/formka4/preaddview')}}">
         <span class="glyphicon glyphicon-plus"></span>
-        Add
+        Tambah
     </a>
 </div>
-<div class="clearfix"></div>
+<!-- <div class="clearfix"></div> -->
+<br><br>

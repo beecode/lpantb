@@ -1,6 +1,5 @@
 @extends('layout.lteadmin.index')
 @section('content')
-
 <aside class="right-side">
     <section class="content-header">
         <h1>
@@ -15,6 +14,14 @@
     </section>
     <!-- Main content -->
     <section class="content">
+      @if (Session::has('message'))
+      <div class="alert alert-<?php echo Session::get('alert'); ?> alert-dismissable">
+          <i class="fa fa-warning"></i>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          {{ Session::get('message') }}
+      </div>
+      @endif
+        @include('dashboard.chart.filter')
         @include('dashboard.chart.jenis')
         @include('dashboard.chart.lokasi')
         @include('dashboard.chart.pendidikan')

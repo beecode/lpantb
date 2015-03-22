@@ -12,7 +12,7 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
 class Files extends Eloquent {
 
     protected $table = "files";
-//    public $timestamps = false;
+   public $timestamps = false;
     private $ns = "App\\Models\\";
 
     public function Anak() {
