@@ -1,6 +1,8 @@
 <?php $dis = $data->disposisi->first(); ?>
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Disposisi</p>
+  <h5>
+    <strong>Disposisi</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>
@@ -16,4 +18,3 @@
         </table>
     </div>
 </div>
-

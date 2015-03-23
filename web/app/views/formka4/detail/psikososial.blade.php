@@ -3,7 +3,9 @@ $anak = $data->anak->first();
 $psi = $anak->kondisi_psikososial;
 ?>
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Kondisi Psikososial</p>
+  <h5>
+    <strong>Kondisi Psikososial</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>

@@ -26,14 +26,14 @@
 
         <div class="row">
             <div class="col-xs-11 col-offset-1" style="text-align:center; padding-left:50px;">
-                <span class="" style="margin-bottom:2px;">
+                <span class="" style="margin-bottom:10px;">
                     <h4 style="margin:0px;">
-                      <strong>Laporan Kasus Anak</strong>
+                      <strong>LAPORAN KASUS ANAK</strong>
                     </h4>
                 </span>
             </div>
             <div class="col-xs-1">
-              <span class="pull-right small" style="margin-bottom:2px;">
+              <span class="pull-right small" style="margin-bottom:10px;">
                 <label class="label label-danger"  style="margin:0px;">Form KA1</label>
               </span>
             </div>

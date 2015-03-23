@@ -1,6 +1,8 @@
 <?php $gmb = $data->anak->first()->gambaran_fisik; ?>
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Gambaran Fisik Anak</p>
+  <h5>
+    <strong>Gambaran Fisik Anak</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>

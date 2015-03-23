@@ -1,17 +1,21 @@
 .sign{
   text-align: center;
   font-size: 12px;
+  margin-top: 34px;
 }
 
 .sign .sign-left{
-  margin-left:0%;
+  margin-left:8%;
+  float:left
 }
 .sign .sign-right{
-  margin-right:0%;
+  margin-right:8%;
+  float:right;
 }
 
 .sign .spacer{
-  height:61px;
+  display: block;
+  height: 55px;
 }
 .sign .sign-name{
   font-weight:bold;

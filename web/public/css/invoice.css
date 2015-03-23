@@ -1,0 +1,20 @@
+
+.invoice h5{
+  margin-top:5px;
+}
+
+.invoice table{
+  margin-bottom: 16px;
+}
+
+.invoice p{
+  font-size: 11px;
+}
+
+.input-group .input-group-addon{
+  font-size: 10px;
+}
+
+.input-group .form-control{
+  font-size: 10px;
+}

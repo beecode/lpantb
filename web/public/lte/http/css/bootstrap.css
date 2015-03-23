@@ -190,7 +190,7 @@ th {
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 
-/*@media print {
+@media print {
 
   *,
   *:before,
@@ -252,8 +252,25 @@ th {
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
   }
+  label {
+    display: inline-block;
+    max-width: 100%;
+    /*margin-bottom: 5px;*/
+    font-weight: bold;
+  }
   .label {
-    border: 1px solid #000;
+    /*border: 1px solid red;*/
+    color: white;
+  }
+  .label-danger {
+    color: white !important;
+    background-color: #d9534f !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+  .label-primary {
+    color: white !important;
+    background-color: #337ab7 !important;
+    -webkit-print-color-adjust: exact !important;
   }
   .table {
     border-collapse: collapse !important;
@@ -267,7 +284,8 @@ th {
     border: 1px solid #ddd !important;
   }
 
-}*/
+
+}
 
 @font-face {
   font-family: 'Glyphicons Halflings';

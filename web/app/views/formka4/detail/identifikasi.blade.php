@@ -3,7 +3,9 @@ $anak = $data->anak->first();
 $msl = $anak->identifikasi_masalah;
 ?>
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Identifikasi Masalah</p>
+  <h5>
+    <strong>Identifikasi Masalah</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>

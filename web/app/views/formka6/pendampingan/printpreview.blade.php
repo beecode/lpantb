@@ -8,13 +8,19 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-edit"></i> Kasus Anak</a></li>
-      <li><a href="#"><i class="fa fa-th-list"></i> KA2</a></li>
+      <li><a href="#"><i class="fa fa-th-list"></i> KA1</a></li>
       <li><a href="#"><i class="fa fa-table"></i> {{$panel_title}}</a></li>
     </ol>
   </section>
   <!-- Main content -->
 
-  <section class="content invoice">
+  <style>
+  @media print{
+    @page {size: landscape}
+  };
+  </style>
+
+  <section class="content invoice" style="overflow:hidden;">
     <!-- title row -->
     <div class="row">
       <div class="col-xs-12" style="margin-bottom:3px;">
@@ -24,17 +30,17 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top:5px; margin-bottom:0px;">
       <div class="col-xs-11 col-offset-1" style="text-align:center; padding-left:50px;">
         <span class="" style="margin-bottom:10px;">
           <h4 style="margin:0px;">
-            <strong>TINDAK LANJUT LAPORAN KASUS ANAK</strong>
+            <strong>LAPORAN PERKEMBANGAN PENDAMPINGAN ANAK</strong>
           </h4>
         </span>
       </div>
       <div class="col-xs-1">
         <span class="pull-right small" style="margin-bottom:10px;">
-          <label class="label label-danger"  style="margin:0px;">Form KA3</label>
+          <label class="label label-danger" style="font-size:12px;">Form KA6</label>
         </span>
       </div>
     </div><!-- /.col -->
@@ -42,33 +48,24 @@
     <!-- info row -->
     <div class="row invoice-info">
       <div class="col-xs-12">
-        <span class="pull-left">
-          <h6 style="margin:1px; padding:1px;">
-            No. LKA {{$data->no_lka}}
-          </h6>
-        </span>
-        <span class="pull-right">
-          <h6 style="margin:1px; padding:1px;">
-            {{date('l, d F Y',strtotime($data->tanggal))}}
-          </h6>
-        </span>
-        <span class="clearfix"></span>
-        <br>
+        @include('formka6.pendampingan.print.info')
       </div>
 
-      @include('formka3.detail.anak')
-      @include('formka3.detail.tindak')
-      @include('formka3.detail.disposisi')
-      @include('formka3.detail.sign')
+      <div class="col-xs-12">
+        @include('formka6.pendampingan.print.table')
+      </div><!-- /.row -->
 
-    </div><!-- /.row -->
+      <div class="col-xs-12">
+        @include('formka6.pendampingan.print.sign')
+      </div><!-- /.row -->
 
-    <div class="row no-print">
-      <div class="col-xs-12" style="margin-top:61px;">
-        <a href="{{URL::to('lpantb/formka3')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
-        <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+      <div class="row no-print">
+        <div class="col-xs-12" style="margin-top:61px;">
+          <a href="{{URL::to('lpantb/formka6/pendampingan/view/'.$anak->id)}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
+          <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+        </div>
       </div>
-    </div>
-  </section>
-</aside>
-@stop
+
+    </section>
+  </aside>
+  @stop

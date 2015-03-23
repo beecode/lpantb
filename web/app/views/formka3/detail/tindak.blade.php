@@ -1,9 +1,11 @@
-<?php 
+<?php
 $anak= $data->anak->first();
-$tindak = $anak->tindak_lanjut; 
+$tindak = $anak->tindak_lanjut;
 ?>
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Tindak Lanjut</p>
+  <h5>
+    <strong>Tidak Lanjut</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>

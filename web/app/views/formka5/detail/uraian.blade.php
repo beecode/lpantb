@@ -1,5 +1,16 @@
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Uraian Singkat Kasus</p>
-    <p style="margin-left: 7px;">{{$data->uraian_kasus}}</p>
+  <div class="uraian">
+    <h5>
+      <strong>Uraian Singkat Kasus</strong>
+    </h5>
+    <p>{{$data->uraian_kasus}}</p>
+    <br>
+  </div>
 </div>
 
+<style>
+  .uraian p {
+    font-size: 11px;
+    text-align: justify;
+  }
+</style>

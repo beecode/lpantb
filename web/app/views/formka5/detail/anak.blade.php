@@ -4,7 +4,9 @@ $jenis = $anak->jenis_kasus;
 ?>
 
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Identitas Anak</p>
+  <h5>
+    <strong>Identitas Anak</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>

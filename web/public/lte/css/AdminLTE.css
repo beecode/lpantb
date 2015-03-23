@@ -2532,7 +2532,6 @@ Page: Invoice
     margin: 0;
     padding: 0;
     overflow: hidden!important;
-
   }
   .invoice-col {
     float: left;
@@ -2546,6 +2545,14 @@ Page: Invoice
   .table-responsive > .table tr td {
     white-space: normal!important;
     padding:2px;
+  }
+
+  .input-group{
+    font-size:10px; 
+  }
+
+  .input-group-sm{
+    font-size:10px;
   }
 }
 

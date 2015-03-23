@@ -1,8 +1,10 @@
-<?php 
+<?php
 $anak = $data->anak->first();
 $intervensi = $anak->intervensi; ?>
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Intervensi Yang Dilakukan</p>
+  <h5>
+    <strong>Intervensi Yang Dilakukan</strong>
+  </h5>
     <div class="table-responsive">
         <table class="table small">
             <tbody>
@@ -16,7 +18,7 @@ $intervensi = $anak->intervensi; ?>
                 </tr>
                 <tr>
                     <th>Dasar Intervensi</th>
-                    <td><p>{{$data->dasar_intervensi}}</p></td>
+                    <td>{{$data->dasar_intervensi}}</td>
                 </tr>
             </tbody>
         </table>
@@ -26,7 +28,13 @@ $intervensi = $anak->intervensi; ?>
 <?php if (!empty($data->catatan_intervensi)) { ?>
 
 <div class="col-xs-12">
-    <p class="lead" style="margin: 0px;">Catatan Untuk Intervensi</p>
-    <p style="margin-left: 7px;">{{$data->catatan_intervensi}}</p>
+    <div class="catatan">
+      <h5>
+        <strong>Catatan Untuk Intervensi</strong>
+      </h5>
+      <p>{{$data->catatan_intervensi}}</p>
+      <br>
+    </div>
+
 </div>
 <?php } ?>

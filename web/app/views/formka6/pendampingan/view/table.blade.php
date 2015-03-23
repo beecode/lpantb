@@ -42,7 +42,7 @@ $jenis = $anak->jenis_kasus;
         <table class="table table-bordered table-hover table-responsive" >
             <thead>
                 <tr class="small">
-                    <th class="text-center">No</th>
+                    <!-- <th class="text-center">No</th> -->
                     <th>Hari/Tanggal</th>
                     <th>Bentuk Pendampingan</th>
                     <th>Tempat</th>
@@ -57,8 +57,8 @@ $jenis = $anak->jenis_kasus;
                 <?php $c = 1; ?>
                 <?php foreach ($table as $val) { ?>
                     <tr>
-                        <td class="text-center">{{$c++}}</td>
-                        <td>{{strftime( "%A, %d-%m-%Y", strtotime($val->tanggal))}}</td>
+                        <!-- <td class="text-center">{{$c++}}</td> -->
+                        <td>{{strftime( "%A, %d-%B-%Y", strtotime($val->tanggal))}}</td>
                         <td>{{$val->bentuk}}</td>
                         <td>{{$val->tempat}}</td>
                         <td>{{$val->pelaksana}}</td>
@@ -97,13 +97,13 @@ $jenis = $anak->jenis_kasus;
 <script type="text/javascript">
     $(".table").dataTable({
         "bPaginate": true,
-        "bLengthChange": false,
-        "bFilter": false,
+        "bLengthChange": true,
+        "bFilter": true,
         "bInfo": true,
         // "bSort": true,
-        "bAutoWidth": false,
-        "order":[[2,'desc']],
-        "aaSorting":[[2,'desc']],
+        "bAutoWidth": true,
+        "order":[[0,'asc']],
+        "aaSorting":[[0,'asc']],
         "ordering": true,
     });
 </script>
