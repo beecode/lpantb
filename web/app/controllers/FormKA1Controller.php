@@ -64,6 +64,7 @@ class FormKA1Controller extends BaseController {
         $an = Input::get('anak');
         $ct = Input::get('contact');
         $fm = Input::get('form');
+        $fm['tanggal'] = date('Y-m-d');
 
         $form = FormDAO::saveOrUpdate($fm);
         $anak = AnakDAO::saveOrUpdate($an);

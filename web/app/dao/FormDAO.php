@@ -50,7 +50,7 @@ class FormDAO {
     private static function exchangeArray($form, $fm) {
         $form->nama = isset($fm['nama']) ? $fm['nama'] : null;
         $form->no_lka = isset($fm['no_lka']) ? $fm['no_lka'] : null;
-        $form->tanggal = isset($fm['tanggal']) ? DateHelper::toDate($fm['tanggal']) : null;
+        $form->tanggal = isset($fm['tanggal']) ? $fm['tanggal'] : null;
         $form->catatan = isset($fm['catatan']) ? $fm['catatan'] : null;
         $form->catatan_tindak_lanjut = isset($fm['catatan_tindak_lanjut']) ? $fm['catatan_tindak_lanjut'] : null;
         $form->ringkasan_kasus = isset($fm['ringkasan']) ? $fm['ringkasan'] : null;

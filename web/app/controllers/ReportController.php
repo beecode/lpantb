@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 /**
  * Description of AgamaController
  *
- * @author aljufry
+ * @author nunenuh
  */
 class ReportControllerr extends BaseController {
 

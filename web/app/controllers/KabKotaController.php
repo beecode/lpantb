@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Input;
 /**
  * Description of KabkotaController
  *
- * @author aljufry
+ * @author nunenuh
  */
 class KabKotaController extends BaseController implements FeatureInterface {
 

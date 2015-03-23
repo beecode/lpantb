@@ -13,7 +13,7 @@
         </ol>
     </section>
     <!-- Main content -->
-    <section class="content">
+    <section class="content" ng-app="app">
         @if (Session::has('message'))
         <div class="alert alert-info alert-dismissable">
             <i class="fa fa-warning"></i>
@@ -21,7 +21,7 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <div class="box box-primary">
+        <div class="box box-primary" ng-controller="PendampinganCtrl as vm">
             <div class="box-header">
                 <div class="box-tools pull-left">
                     <a class="btn btn-primary" style="color: white;"
@@ -49,4 +49,39 @@
         </div>
     </section>
 </aside>
+
+<script type="text/javascript">
+var app = angular.module("app", ['ngTouch', 'angucomplete'], function($interpolateProvider) {
+  $interpolateProvider.startSymbol('<%');
+  $interpolateProvider.endSymbol('%>');
+});
+
+app.controller('PendampinganCtrl',PendampinganCtrl);
+PendampinganCtrl.$inject = [];
+
+function PendampinganCtrl(){
+  var vm = this;
+  <?php if (isset($data->pelaksana)){?>
+    vm.list = <?php echo $data->pelaksana ?>
+  <?php } else { ?>
+    vm.list = [];
+  <?php } ?>
+
+  vm.add = add;
+  vm.remove = remove;
+
+  function add(){
+    vm.list.push({text:''});
+  }
+
+  function remove(obj){
+    //remove from table in view
+    var index = vm.list.indexOf(obj);
+    if (index > -1) vm.list.splice(index, 1);
+  }
+
+
+}
+
+</script>
 @stop

@@ -9,9 +9,9 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
  *
  * @author nunenuh
  */
-class Settings extends Eloquent {
+class Setting extends Eloquent {
 
-    protected $table = "settings";
+    protected $table = "setting";
     public $timestamps = false;
 
 }

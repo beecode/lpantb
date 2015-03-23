@@ -18,6 +18,7 @@ $con = 'App\\Controllers\\';
 Route::get('/', $con. 'FrontController@home');
 
 require "routes/login.php";
+
 require "routes/dashboard.php";
 require "routes/anak.php";
 require "routes/files.php";
@@ -30,6 +31,7 @@ require "routes/formka6.php";
 require "routes/formka7.php";
 require "routes/pendampingan.php";
 require "routes/staff.php";
+require "routes/lka.php";
 
 // route untuk menampilkan provinsi
 require "routes/provinsi.php";

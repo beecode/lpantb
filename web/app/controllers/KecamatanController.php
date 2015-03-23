@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Input;
 /**
  * Description of KecamatanController
  *
- * @author aljufry
+ * @author nunenuh
  */
 class KecamatanController extends BaseController {
 
@@ -111,7 +111,7 @@ class KecamatanController extends BaseController {
 
     /**
      * masih bermasalah bagian search ini
-     * 
+     *
      * @return type
      */
     public function search() {

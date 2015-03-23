@@ -26,7 +26,21 @@
     </tr>
     <tr>
       <th>Pelaksana</th>
-      <td>{{$data->pelaksana}}</td>
+      <td>
+        <?php
+          $pel = json_decode($data->pelaksana);
+          $c = count($pel);
+          $i=0;
+          foreach($pel as $p){
+            if ($i==$c-1){
+              echo $p->text;
+            } else {
+              echo $p->text."<br/> ";
+            }
+            $i++;
+          }
+        ?>
+      </td>
     </tr>
     <tr>
       <th>Hasil</th>

@@ -61,7 +61,21 @@ $jenis = $anak->jenis_kasus;
                         <td>{{strftime( "%A, %d-%B-%Y", strtotime($val->tanggal))}}</td>
                         <td>{{$val->bentuk}}</td>
                         <td>{{$val->tempat}}</td>
-                        <td>{{$val->pelaksana}}</td>
+                        <td>
+                          <?php
+                          $pel = json_decode($val->pelaksana);
+                          $c = count($pel);
+                          $i=0;
+                          foreach($pel as $p){
+                            if ($i==$c-1){
+                              echo $p->text;
+                            } else {
+                              echo $p->text.", ";
+                            }
+                            $i++;
+                          }
+                          ?>
+                        </td>
                         <td>{{$val->hasil}}</td>
                         <td>{{$val->rencana}}</td>
                         <td>{{$val->keterangan}}</td>
