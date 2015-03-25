@@ -24,15 +24,28 @@ if (!is_null($anak->keluarga)) {
     <div class="col-sm-6">
         <label class="radio-inline">
             <?php
-            $kl['si'] = false;
+            $kl['sim'] = false;
             if (isset($keluarga)) {
-                if ($keluarga->status == "Suami Istri") {
-                    $kl['si'] = true;
+                if ($keluarga->status == "Suami Istri Monogami") {
+                    $kl['sim'] = true;
                 }
             }
             ?>
-            {{ Form::radio('keluarga[status]', 'Suami Istri',$kl['si']);}} Suami Istri
+            {{ Form::radio('keluarga[status]', 'Suami Istri Monogami',$kl['sim']);}} Suami Istri Monogami
         </label>
+        <br>
+        <label class="radio-inline">
+            <?php
+            $kl['sip'] = false;
+            if (isset($keluarga)) {
+                if ($keluarga->status == "Suami Istri Poligami") {
+                    $kl['sip'] = true;
+                }
+            }
+            ?>
+            {{ Form::radio('keluarga[status]', 'Suami Istri Poligami',$kl['sip']);}} Suami Istri Poligami
+        </label>
+        <br>
         <label class="radio-inline">
             <?php
             $kl['ch'] = false;
@@ -44,6 +57,7 @@ if (!is_null($anak->keluarga)) {
             ?>
             {{ Form::radio('keluarga[status]', 'Cerai Hidup',$kl['ch']);}} Cerai Hidup
         </label>
+        <br>
         <label class="radio-inline">
             <?php
             $kl['cm'] = false;

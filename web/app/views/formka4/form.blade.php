@@ -26,20 +26,23 @@
                 <div class="box-tools pull-left">
                     <a href="{{URL::to('lpantb/formka4')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>   
+                    </a>
                 </div>
             </div>
             <div class="box-body">
 
                 <form id="myWizard" method="POST" action="{{$form_url}}" class="form-horizontal">
                     <div class="row">
+                      <section class="step" data-step-title="Tanda Tangan">
+                          @include('formka4.step.sign')
+                      </section>
                         <section class="step" data-step-title="No LKA">
                             @include('formka4.step.lka')
                         </section>
-                        <section class="step" data-step-title="Identitas Anak">
+                        <section class="step" data-step-title="Anak">
                             @include('formka4.step.anak')
                         </section>
-                        <section class="step" data-step-title="Gambaran Fisik">
+                        <section class="step" data-step-title="Fisik">
                             @include('formka4.step.gambaran')
                         </section>
                         <section class="step" data-step-title="Keluarga">
@@ -47,15 +50,16 @@
                             @include('formka4.step.ibu')
                             @include('formka4.step.keluarga')
                         </section>
-                        <section class="step" data-step-title="Identifikasi Masalah">
+                        <section class="step" data-step-title="Masalah">
                             @include('formka4.step.identifikasi')
                         </section>
-                        <section class="step" data-step-title="Kondisi Psikososial">
+                        <section class="step" data-step-title="Psikososial">
                             @include('formka4.step.psikososial')
                         </section>
                         <section class="step" data-step-title="Rekomendasi">
                             @include('formka4.step.rekomendasi')
                         </section>
+
                     </div>
                 </form>
             </div>

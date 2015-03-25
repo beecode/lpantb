@@ -13,6 +13,7 @@ use App\Models\Agama;
 use App\Models\Anak;
 use Illuminate\Support\Facades\Session;
 use App\Helpers\LocationHelper;
+use App\Helpers\PrintLog;
 use App\DAO\FormDAO,
     App\DAO\AnakDAO,
     App\DAO\GambaranFisikDAO,
@@ -140,6 +141,9 @@ class FormKA4Controller extends BaseController {
         $ib = Input::get('ibu');
         $ms = Input::get('masalah');
         $ps = Input::get('psiko');
+
+        //inject tanggal system ke dalam form
+        $fm['tanggal'] = date('Y-m-d');
 
         $form = FormDAO::saveOrUpdate($fm);
         $anak = AnakDAO::saveOrUpdate($an);

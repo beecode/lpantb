@@ -3,11 +3,12 @@
         <table class="table table-bordered table-hover table-responsive" >
             <thead>
                 <tr class="small">
-                    <th class="text-center">Kode</th>
+                    <!-- <th class="text-center">Kode</th> -->
                     <th>Nama</th>
+                    <th>Jabatan</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Password</th>
+                    <!-- <th>Password</th> -->
                     <th>Level</th>
                     <th class="text-center">Aksi</th>
                 </tr>
@@ -15,21 +16,30 @@
             <tbody class="small">
                 <?php foreach ($table as $val) { ?>
                     <tr>
-                        <td class="text-center">{{$val->id}}</td>
-                        <td>{{$val->display_name}}</td>
+                        <!-- <td class="text-center">{{$val->id}}</td> -->
+                        <td>{{$val->name}}</td>
+                        <td>{{$val->occupation}}</td>
                         <td>{{$val->email}}</td>
                         <td>{{$val->username}}</td>
-                        <td>{{$val->password}}</td>
-                        <td>{{$val->level}}</td>
+                        <!-- <td>{{$val->password}}</td> -->
+                        <td>
+                          <?php
+                          if ($val->level == "admin"){
+                            echo "Administrator";
+                          } else {
+                            echo "Operator";
+                          }
+                          ?>
+                        </td>
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-warning" title="Update" 
+                                <a class="btn btn-small btn-warning" title="Update"
                                    href="{{ URL::to('/lpantb/user/updateview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-edit"></span> 
+                                    <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
+                                <a class="btn btn-small btn-danger" title="Delete"
                                    href="{{ URL::to('/lpantb/user/delete/'.$val->id) }}">
-                                    <span class="glyphicon glyphicon-trash"></span> 
+                                    <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
                         </td>
@@ -48,11 +58,14 @@
 
 <script type="text/javascript">
     $(".table").dataTable({
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bSort": true,
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
         "bInfo": true,
-        "bAutoWidth": false
+        // "bSort": true,
+        "bAutoWidth": false,
+        "order":[[4,'asc']],
+        "aaSorting":[[4,'asc']],
+        "ordering": true,
     });
 </script>

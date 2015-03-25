@@ -1,10 +1,10 @@
-<div class="pull-right col-sm-5">  
+<!-- <div class="pull-right col-sm-5">
     <form  method="GET" style="margin-right: 0px; padding-left: 0px;"
            action="{{ URL::to('/lpantb/user/search') }}" >
 
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control" type="search" name="keyword" 
+                <input class="form-control" type="search" name="keyword"
                        placeholder="Nama|Email|Username|Level">
                 <span class="input-group-btn">
                     <button class="btn btn-info btn-flat" type="submit">
@@ -44,4 +44,4 @@
             </div>
         </div>
     </form>
-</div>
+</div> -->

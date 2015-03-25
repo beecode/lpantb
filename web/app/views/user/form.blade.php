@@ -26,7 +26,7 @@
                 <div class="box-tools pull-left">
                     <a href="{{URL::to('lpantb/user')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>   
+                    </a>
                 </div>
             </div>
             <div class="box-body">
@@ -39,8 +39,16 @@
                     <div class="form-group">
                         {{ Form::label('Nama', 'Nama',['class'=>'col-sm-2 control-label']) }}
                         <div class="col-sm-3">
-                            <?php $nama = (isset($user->display_name)) ? $user->display_name : null; ?>
-                            {{ Form::text('user[display_name]', $nama, ['class' => 'form-control','required'])  }}
+                            <?php $nama = (isset($user->name)) ? $user->name : null; ?>
+                            {{ Form::text('user[name]', $nama, ['class' => 'form-control','required'])  }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('Jabatan', 'Jabatan',['class'=>'col-sm-2 control-label']) }}
+                        <div class="col-sm-3">
+                            <?php $occupation = (isset($user->occupation)) ? $user->occupation : null; ?>
+                            {{ Form::text('user[occupation]', $occupation, ['class' => 'form-control','required'])  }}
                         </div>
                     </div>
 
@@ -74,13 +82,11 @@
                         <div class="col-sm-3">
                             <?php
                             $list = [
-                                'admin' => 'admin',
-                                'operator' => 'operator',
-                                'staff' => 'staff',
-                                'guest' => 'guest',
+                                'admin' => 'Administrator',
+                                'operator' => 'Operator',
                             ];
                             ?>
-                            <?php $level = (isset($user->level)) ? $user->level : 'guest'; ?>
+                            <?php $level = (isset($user->level)) ? $user->level : 'operator'; ?>
                             {{ Form::select('user[level]', $list, $level, ['class'=>'form-control','required']) }}
                         </div>
                     </div>

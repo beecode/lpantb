@@ -38,7 +38,8 @@ class UserDAO {
     }
 
     public static function exchangeArray($user, $u) {
-        $user->display_name = $u['display_name'];
+        $user->name = $u['name'];
+        $user->occupation = $u['occupation'];
         $user->email = $u['email'];
         $user->username = $u['username'];
         $user->password = $u['password'];

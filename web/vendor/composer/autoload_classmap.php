@@ -64,6 +64,7 @@ return array(
     'App\\Helpers\\DateHelper' => $baseDir . '/app/helpers/DateHelper.php',
     'App\\Helpers\\FormHelper' => $baseDir . '/app/helpers/FormHelper.php',
     'App\\Helpers\\LocationHelper' => $baseDir . '/app/helpers/LocationHelper.php',
+    'App\\Helpers\\PrintLog' => $baseDir . '/app/helpers/PrintLog.php',
     'App\\Helpers\\RomanHelper' => $baseDir . '/app/helpers/RomanHelper.php',
     'App\\Models\\Agama' => $baseDir . '/app/models/Agama.php',
     'App\\Models\\Anak' => $baseDir . '/app/models/Anak.php',
