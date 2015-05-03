@@ -6,11 +6,13 @@
             Kembali
         </a>
     <?php } ?>
+    <?php if (UserHelper::amIAdmin()){  ?>
     <a class="btn btn-default"
        href="{{URL::to('/lpantb/formka3/preaddview')}}">
         <span class="glyphicon glyphicon-plus"></span>
         Tambah
     </a>
+    <?php } ?>
 </div>
 <!-- <div class="clearfix"></div> -->
 <br><br>

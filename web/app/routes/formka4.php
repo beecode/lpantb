@@ -4,6 +4,7 @@ $fk4 = 'FormKA4Controller';
 $pr_k4 = '/lpantb/formka4';
 //Crud Route
 Route::get($pr_k4, $con . $fk4 . "@view")->before('auth');
+Route::get($pr_k4 . "/viewMe", $con . $fk4 . "@viewMe")->before('auth');
 Route::get($pr_k4 . "/preaddview", $con . $fk4 . "@preAddView")->before('auth');
 Route::get($pr_k4 . "/addview/{anak_id}", $con . $fk4 . "@addView")->before('auth');
 Route::get($pr_k4 . "/detailview/{anak_id}", $con . $fk4 . "@detailView")->before('auth');

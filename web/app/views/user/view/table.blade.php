@@ -64,8 +64,8 @@
         "bInfo": true,
         // "bSort": true,
         "bAutoWidth": false,
-        "order":[[4,'asc']],
-        "aaSorting":[[4,'asc']],
+        "order":[[4,'asc'],[0, 'asc']],
+        "aaSorting":[[4,'asc'],[0, 'asc']],
         "ordering": true,
     });
 </script>

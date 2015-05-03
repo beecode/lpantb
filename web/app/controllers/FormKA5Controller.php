@@ -20,6 +20,8 @@ use App\DAO\FormDAO,
     App\DAO\JenisKasusDAO,
     App\DAO\DisposisiDAO;
 
+use Illuminate\Support\Facades\Auth;
+
 /**
  * Description of Testerform1Controller
  *
@@ -36,6 +38,24 @@ class FormKA5Controller extends BaseController {
         ];
         return View::make('formka5.view', $data);
     }
+
+    public function viewMe() {
+      $username = Auth::user()->username;
+      $form = Form::where('nama', '=', 'ka5')->orderBy('created_at', 'desc');
+      $form->whereHas('user', function ($qa) use ($username) {
+          $qa->where('user.username', 'LIKE', '%' . $username . '%');
+      });
+
+        $data = [
+            'title' => '',
+            'page_title' => 'Kasus Anak 5 (KA5)',
+            'panel_title' => 'Table View',
+            'location' => 'view',
+            'table' => $form->get(),
+        ];
+        return View::make('formka5.view', $data);
+    }
+
 
     public function detailView($id) {
         $data = [
@@ -70,6 +90,7 @@ class FormKA5Controller extends BaseController {
             'intervensi' => Intervensi::all(),
             'agama_lists' => Agama::lists('nama', 'nama'),
             'anak' => Anak::find($anak_id),
+            'form'=>Anak::find($anak_id)->form->first(),
         ];
         return View::make('formka5.form', $data);
     }
@@ -80,6 +101,17 @@ class FormKA5Controller extends BaseController {
         $jk = Input::get('jenis_kasus');
         $int = Input::get('intervensi');
         $dis = Input::get('disposisi');
+
+        // inject lka if not set
+        if (!isset($fm['no_lka'])){
+          $form = Anak::find($an['id'])->form->first();
+          $fm['no_lka']= $form->no_lka;
+        }
+
+        // inject tanggal if not set
+        if (!isset($fm['tanggal'])){
+          $fm['tanggal']=date('Y-m-d');
+        }
 
         $form = FormDAO::saveOrUpdate($fm);
         DisposisiDAO::saveOrUpdate($dis, $form);
@@ -119,6 +151,18 @@ class FormKA5Controller extends BaseController {
         $jk = Input::get('jenis_kasus');
         $int = Input::get('intervensi');
         $dis = Input::get('disposisi');
+
+
+        // inject lka if not set
+        if (!isset($fm['no_lka'])){
+          $form = Anak::find($an['id'])->form->first();
+          $fm['no_lka']= $form->no_lka;
+        }
+
+        // inject tanggal if not set
+        if (!isset($fm['tanggal'])){
+          $fm['tanggal']=date('Y-m-d');
+        }
 
         $form = FormDAO::saveOrUpdate($fm);
         DisposisiDAO::saveOrUpdate($dis, $form);

@@ -1,12 +1,18 @@
 <script src="<?php echo URL::to('lte/http/js/jquery.min.js'); ?>"  type="text/javascript"></script>
+<script src="<?php echo URL::to('lte/js/plugins/lodash/lodash.js'); ?>"  type="text/javascript"></script>
+
+<script src="<?php echo URL::to('lte/js/plugins/datatables/jquery.dataTables.js"'); ?>"  type="text/javascript"></script>
+<script src="<?php echo URL::to('lte/js/plugins/datatables/fnFakeRowspan.js"'); ?>"  type="text/javascript"></script>
+<script src="<?php echo URL::to('lte/js/plugins/datatables/dataTables.bootstrap.js"'); ?>"  type="text/javascript"></script>
+
 <script src="<?php echo URL::to('lte/http/js/bootstrap.min.js'); ?>"  type="text/javascript"></script>
 <script src="<?php echo URL::to('lte/http/js/raphael-min.js'); ?>"  type="text/javascript"></script>
 <script src="<?php echo URL::to('lte/http/js/g.raphael-min.js'); ?>"  type="text/javascript"></script>
 <script src="<?php echo URL::to('lte/http/js/g.pie-min.js'); ?>"  type="text/javascript"></script>
 <script src="<?php echo URL::to('lte/http/js/morris.js'); ?>"  type="text/javascript"></script>
 <script src="<?php echo URL::to('lte/js/plugins/jqueryKnob/jquery.knob.js'); ?>"  type="text/javascript"></script>
-<script src="<?php echo URL::to('lte/js/plugins/datatables/jquery.dataTables.js"'); ?>"  type="text/javascript"></script>
-<script src="<?php echo URL::to('lte/js/plugins/datatables/dataTables.bootstrap.js"'); ?>"  type="text/javascript"></script>
+
+
 <script src="<?php echo URL::to('lte/js/AdminLTE/app.js'); ?>"  type="text/javascript"></script>
 
 
@@ -47,3 +53,11 @@
 
 
 <script src="<?php echo URL::to('js/app.js'); ?>" type="text/javascript"></script>
+
+<script type="text/javascript">
+var app = angular.module("app", ['ngTouch', 'angucomplete'], function($interpolateProvider) {
+  $interpolateProvider.startSymbol('<%');
+  $interpolateProvider.endSymbol('%>');
+});
+</script>
+@include('layout.lteadmin.js.lkactrl')

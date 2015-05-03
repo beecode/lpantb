@@ -21,7 +21,7 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <div class="box box-primary">
+        <div class="box box-primary" ng-app="app">
             <div class="box-header">
                 <div class="box-tools pull-left">
                     <a href="{{URL::to('lpantb/formka4')}}" class="btn btn-primary">
@@ -29,13 +29,9 @@
                     </a>
                 </div>
             </div>
-            <div class="box-body">
-
+            <div class="box-body" >
                 <form id="myWizard" method="POST" action="{{$form_url}}" class="form-horizontal">
                     <div class="row">
-                      <section class="step" data-step-title="Tanda Tangan">
-                          @include('formka4.step.sign')
-                      </section>
                         <section class="step" data-step-title="No LKA">
                             @include('formka4.step.lka')
                         </section>
@@ -59,11 +55,15 @@
                         <section class="step" data-step-title="Rekomendasi">
                             @include('formka4.step.rekomendasi')
                         </section>
-
+                        <section class="step" data-step-title="Tanda Tangan">
+                            @include('formka4.step.sign')
+                        </section>
                     </div>
                 </form>
             </div>
         </div>
     </section>
 </aside>
+
+
 @stop

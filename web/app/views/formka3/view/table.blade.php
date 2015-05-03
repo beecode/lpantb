@@ -44,6 +44,8 @@
                         </td>
 
                         <td class="text-center">
+
+                          <?php if (UserHelper::amIAdmin()){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                 <a class="btn btn-small btn-info" title="Detail"
                                    href="{{ URL::to('/lpantb/formka3/detailview/'.$val->id) }}">
@@ -58,6 +60,15 @@
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
+                            <?php } else { ?>
+                              <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
+                                  <a class="btn btn-small btn-info" title="Detail"
+                                     href="{{ URL::to('/lpantb/formka3/detailview/'.$val->id) }}">
+                                      <span class=" glyphicon glyphicon-th-list"></span>
+                                  </a>
+                              </div>
+                            <?php } ?>
+
                         </td>
 
                     </tr>

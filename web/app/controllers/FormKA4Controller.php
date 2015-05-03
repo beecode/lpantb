@@ -23,6 +23,8 @@ use App\DAO\FormDAO,
     App\DAO\IdentifikasiMasalahDAO,
     App\DAO\KondisiPsikososialDAO;
 
+use Illuminate\Support\Facades\Auth;
+
 /**
  * Description of Form4Controller
  *
@@ -41,6 +43,23 @@ class FormKA4Controller extends BaseController {
             'table' => Form::where('nama', '=', 'ka4')->get(),
         ];
         $data = array_merge($data, $this->basic);
+        return View::make('formka4.view', $data);
+    }
+
+    public function viewMe() {
+      $username = Auth::user()->username;
+      $form = Form::where('nama', '=', 'ka4')->orderBy('created_at', 'desc');
+      $form->whereHas('user', function ($qa) use ($username) {
+          $qa->where('user.username', 'LIKE', '%' . $username . '%');
+      });
+
+        $data = [
+            'title' => '',
+            'page_title' => 'Kasus Anak 4 (KA4)',
+            'panel_title' => 'Table View',
+            'location' => 'view',
+            'table' => $form->get(),
+        ];
         return View::make('formka4.view', $data);
     }
 
@@ -80,6 +99,7 @@ class FormKA4Controller extends BaseController {
             'location_anak' => LocationHelper::location($anak->desa->id),
             'location_ayah' => LocationHelper::location(),
             'location_ibu' => LocationHelper::location(),
+            'form'=>Anak::find($anak_id)->form->first(),
         ];
         $data = array_merge($data, $this->basic);
         return View::make('formka4.form', $data);
@@ -94,6 +114,17 @@ class FormKA4Controller extends BaseController {
         $ib = Input::get('ibu');
         $ms = Input::get('masalah');
         $ps = Input::get('psiko');
+
+        // inject lka if not set
+        if (!isset($fm['no_lka'])){
+          $form = Anak::find($an['id'])->form->first();
+          $fm['no_lka']= $form->no_lka;
+        }
+
+        // inject tanggal if not set
+        if (!isset($fm['tanggal'])){
+          $fm['tanggal']=date('Y-m-d');
+        }
 
         $form = FormDAO::saveOrUpdate($fm);
         $anak = AnakDAO::saveOrUpdate($an);
@@ -142,8 +173,27 @@ class FormKA4Controller extends BaseController {
         $ms = Input::get('masalah');
         $ps = Input::get('psiko');
 
-        //inject tanggal system ke dalam form
-        $fm['tanggal'] = date('Y-m-d');
+        $pn = Input::get('penanganan');
+        $as = Input::get('assesor');
+
+        $sign = [
+          'penanganan'=>$pn,
+          'assesor'=>$as
+        ];
+        $sign = json_encode($sign);
+
+        $fm['sign'] = $sign;
+
+        // inject lka if not set
+        if (!isset($fm['no_lka'])){
+          $form = Anak::find($an['id'])->form->first();
+          $fm['no_lka']= $form->no_lka;
+        }
+
+        // inject tanggal if not set
+        if (!isset($fm['tanggal'])){
+          $fm['tanggal']=date('Y-m-d');
+        }
 
         $form = FormDAO::saveOrUpdate($fm);
         $anak = AnakDAO::saveOrUpdate($an);

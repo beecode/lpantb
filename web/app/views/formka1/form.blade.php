@@ -21,12 +21,12 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <div class="box box-primary">
+        <div class="box box-primary" ng-app="app">
             <div class="box-header">
                 <div class="box-tools pull-left">
                     <a href="{{URL::to('lpantb/formka1')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>   
+                    </a>
                 </div>
             </div>
             <div class="box-body">

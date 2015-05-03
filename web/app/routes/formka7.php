@@ -4,6 +4,7 @@ $fk7 = 'FormKA7Controller';
 $pr_k7 = '/lpantb/formka7';
 //Crud Route
 Route::get($pr_k7, $con . $fk7 . "@view")->before('auth');
+Route::get($pr_k7 . "/viewMe", $con . $fk7 . "@viewMe")->before('auth');
 Route::get($pr_k7 . "/preaddview", $con . $fk7 . "@preAddView")->before('auth');
 Route::get($pr_k7 . "/addview/{anak_id}", $con . $fk7 . "@addView")->before('auth');
 Route::get($pr_k7 . "/detailview/{anak_id}", $con . $fk7 . "@detailView")->before('auth');

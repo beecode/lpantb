@@ -15,8 +15,8 @@ class Form extends Eloquent {
     public $timestamps = true;
     private $ns = "App\\Models\\";
 
-    public function Staff() {
-        return $this->belongsToMany($this->ns . "Sign", "form_has_staff")->withPivot("staff_id");
+    public function User() {
+        return $this->belongsToMany($this->ns . "User", "user_has_form")->withPivot("user_id");
     }
 
     public function Anak() {

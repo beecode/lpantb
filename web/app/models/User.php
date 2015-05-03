@@ -22,6 +22,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'user';
+    
+    public function Form() {
+        return $this->belongsToMany($this->ns . "Form", "user_has_form")->withPivot("form_id");
+    }
 
     /**
      * The attributes excluded from the model's JSON form.

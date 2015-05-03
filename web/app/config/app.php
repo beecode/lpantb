@@ -189,7 +189,10 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'RomanHelper'			=> 'App\Helpers\RomanHelper',
+		'UserHelper'			=> 'App\Helpers\UserHelper',
 		'SettingDAO'			=> 'App\DAO\SettingDAO',
+		'PrintLog'				=> 'App\Helpers\PrintLog',
+		'LKAHelper'				=> 'App\Helpers\LKAHelper'
 
 	),
 

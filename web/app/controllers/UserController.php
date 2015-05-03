@@ -18,12 +18,14 @@ use Illuminate\Support\Facades\Redirect;
  */
 class UserController extends BaseController {
 
+  
+
     public function view() {
         $data = [
             'page_title' => 'User',
             'panel_title' => 'List User',
             'location' => 'view',
-            'table' => User::paginate(5),
+            'table' => User::all(),
         ];
         return View::make('user.view', $data);
     }

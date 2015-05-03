@@ -16,6 +16,8 @@ use App\DAO\FormDAO;
 use App\DAO\TindakLanjutDAO;
 use App\DAO\JenisKasusDAO;
 use App\DAO\DisposisiDAO;
+use App\DAO\UserDAO;
+use App\Helpers\PrintLog;
 
 /**
  * Description of Testerform1Controller
@@ -68,6 +70,8 @@ class FormKA3Controller extends BaseController {
             'tindak_lanjut' => TindakLanjut::all(),
             'agama_lists' => Agama::lists('nama', 'nama'),
             'anak' => Anak::find($anak_id),
+            'form'=>Anak::find($anak_id)->form->first(),
+            'user'=>UserDAO::jsonAll(),
         ];
         return View::make('formka3.form', $data);
     }
@@ -79,13 +83,31 @@ class FormKA3Controller extends BaseController {
         $ti = Input::get('tindak_lanjut');
         $dis = Input::get('disposisi');
 
+        $user = Auth::user();
+        $sign = [
+          'penerima'=>$user
+        ];
+        $sign = json_encode($sign);
+        $fm['sign'] = $sign;
+
+        // inject lka if not set
+        if (!isset($fm['no_lka'])){
+          $form = Anak::find($an['id'])->form->first();
+          $fm['no_lka']= $form->no_lka;
+        }
+
+        // inject tanggal if not set
+        if (!isset($fm['tanggal'])){
+          $fm['tanggal']=date('Y-m-d');
+        }
+
         $form = FormDAO::saveOrUpdate($fm);
         $disposisi = DisposisiDAO::saveOrUpdate($dis, $form);
         $anak = Anak::find($an['id']);
         TindakLanjutDAO::saveOrUpdate($ti, $anak);
         JenisKasusDAO::saveOrUpdate($jk, $anak);
 
-//        //save many to many
+       //save many to many
         $form = Form::find($form->id);
         $form->Anak()->attach($an['id']);
 
@@ -106,6 +128,7 @@ class FormKA3Controller extends BaseController {
             'record' => Form::find($id),
             'jenis_kasus' => JenisKasus::all(),
             'tindak_lanjut' => TindakLanjut::all(),
+            'user'=>UserDAO::jsonAll(),
         ];
         return View::make('formka3.form', $data);
     }
@@ -116,6 +139,25 @@ class FormKA3Controller extends BaseController {
         $jk = Input::get('jenis_kasus');
         $ti = Input::get('tindak_lanjut');
         $dis = Input::get('disposisi');
+
+        $user = Auth::user();
+        $sign = [
+          'penerima'=>$user
+        ];
+        $sign = json_encode($sign);
+        $fm['sign'] = $sign;
+
+        // inject lka if not set
+        if (!isset($fm['no_lka'])){
+          $form = Anak::find($an['id'])->form->first();
+          $fm['no_lka']= $form->no_lka;
+        }
+
+        // inject tanggal if not set
+        if (!isset($fm['tanggal'])){
+          $fm['tanggal']=date('Y-m-d');
+        }
+
 
         $form = FormDAO::saveOrUpdate($fm);
         $disposisi = DisposisiDAO::saveOrUpdate($dis, $form);

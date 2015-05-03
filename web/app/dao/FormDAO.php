@@ -47,6 +47,15 @@ class FormDAO {
         }
     }
 
+    public static function isLKAExist($lka){
+      $form = Form::where('no_lka','=',$lka)->count();
+      if ($form>0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     private static function exchangeArray($form, $fm) {
         $form->nama = isset($fm['nama']) ? $fm['nama'] : null;
         $form->no_lka = isset($fm['no_lka']) ? $fm['no_lka'] : null;
@@ -59,6 +68,8 @@ class FormDAO {
         $form->dasar_intervensi = isset($fm['dasar_intervensi']) ? $fm['dasar_intervensi'] : null;
         $form->catatan_intervensi = isset($fm['catatan_intervensi']) ? $fm['catatan_intervensi'] : null;
         $form->hasil_pendampingan = isset($fm['hasil_pendampingan']) ? $fm['hasil_pendampingan'] : null;
+        $form->sign = isset($fm['sign']) ? $fm['sign'] : null;
+        $form->mode = isset($fm['mode']) ? $fm['mode'] : null;
 
         return $form;
     }

@@ -64,7 +64,7 @@ function PendampinganCtrl(){
   <?php if (isset($data->pelaksana)){?>
     vm.list = <?php echo $data->pelaksana ?>
   <?php } else { ?>
-    vm.list = [];
+    vm.list = [{text:''}];
   <?php } ?>
 
   vm.add = add;

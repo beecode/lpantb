@@ -22,8 +22,13 @@ require "routes/login.php";
 require "routes/dashboard.php";
 require "routes/anak.php";
 require "routes/files.php";
+
 require "routes/formka1.php";
+require "routes/formka1multi.php";
+
 require "routes/formka2.php";
+require "routes/formka2multi.php";
+
 require "routes/formka3.php";
 require "routes/formka4.php";
 require "routes/formka5.php";

@@ -56,4 +56,9 @@ class UserDAO {
         }
     }
 
+    public static function jsonAll(){
+        $u = User::all();
+        return $u->toJson();
+    }
+
 }
