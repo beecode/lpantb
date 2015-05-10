@@ -1,7 +1,7 @@
 <?php
 
 $files = 'FilesController';
-$pr_fl = '/lpantb/anak/files';
+$pr_fl = '/dash/anak/files';
 //Crud Route
 Route::get($pr_fl . "/view/{form_id}", $con . $files . "@view")->before('auth');
 Route::get($pr_fl . "/preaddview/{form_id}", $con . $files . "@preAddView")->before('auth');
@@ -12,4 +12,3 @@ Route::get($pr_fl . '/updateview/{id}', $con . $files . '@updateView')->before('
 Route::post($pr_fl . '/update', $con . $files . '@update')->before('auth');
 Route::get($pr_fl . '/delete/{id}', $con . $files . '@delete')->before('auth');
 Route::get($pr_fl . '/search', $con . $files . '@search')->before('auth');
-

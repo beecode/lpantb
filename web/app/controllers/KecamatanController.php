@@ -33,7 +33,7 @@ class KecamatanController extends BaseController {
         $data = [
             'page_title' => 'Kecamatan',
             'panel_title' => 'Form Add',
-            'form_url' => '/lpantb/kecamatan/add',
+            'form_url' => '/dash/setting/kecamatan/add',
             'form_status' => 'add',
             'provinsi' => Provinsi::all(),
         ];
@@ -52,11 +52,11 @@ class KecamatanController extends BaseController {
             $kec->kabkota()->associate($kk);
             $kec->save();
             Session::flash('message', "Kecamatan $kec->nama Successfully Added");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         } else {
             $kc = $in['kecamatan'];
             Session::flash('message', "Error, Kecamatan $kc Failed to Add!");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         }
     }
 
@@ -70,10 +70,10 @@ class KecamatanController extends BaseController {
             $kec->kabkota()->associate($kk);
             $kec->update();
             Session::flash('message', "Kecamatan $kec->nama Successfully Updated");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         } else {
             Session::flash('message', "Error, Kecamatan with $kec->id not found!");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         }
     }
 
@@ -83,7 +83,7 @@ class KecamatanController extends BaseController {
             $data = [
                 'page_title' => 'Kecamatan',
                 'panel_title' => 'Form Edit',
-                'form_url' => '/lpantb/kecamatan/update',
+                'form_url' => '/dash/setting/kecamatan/update',
                 'form_status' => 'update',
                 'record' => $rec,
                 'provinsi' => Provinsi::all(),
@@ -92,7 +92,7 @@ class KecamatanController extends BaseController {
             return View::make("kecamatan.form", $data);
         } else {
             Session::flash('message', "Error,  Kecamatan with $id not found!");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         }
     }
 
@@ -102,10 +102,10 @@ class KecamatanController extends BaseController {
         if (!is_null($kec->first())) {
             $kec->delete();
             Session::flash('message', "Kecamatan $nama has been deleted!");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         } else {
             Session::flash('message', "Error, Kecamatan with $id not found!");
-            return Redirect::to('/lpantb/kecamatan');
+            return Redirect::to('/dash/setting/kecamatan');
         }
     }
 

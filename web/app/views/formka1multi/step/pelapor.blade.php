@@ -22,10 +22,10 @@ if (isset($record)) {
     {{ Form::label('pelapor[gender]', 'Gender',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['gender'] = (isset($pelapor->gender)) ? $pelapor->gender : null; ?>
-        {{ Form::select('pelapor[gender]',  
+        {{ Form::select('pelapor[gender]',
                                              ['Laki-Laki' => 'Laki-Laki','Perempuan'=>'Perempuan'],
                                             $pel['gender'] ,
-                                             ['class'=>'form-control','required']) 
+                                             ['class'=>'form-control','required'])
         }}
     </div>
 </div>
@@ -71,10 +71,10 @@ if (isset($record)) {
     {{ Form::label('pelapor[agama]', 'Agama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['agama'] = (isset($pelapor->agama)) ? $pelapor->agama : null; ?>
-        {{ Form::select('pelapor[agama]',  
+        {{ Form::select('pelapor[agama]',
                                              $agama_lists,
                                              $pel['agama'],
-                                             ['class'=>'form-control','required']) 
+                                             ['class'=>'form-control','required'])
         }}
     </div>
     {{ Form::label('pelapor[pekerjaan]', 'Pekerjaan',['class'=>'col-sm-2 control-label']) }}
@@ -92,19 +92,19 @@ $lp = $location_pelapor;
     {{ Form::label('pelapor[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['provinsi'] = (isset($lp['provinsi_sel'])) ? $lp['provinsi_sel'] : null; ?>
-        {{ Form::select('pelapor[provinsi]',  
+        {{ Form::select('pelapor[provinsi]',
                                              $lp['provinsi_lists'],
                                              $pel['provinsi'],
-                                             ['class'=>'form-control pelapor_provinsi','required']) 
+                                             ['class'=>'form-control pelapor_provinsi','required'])
         }}
     </div>
 
     {{ Form::label('pelapor[kabkota]', 'Kabupaten / Kota', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['kabkota'] = (isset($lp['kabkota_sel'])) ? $lp['kabkota_sel'] : null; ?>
-        {{ Form::select('pelapor[kabkota]', 
-                                        $lp['kabkota_lists'], 
-                                        $pel['kabkota'], 
+        {{ Form::select('pelapor[kabkota]',
+                                        $lp['kabkota_lists'],
+                                        $pel['kabkota'],
                                         ['class'=>'form-control pelapor_kabkota','required'])  }}
     </div>
 
@@ -117,18 +117,18 @@ $lp = $location_pelapor;
     {{ Form::label('pelapor[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['kecamatan'] = (isset($lp['kecamatan_sel'])) ? $lp['kecamatan_sel'] : null; ?>
-        {{ Form::select('pelapor[kecamatan]', 
-                                        $lp['kecamatan_lists'], 
-                                        $pel['kecamatan'], 
+        {{ Form::select('pelapor[kecamatan]',
+                                        $lp['kecamatan_lists'],
+                                        $pel['kecamatan'],
                                         ['class'=>'form-control pelapor_kecamatan','required'])  }}
     </div>
 
     {{ Form::label('pelapor[desa]', 'Desa', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['desa'] = (isset($lp['desa_sel'])) ? $lp['desa_sel'] : null; ?>
-        {{ Form::select('pelapor[desa]', 
-                                        $lp['desa_lists'], 
-                                        $pel['desa'], 
+        {{ Form::select('pelapor[desa]',
+                                        $lp['desa_lists'],
+                                        $pel['desa'],
                                         ['class'=>'form-control pelapor_desa','required'])  }}
     </div>
 </div>
@@ -151,17 +151,17 @@ $lp = $location_pelapor;
 <script type="text/javascript">
     ajaxSelectLocation(
             '.pelapor_provinsi',
-            '<?php echo URL::to("lpantb/location/kabkota") ?>',
+            '<?php echo URL::to("dash/location/kabkota") ?>',
             '.pelapor_kabkota'
             );
     ajaxSelectLocation(
             '.pelapor_kabkota',
-            '<?php echo URL::to("lpantb/location/kecamatan") ?>',
+            '<?php echo URL::to("dash/location/kecamatan") ?>',
             '.pelapor_kecamatan'
             );
     ajaxSelectLocation(
             '.pelapor_kecamatan',
-            '<?php echo URL::to("lpantb/location/desa") ?>',
+            '<?php echo URL::to("dash/location/desa") ?>',
             '.pelapor_desa'
             );</script>
 
@@ -169,7 +169,7 @@ $lp = $location_pelapor;
     var nbaTeams = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nama'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: '<?php echo URL::to('lpantb/service/pelapor/list') ?>'
+        remote: '<?php echo URL::to('dash/service/pelapor/list') ?>'
     });
 
     nbaTeams.initialize();

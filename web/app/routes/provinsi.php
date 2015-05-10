@@ -1,7 +1,7 @@
 <?php
 
 $prov = 'ProvinsiController';
-$pr_pr = '/lpantb/provinsi';
+$pr_pr = '/dash/setting/provinsi';
 //Crud Route
 Route::get($pr_pr, $con . $prov . "@view")->before('auth');
 Route::get($pr_pr . "/addview", $con . $prov . "@addView")->before('auth');

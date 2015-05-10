@@ -17,12 +17,11 @@
                     $anak = $val->anak->first();
                     ?>
                     <tr>
-                        <td class="text-center">{{$val->id}}</td>
                         <td>{{$val->no_lka}}</td>
                         <td>{{strftime( "%A, %d-%B-%Y", strtotime($val->tanggal))}}</td>
                         <td>
                             {{$anak->nama}}
-                            <a href="{{URL::to('lpantb/anak/detailview/'.$anak->id)}}"
+                            <a href="{{URL::to('dash/anak/detailview/'.$anak->id)}}"
                                class="btn btn-sm btn-info pull-right" title="Detail Anak">
                                 <span class=" glyphicon glyphicon-th-list"></span>
                             </a>
@@ -39,22 +38,22 @@
                           <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                 <a class="btn btn-small btn-info" title="Detail"
-                                   href="{{ URL::to('/lpantb/formka7/detailview/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka7/detailview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
                                 <a class="btn btn-small btn-warning" title="Update"
-                                   href="{{ URL::to('/lpantb/formka7/updateview/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka7/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
                                 <a class="btn btn-small btn-danger" title="Delete"
-                                   href="{{ URL::to('/lpantb/formka7/delete/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka7/delete/'.$val->id) }}">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
                           <?php } else { ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                 <a class="btn btn-small btn-info" title="Detail"
-                                   href="{{ URL::to('/lpantb/formka7/detailview/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka7/detailview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
                             </div>

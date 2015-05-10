@@ -1,7 +1,7 @@
 <?php
 
 $svc = 'ServiceQueryController';
-$pr_sv = '/lpantb/service';
+$pr_sv = '/dash/service';
 //Crud Route
 Route::get($pr_sv . "/anak/list", $con . $svc . "@anakAll")->before('auth');
 Route::get($pr_sv . "/anak/nama/{q}", $con . $svc . "@anakQueryNama")->before('auth');

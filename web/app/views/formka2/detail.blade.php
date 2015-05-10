@@ -65,7 +65,7 @@
 
         <div class="row no-print">
             <div class="col-xs-12" style="margin-top:61px;">
-                <a href="{{URL::to('lpantb/formka2')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
+                <a href="{{URL::to('dash/formka2')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
                 <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
             </div>
         </div>

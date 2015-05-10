@@ -80,7 +80,7 @@ class FormKA1MultiController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Add',
-      'form_url' => '/lpantb/formka1multi/add',
+      'form_url' => '/dash/formka1multi/add',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
@@ -120,11 +120,11 @@ class FormKA1MultiController extends BaseController {
     $form->user()->attach($user->id);
 
     //synchornize multiple total and sequence multiview
-    FormMultiHelper::synchronize($lka);
+    FormMultiHelper::synchronize($fm['no_lka']);
 
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-    return Redirect::to('/lpantb/formka1multi/view/'.$lka);
+    return Redirect::to('/dash/formka1multi/view/'.$lka);
   }
 
   public function updateView($id) {
@@ -136,7 +136,7 @@ class FormKA1MultiController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Edit',
-      'form_url' => '/lpantb/formka1multi/update',
+      'form_url' => '/dash/formka1multi/update',
       'form_status' => 'edit',
       'location_pelapor' => LocationHelper::location($pelapor->desa->id),
       'location_anak' => LocationHelper::location($anak->desa->id),
@@ -172,11 +172,13 @@ class FormKA1MultiController extends BaseController {
     $pelapor = PelaporDAO::saveOrUpdate($pel, $anak);
     $ct = ContactPersonDAO::saveOrUpdate($ct, $anak);
 
-    //        $form = Form::find($form->id);
+    //synchornize multiple total and sequence multiview
+    FormMultiHelper::synchronize($fm['no_lka']);
+
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
 
-    return Redirect::to('lpantb/formka1multi/view/'.$lka);
+    return Redirect::to('dash/formka1multi/view/'.$lka);
   }
 
   public function delete($id, $enc_lka) {
@@ -186,11 +188,15 @@ class FormKA1MultiController extends BaseController {
     } else {
       Session::flash('message', "Error, Form with $id not found!");
     }
+
+
+    $lka = base64_decode($enc_lka);
+
     //synchornize multiple total and sequence multiview
     FormMultiHelper::synchronize($lka);
 
-    $lka = base64_decode($enc_lka);
-    return Redirect::to('/lpantb/formka1multi/view/'.$lka);
+
+    return Redirect::to('/dash/formka1multi/view/'.$enc_lka);
   }
 
   public function searchLKA(){

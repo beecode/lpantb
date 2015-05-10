@@ -264,17 +264,17 @@ $la = $location_anak;
 <script type="text/javascript">
     ajaxSelectLocation(
             '.anak_provinsi',
-            '<?php echo URL::to("lpantb/location/kabkota") ?>',
+            '<?php echo URL::to("dash/location/kabkota") ?>',
             '.anak_kabkota'
             );
     ajaxSelectLocation(
             '.anak_kabkota',
-            '<?php echo URL::to("lpantb/location/kecamatan") ?>',
+            '<?php echo URL::to("dash/location/kecamatan") ?>',
             '.anak_kecamatan'
             );
     ajaxSelectLocation(
             '.anak_kecamatan',
-            '<?php echo URL::to("lpantb/location/desa") ?>',
+            '<?php echo URL::to("dash/location/desa") ?>',
             '.anak_desa'
             );
 </script>

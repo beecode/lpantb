@@ -103,7 +103,7 @@
                         $('.provinsi').on('change', function() {
                             $.ajax({
                                 type: 'GET',
-                                url: "<?php echo URL::to('lpantb/desa/getkabkota') ?>/" + this.value,
+                                url: "<?php echo URL::to('dash/setting/desa/getkabkota') ?>/" + this.value,
                                 dataType: 'json',
                                 success: function(data) {
                                     var html = [];
@@ -122,7 +122,7 @@
                         $('.kabkota').on('change', function() {
                             $.ajax({
                                 type: 'GET',
-                                url: "<?php echo URL::to('lpantb/desa/getkecamatan') ?>/" + this.value,
+                                url: "<?php echo URL::to('dash/setting/desa/getkecamatan') ?>/" + this.value,
                                 dataType: 'json',
                                 success: function(data) {
                                     var html = [];
@@ -144,11 +144,11 @@
                         <label class="col-sm-2 control-label">Desa</label>
                         <div class="col-sm-5">
                             <?php if ($form_status == "add") { ?>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                        name="desa" placeholder="Nama Desa"
                                        required="required">
                                    <?php } else { ?>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                        name="desa" value="{{$record->nama}}"
                                        required="required">
                                    <?php } ?>
@@ -159,12 +159,12 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <a class="btn btn-info"
-                               href="{{ URL::to('/lpantb/desa') }}">
+                               href="{{ URL::to('/dash/setting/desa') }}">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                                 Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-saved"></span> 
+                                <span class="glyphicon glyphicon-saved"></span>
                                 Simpan
                             </button>
                         </div>

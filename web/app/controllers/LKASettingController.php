@@ -49,7 +49,7 @@ class LKASettingController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Add',
-      'form_url' => '/lpantb/formka1/add',
+      'form_url' => '/dash/setting/lka/add',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),

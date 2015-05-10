@@ -32,7 +32,7 @@
                                 <?php $i = 1; ?>
                                 <?php foreach ($val->form as $form) { ?>
                                     <a class="btn btn-small btn-warning "
-                                       href="{{ URL::to('/lpantb/form'.$form->nama.'/detailview/'.$form->id) }}">
+                                       href="{{ URL::to('/dash/form'.$form->nama.'/detailview/'.$form->id) }}">
                                            <?php echo $form->nama ?>
                                     </a>
                                     <?php $i++ ?>
@@ -42,20 +42,20 @@
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                 <a class="btn btn-small btn-info" title="Detail" 
-                                   href="{{ URL::to('/lpantb/anak/detailview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-th-list"></span> 
+                                   href="{{ URL::to('/dash/anak/detailview/'.$val->id) }}">
+                                    <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
-                                <a class="btn btn-small btn-info" title="File" 
-                                   href="{{ URL::to('/lpantb/anak/files/view/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-file"></span> 
+                                <a class="btn btn-small btn-info" title="File"
+                                   href="{{ URL::to('/dash/anak/files/view/'.$val->id) }}">
+                                    <span class=" glyphicon glyphicon-file"></span>
                                 </a>
-                                <a class="btn btn-small btn-warning" title="Update" 
-                                   href="{{ URL::to('/lpantb/anak/updateview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-edit"></span> 
+                                <a class="btn btn-small btn-warning" title="Update"
+                                   href="{{ URL::to('/dash/anak/updateview/'.$val->id) }}">
+                                    <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
-                                <button class="btn btn-small btn-danger" title="Delete" 
+                                <button class="btn btn-small btn-danger" title="Delete"
                                         data-toggle="modal" data-target="#anakpop{{$val->id}}">
-                                    <span class="glyphicon glyphicon-trash"></span> 
+                                    <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                             </div>
                             @include('anak.view.modal')

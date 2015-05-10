@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Sumber </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="sumber" placeholder="Sumber">
                                 </div>
                             </div>
@@ -93,21 +93,21 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Dasar Rujukan </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="rujukan" placeholder="Dasar Rujukan">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Contact Person </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="contact" placeholder="Contact Person">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">No. Telepon </label>
                                 <div class="col-sm-4">
-                                    <input type="text" maxlength="12" 
+                                    <input type="text" maxlength="12"
                                            class="form-control" name="tlp" placeholder="No. Telepon">
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Nama </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="nameanak" placeholder="Nama">
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jkanak">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -147,7 +147,7 @@
                                 <div class="col-md-4">
                                     <label class="col-sm-3 control-label">Umur </label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="umur" placeholder="Umur">
                                     </div>
                                 </div>
@@ -161,14 +161,14 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Alamat </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="alamatanak" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Desa/Kelurahan</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="desaanak" placeholder="Desa">
                                 </div>
                                 <div class="col-md-5">
@@ -182,13 +182,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Kab./Kota</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kotaanak" placeholder="Kota">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Prop. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="Propanak" placeholder="Provinsi">
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">No. Telepon </label>
                                 <div class="col-sm-4">
-                                    <input type="text" maxlength="12" class="form-control" 
+                                    <input type="text" maxlength="12" class="form-control"
                                            name="tlpanak" placeholder="No. Telepon">
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Penerima Laporan</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="penerima" placeholder="Penerima Laporan">
                                 </div>
                             </div>

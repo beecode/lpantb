@@ -24,7 +24,7 @@ class ProvinsiController extends BaseController implements FeatureInterface {
         $pr->nama = $in['provinsi'];
         $pr->save();
         Session::flash('message', "Provinsi Successfully Added");
-        return Redirect::to('/lpantb/provinsi');
+        return Redirect::to('/dash/setting/provinsi');
     }
 
     private function getRandomIDs() {
@@ -46,7 +46,7 @@ class ProvinsiController extends BaseController implements FeatureInterface {
         $data = [
             'page_title' => 'Provinsi',
             'panel_title' => 'Form Add',
-            'form_url' => '/lpantb/provinsi/add',
+            'form_url' => '/dash/setting/provinsi/add',
             'form_status' => 'add'
         ];
         return View::make('provinsi.form', $data);
@@ -56,10 +56,10 @@ class ProvinsiController extends BaseController implements FeatureInterface {
         $prov = Provinsi::find($id);
         if ($prov) {
             $prov->delete();
-            return Redirect::to('/lpantb/provinsi');
+            return Redirect::to('/dash/setting/provinsi');
         } else {
             Session::flash('message', "Error, Provinsi with $id not found!");
-            return Redirect::to('/lpantb/provinsi');
+            return Redirect::to('/dash/setting/provinsi');
         }
     }
 
@@ -85,10 +85,10 @@ class ProvinsiController extends BaseController implements FeatureInterface {
             $ag->nama = $in['provinsi'];
             $ag->update();
             Session::flash('message', "Provinsi Successfully Updated");
-            return Redirect::to('/lpantb/provinsi');
+            return Redirect::to('/dash/setting/provinsi');
         } else {
             Session::flash('message', "Error, Provinsi with $id not found!");
-            return Redirect::to('/lpantb/provinsi');
+            return Redirect::to('/dash/setting/provinsi');
         }
     }
 
@@ -98,14 +98,14 @@ class ProvinsiController extends BaseController implements FeatureInterface {
             $data = [
                 'page_title' => 'Provinsi',
                 'panel_title' => 'Form Edit',
-                'form_url' => '/lpantb/provinsi/update',
+                'form_url' => '/dash/setting/provinsi/update',
                 'form_status' => 'update',
                 'provinsi' => $rec,
             ];
             return View::make("provinsi.form", $data);
         } else {
             Session::flash('message', "Error, Provinsi with $id not found!");
-            return Redirect::to('/lpantb/provinsi');
+            return Redirect::to('/dash/setting/provinsi');
         }
     }
 

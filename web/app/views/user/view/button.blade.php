@@ -1,13 +1,13 @@
 <div class="pull-left">
     <?php if ($location == "search") { ?>
         <a class="btn btn-primary"
-           href="{{URL::to('/lpantb/user')}}">
+           href="{{URL::to('/dash/user')}}">
             <span class="glyphicon glyphicon-arrow-left"></span>
             Kembali
         </a>
     <?php } ?>
     <a class="btn btn-default"
-       href="{{URL::to('/lpantb/user/addview')}}">
+       href="{{URL::to('/dash/user/addview')}}">
         <span class="glyphicon glyphicon-plus"></span>
         Tambah
     </a>

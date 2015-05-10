@@ -1,7 +1,7 @@
 <?php
 
 $ag = 'AgamaController';
-$pr_ag = '/lpantb/agama';
+$pr_ag = '/dash/setting/agama';
 //Crud Route
 Route::get($pr_ag, $con . $ag . "@view")->before('auth');
 Route::get($pr_ag . "/addview", $con . $ag . "@addView")->before('auth');

@@ -50,7 +50,7 @@ class AnakController extends BaseController {
         $data = [
             'page_title' => 'Anak',
             'panel_title' => 'Form Edit',
-            'form_url' => '/lpantb/anak/update',
+            'form_url' => '/dash/anak/update',
             'form_status' => 'edit',
             'location_anak' => LocationHelper::location($anak->desa->id),
             'agama_lists' => Agama::lists('nama', 'nama'),
@@ -63,7 +63,7 @@ class AnakController extends BaseController {
         $an = Input::get('anak');
         $anak = AnakDAO::saveOrUpdate($an);
         Session::flash('message', "Anak with Nama $anak->nama has been updated!");
-        return Redirect::to('lpantb/anak');
+        return Redirect::to('/dash/anak');
     }
 
     public function delete($id) {
@@ -79,7 +79,7 @@ class AnakController extends BaseController {
         } else {
             Session::flash('message', "Error, Form with $id not found!");
         }
-        return Redirect::to('/lpantb/anak');
+        return Redirect::to('/dash/anak');
     }
 
     public function search() {

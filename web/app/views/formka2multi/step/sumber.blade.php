@@ -73,7 +73,7 @@ if (isset($record)) {
     var nbaTeams = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nama'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: '<?php echo URL::to('lpantb/service/sumber/list') ?>'
+        remote: '<?php echo URL::to('dash/service/sumber/list') ?>'
     });
 
     nbaTeams.initialize();

@@ -28,13 +28,15 @@
                             $pel = json_decode($val->pelaksana);
                             $c = count($pel);
                             $i=0;
-                            foreach($pel as $p){
-                              if ($i==$c-1){
-                                echo $p->text;
-                              } else {
-                                echo $p->text.", ";
+                            if (isset($pel)){
+                              foreach($pel as $p){
+                                if ($i==$c-1){
+                                  echo $p->text;
+                                } else {
+                                  echo $p->text.", ";
+                                }
+                                $i++;
                               }
-                              $i++;
                             }
                           ?>
                         </td>

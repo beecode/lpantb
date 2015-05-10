@@ -66,13 +66,15 @@ $jenis = $anak->jenis_kasus;
                           $pel = json_decode($val->pelaksana);
                           $c = count($pel);
                           $i=0;
-                          foreach($pel as $p){
-                            if ($i==$c-1){
-                              echo $p->text;
-                            } else {
-                              echo $p->text.", ";
+                          if (isset($pel)){
+                            foreach($pel as $p){
+                              if ($i==$c-1){
+                                echo $p->text;
+                              } else {
+                                echo $p->text.", ";
+                              }
+                              $i++;
                             }
-                            $i++;
                           }
                           ?>
                         </td>
@@ -83,15 +85,15 @@ $jenis = $anak->jenis_kasus;
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                <a class="btn btn-small btn-info" title="Detail"
-                                   href="{{ URL::to('/lpantb/formka6/pendampingan/detailview/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka6/pendampingan/detailview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
                                 <a class="btn btn-small btn-warning" title="Update"
-                                   href="{{ URL::to('/lpantb/formka6/pendampingan/updateview/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka6/pendampingan/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
                                 <a class="btn btn-small btn-danger" title="Delete"
-                                   href="{{ URL::to('/lpantb/formka6/pendampingan/delete/'.$val->id) }}">
+                                   href="{{ URL::to('/dash/formka6/pendampingan/delete/'.$val->id) }}">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>

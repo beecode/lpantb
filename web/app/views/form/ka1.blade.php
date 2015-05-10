@@ -59,7 +59,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Tanggal</label>
                                             <div class="col-sm-6">
-                                                <input type="date" name="tgl" 
+                                                <input type="date" name="tgl"
                                                        class="form-control">
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Nama </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="namepelapor" placeholder="Nama">
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jkpelapor">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Tempat/Tgl Lahir</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="tmppelapor" placeholder="Tempat">
                                 </div>
                                 <div class="col-md-5">
@@ -113,27 +113,27 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Pekerjaan </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kerjapelapor" placeholder="Pekerjaan">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Alamat </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="alamatpelapor" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Desa/Kelurahan</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="desapelapor" placeholder="Desa">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Kec. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="kecpelapor" placeholder="Kecamatan">
                                     </div>
                                 </div>
@@ -141,13 +141,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Kab./Kota</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kotapelapor" placeholder="Kota">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Prop. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="Proppelapor" placeholder="Provinsi">
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">No. Telepon </label>
                                 <div class="col-sm-4">
-                                    <input type="text" maxlength="12" class="form-control" 
+                                    <input type="text" maxlength="12" class="form-control"
                                            name="tlppelapor" placeholder="No. Telepon">
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Nama </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="nameanak" placeholder="Nama">
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jkanak">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -209,7 +209,7 @@
                                 <div class="col-md-3">
                                     <label class="col-sm-3 control-label">Tempat </label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="tmpanak" placeholder="Tempat">
                                     </div>
                                 </div>
@@ -223,27 +223,27 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Pekerjaan </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kerjaanak" placeholder="Pekerjaan">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Alamat </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="alamatanak" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Desa/Kelurahan</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="desaanak" placeholder="Desa">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Kec. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="kecanak" placeholder="Kecamatan">
                                     </div>
                                 </div>
@@ -251,13 +251,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Kab./Kota</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kotaanak" placeholder="Kota">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Prop. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="Propanak" placeholder="Provinsi">
                                     </div>
                                 </div>
@@ -279,7 +279,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">No. Telepon </label>
                                 <div class="col-sm-4">
-                                    <input type="text" maxlength="12" class="form-control" 
+                                    <input type="text" maxlength="12" class="form-control"
                                            name="tlpanak" placeholder="No. Telepon">
                                 </div>
                             </div>
@@ -300,14 +300,14 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Penerima Lapiran </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="penerima" placeholder="Penerima laporan">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Pelapor / Pengadu </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="pelapor" placeholder="Pelapor / Pengadu">
                                 </div>
                             </div>
@@ -315,7 +315,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Catatan </label>
                                 <div class="col-sm-5">
-                                    <textarea type="text" class="form-control" 
+                                    <textarea type="text" class="form-control"
                                               name="catatan" rows="3"></textarea>
                                 </div>
                             </div>

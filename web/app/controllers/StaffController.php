@@ -43,7 +43,7 @@ class StaffController extends BaseController {
     $data = [
       'page_title' => 'Staff',
       'panel_title' => 'Form Add',
-      'form_url' => '/lpantb/staff/add',
+      'form_url' => '/dash/setting/staff/add',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
@@ -55,7 +55,7 @@ class StaffController extends BaseController {
     $st = Input::get('staff');
     $staff = StaffDAO::saveOrUpdate($st);
     Session::flash('message', "Staff telah berhasil di tambah!");
-    return Redirect::to('/lpantb/staff');
+    return Redirect::to('/dash/setting/staff');
   }
 
   public function updateView($id) {
@@ -63,7 +63,7 @@ class StaffController extends BaseController {
     $data = [
       'page_title' => 'Staff',
       'panel_title' => 'Form Edit',
-      'form_url' => '/lpantb/staff/update',
+      'form_url' => '/dash/setting/staff/update',
       'form_status' => 'edit',
       'staff' => $staff,
     ];
@@ -74,7 +74,7 @@ class StaffController extends BaseController {
     $st = Input::get('staff');
     $staff = StaffDAO::saveOrUpdate($st);
     Session::flash('message', "Staff telah berhasil di Ubah!");
-    return Redirect::to('/lpantb/staff');
+    return Redirect::to('/dash/setting/staff');
   }
 
   public function delete($id) {
@@ -84,7 +84,7 @@ class StaffController extends BaseController {
     } else {
       Session::flash('message', "Error, Staff dengan $id tidak ditemukan!");
     }
-    return Redirect::to('/lpantb/staff');
+    return Redirect::to('/dash/setting/staff');
   }
 
   public function search() {

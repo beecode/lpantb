@@ -28,19 +28,27 @@ use App\Helpers\FormMultiHelper;
 class FormKA2Controller extends BaseController {
 
   public function view() {
+    $year = date('Y');
     $data = [
       'title' => '',
       'page_title' => 'Kasus Anak 2 (KA2)',
       'panel_title' => 'Table View',
       'location' => 'view',
-      'table'=> Form::where('nama', '=', 'ka2')->orderBy('tanggal', 'desc')->get(),
+      'table'=> Form::where('nama', '=', 'ka2')
+                     ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                     ->orderBy('no_lka', 'desc')->get(),
+      'selectedYear'=>$year,
     ];
     return View::make('formka2.view', $data);
+    // echo $year;
   }
 
   public function viewMe() {
+    $year = date('Y');
     $username = Auth::user()->username;
-    $form = Form::where('nama', '=', 'ka2')->orderBy('tanggal', 'desc');
+    $form = Form::where('nama', '=', 'ka2')
+                  ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                  ->orderBy('tanggal', 'desc');
     $form->whereHas('user', function ($qa) use ($username) {
       $qa->where('user.username', 'LIKE', '%' . $username . '%');
     });
@@ -51,6 +59,22 @@ class FormKA2Controller extends BaseController {
       'panel_title' => 'Table View',
       'location' => 'view',
       'table' => $form->get(),
+      'selectedYear'=>$year
+    ];
+    return View::make('formka2.view', $data);
+  }
+
+  public function viewYear() {
+    $year = Input::get('year');
+    $data = [
+      'title' => '',
+      'page_title' => 'Kasus Anak 2 (KA2)',
+      'panel_title' => 'Table View',
+      'location' => 'view',
+      'table'=> Form::where('nama', '=', 'ka2')
+                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                      ->orderBy('no_lka', 'desc')->get(),
+      'selectedYear'=>$year
     ];
     return View::make('formka2.view', $data);
   }
@@ -70,7 +94,7 @@ class FormKA2Controller extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 2 (KA2)',
       'panel_title' => 'Form Add',
-      'form_url' => '/lpantb/formka2/add',
+      'form_url' => '/dash/formka2/add',
       'form_status' => 'add',
       'location_anak' => LocationHelper::location(),
       'agama_lists' => Agama::lists('nama', 'nama'),
@@ -111,16 +135,18 @@ class FormKA2Controller extends BaseController {
     $sum->anak()->attach($anak->id);
     $form->user()->attach($user->id);
 
+    LKAHelper::doCounter();
+
 
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-    return Redirect::to('/lpantb/formka2');
+    return Redirect::to('/dash/formka2');
   }
 
   public function addMultiView() {
     $data = [
       'page_title' => 'Kasus Anak 2 (KA2)',
       'panel_title' => 'Form Add Multi',
-      'form_url' => '/lpantb/formka2/addmulti',
+      'form_url' => '/dash/formka2/addmulti',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
@@ -148,7 +174,7 @@ class FormKA2Controller extends BaseController {
     Session::put('multi.lka', $fm['no_lka']);
     Session::put('multi.tanggal', $fm['tanggal']);
 
-    return Redirect::to('/lpantb/formka2multi/view/'.$lka);
+    return Redirect::to('/dash/formka2multi/view/'.$lka);
   }
 
   public function updateView($id) {
@@ -159,7 +185,7 @@ class FormKA2Controller extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 2 (KA2)',
       'panel_title' => 'Form Edit',
-      'form_url' => '/lpantb/formka2/update',
+      'form_url' => '/dash/formka2/update',
       'form_status' => 'edit',
       'location_anak' => LocationHelper::location($anak->desa->id),
       'agama_lists' => Agama::lists('nama', 'nama'),
@@ -199,7 +225,7 @@ class FormKA2Controller extends BaseController {
 
     $lka = $fm['no_lka'];
     Session::flash('message', "Form with No LKA $lka has been updated!");
-    return Redirect::to('lpantb/formka2');
+    return Redirect::to('dash/formka2');
   }
 
   public function delete($id) {
@@ -215,7 +241,7 @@ class FormKA2Controller extends BaseController {
     } else {
       Session::flash('message', "Error, Form with $id not found!");
     }
-    return Redirect::to('/lpantb/formka2');
+    return Redirect::to('/dash/formka2');
   }
 
   public function search() {

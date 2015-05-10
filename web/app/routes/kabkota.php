@@ -1,7 +1,7 @@
 <?php
 
 $kabkot = 'KabKotaController';
-$pr_kk = '/lpantb/kabkota';
+$pr_kk = '/dash/setting/kabkota';
 //Crud Route
 Route::get($pr_kk, $con . $kabkot . "@view")->before('auth');
 Route::get($pr_kk . "/addview", $con . $kabkot . "@addView")->before('auth');

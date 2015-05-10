@@ -27,14 +27,33 @@ use App\Helpers\PrintLog;
 class FormKA3Controller extends BaseController {
 
     public function view() {
+      $year = date('Y');
         $data = [
             'title' => '',
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka3')->orderBy('created_at','desc')->get(),
+            'table' => Form::where('nama', '=', 'ka3')
+                            ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                            ->orderBy('created_at','desc')->get(),
+            'selectedYear'=>$year,
         ];
         return View::make('formka3.view', $data);
+    }
+
+    public function viewYear() {
+      $year = Input::get('year');
+      $data = [
+        'title' => '',
+        'page_title' => 'Kasus Anak 3 (KA3)',
+        'panel_title' => 'Table View',
+        'location' => 'view',
+        'table'=> Form::where('nama', '=', 'ka3')
+                        ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                        ->orderBy('no_lka', 'desc')->get(),
+        'selectedYear'=>$year
+      ];
+      return View::make('formka3.view', $data);
     }
 
     public function detailView($id) {
@@ -51,7 +70,7 @@ class FormKA3Controller extends BaseController {
         $data = [
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Form Pre Add',
-            'form_url' => '/lpantb/formka3/preadd',
+            'form_url' => '/dash/formka3/preadd',
             'form_status' => 'add',
             'jenis_kasus' => JenisKasus::all(),
             'tindak_lanjut' => TindakLanjut::all(),
@@ -64,7 +83,7 @@ class FormKA3Controller extends BaseController {
         $data = [
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Form Add',
-            'form_url' => '/lpantb/formka3/add',
+            'form_url' => '/dash/formka3/add',
             'form_status' => 'add',
             'jenis_kasus' => JenisKasus::all(),
             'tindak_lanjut' => TindakLanjut::all(),
@@ -115,7 +134,7 @@ class FormKA3Controller extends BaseController {
         JenisKasusDAO::attachAll($jk, $anak);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-        return Redirect::to('/lpantb/formka3');
+        return Redirect::to('/dash/formka3');
     }
 
     public function updateView($id) {
@@ -123,7 +142,7 @@ class FormKA3Controller extends BaseController {
         $data = [
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Form Edit',
-            'form_url' => '/lpantb/formka3/update',
+            'form_url' => '/dash/formka3/update',
             'form_status' => 'edit',
             'record' => Form::find($id),
             'jenis_kasus' => JenisKasus::all(),
@@ -170,7 +189,7 @@ class FormKA3Controller extends BaseController {
 
         $form = Form::find($form->id);
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
-        return Redirect::to('/lpantb/formka3');
+        return Redirect::to('/dash/formka3');
     }
 
     public function delete($id) {
@@ -180,7 +199,7 @@ class FormKA3Controller extends BaseController {
         } else {
             Session::flash('message', "Error, Form with $id not found!");
         }
-        return Redirect::to('/lpantb/formka3');
+        return Redirect::to('/dash/formka3');
     }
 
     public function search() {

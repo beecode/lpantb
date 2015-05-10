@@ -1,7 +1,7 @@
 <?php
 
 $prov = 'LocationController';
-$pr_pr = '/lpantb/location';
+$pr_pr = '/dash/location';
 //Crud Route
 Route::get($pr_pr . "/provinsi/all", $con . $prov . "@getAllProvinsi")->before('auth');
 Route::get($pr_pr . "/provinsi/{provinsi_id}", $con . $prov . "@getProvinsiByID")->before('auth');

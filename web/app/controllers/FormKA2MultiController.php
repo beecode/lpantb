@@ -48,9 +48,9 @@ class FormKA2MultiController extends BaseController {
   public function viewMe($enc_lka) {
     $lka = base64_decode($enc_lka);
     $username = Auth::user()->username;
-    $form = Form::where('nama', '=', 'ka1')
-    ->where('no_lka','=',$lka)
-    ->orderBy('created_at', 'desc');
+    $form = Form::where('nama', '=', 'ka2')
+                  ->where('no_lka','=',$lka)
+                  ->orderBy('created_at', 'desc');
     $form->whereHas('user', function ($qa) use ($username) {
       $qa->where('user.username', 'LIKE', '%' . $username . '%');
     });
@@ -81,7 +81,7 @@ class FormKA2MultiController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 2 (KA2) Multi',
       'panel_title' => 'Form Add Multi',
-      'form_url' => '/lpantb/formka2multi/add',
+      'form_url' => '/dash/formka2multi/add',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
@@ -128,7 +128,7 @@ class FormKA2MultiController extends BaseController {
 
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-    return Redirect::to('/lpantb/formka2multi/view/'.$lka);
+    return Redirect::to('/dash/formka2multi/view/'.$lka);
   }
 
   public function updateView($id) {
@@ -140,9 +140,8 @@ class FormKA2MultiController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 2 (KA2) Multi',
       'panel_title' => 'Form Edit',
-      'form_url' => '/lpantb/formka2multi/update',
+      'form_url' => '/dash/formka2multi/update',
       'form_status' => 'edit',
-      'location_pelapor' => LocationHelper::location($pelapor->desa->id),
       'location_anak' => LocationHelper::location($anak->desa->id),
       'agama_lists' => Agama::lists('nama', 'nama'),
       'record' => $form,
@@ -165,21 +164,24 @@ class FormKA2MultiController extends BaseController {
     $user = Auth::user();
     $sign = [
       'penerima'=>$user,
-      'pelapor'=>$pel['nama']
+      'sumber'=>$sum['sumber']
     ];
     $sign = json_encode($sign);
     $fm['sign'] = $sign;
 
 
-    FormDAO::saveOrUpdate($fm);
+    $form = FormDAO::saveOrUpdate($fm);
     $anak = AnakDAO::saveOrUpdate($an);
     SumberInformasiDAO::saveOrUpdate($sum, $anak);
     ContactPersonDAO::saveOrUpdate($ct, $anak);
 
+    //synchornize multiple total and sequence multiview
+    FormMultiHelper::synchronize($fm['no_lka']);
+
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
 
-    return Redirect::to('lpantb/formka2multi/view/'.$lka);
+    return Redirect::to('dash/formka2multi/view/'.$lka);
   }
 
   public function delete($id, $enc_lka) {
@@ -195,7 +197,7 @@ class FormKA2MultiController extends BaseController {
     FormMultiHelper::synchronize($lka);
 
 
-    return Redirect::to('/lpantb/formka2multi/view/'.$enc_lka);
+    return Redirect::to('/dash/formka2multi/view/'.$enc_lka);
   }
 
   public function searchLKA(){

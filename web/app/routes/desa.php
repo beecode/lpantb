@@ -1,7 +1,7 @@
 <?php
 
 $desa = 'DesaController';
-$pr_ds = '/lpantb/desa';
+$pr_ds = '/dash/setting/desa';
 //Crud Route
 Route::get($pr_ds, $con . $desa . "@view")->before('auth');
 Route::get($pr_ds . "/addview", $con . $desa . "@addView")->before('auth');

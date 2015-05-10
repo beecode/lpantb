@@ -92,18 +92,18 @@ $lib = $loc_ibu;
     {{ Form::label('ibu[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $lb['provinsi'] = (isset($lib['provinsi_sel'])) ? $lib['provinsi_sel'] : null; ?>
-        {{ Form::select('ibu[provinsi]',  
+        {{ Form::select('ibu[provinsi]',
                                              $lib['provinsi_lists'],
                                              $lb['provinsi'],
-                                             ['class'=>'form-control ibu_provinsi']) 
+                                             ['class'=>'form-control ibu_provinsi'])
         }}
     </div>
     {{ Form::label('ibu[kabkota]', 'Kabupaten / Kota', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $lb['kabkota'] = (isset($lib['kabkota_sel'])) ? $lib['kabkota_sel'] : null; ?>
-        {{ Form::select('ibu[kabkota]', 
-                                        $lib['kabkota_lists'], 
-                                        $lb['kabkota'], 
+        {{ Form::select('ibu[kabkota]',
+                                        $lib['kabkota_lists'],
+                                        $lb['kabkota'],
                                         ['class'=>'form-control ibu_kabkota'])  }}
     </div>
 
@@ -115,18 +115,18 @@ $lib = $loc_ibu;
     {{ Form::label('ibu[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $lb['kecamatan'] = (isset($lib['kecamatan_sel'])) ? $lib['kecamatan_sel'] : null; ?>
-        {{ Form::select('ibu[kecamatan]', 
-                                        $lib['kecamatan_lists'], 
-                                        $lb['kecamatan'], 
+        {{ Form::select('ibu[kecamatan]',
+                                        $lib['kecamatan_lists'],
+                                        $lb['kecamatan'],
                                         ['class'=>'form-control ibu_kecamatan'])  }}
     </div>
 
     {{ Form::label('ibu[desa]', 'Desa', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $lb['desa'] = (isset($lib['desa_sel'])) ? $lib['desa_sel'] : null; ?>
-        {{ Form::select('ibu[desa]', 
-                                        $lib['desa_lists'], 
-                                        $lb['desa'], 
+        {{ Form::select('ibu[desa]',
+                                        $lib['desa_lists'],
+                                        $lb['desa'],
                                         ['class'=>'form-control ibu_desa'])  }}
     </div>
 </div>
@@ -143,17 +143,17 @@ $lib = $loc_ibu;
 <script type="text/javascript">
     ajaxSelectLocation(
             '.ibu_provinsi',
-            '<?php echo URL::to("lpantb/location/kabkota") ?>',
+            '<?php echo URL::to("dash/location/kabkota") ?>',
             '.ibu_kabkota'
             );
     ajaxSelectLocation(
             '.ibu_kabkota',
-            '<?php echo URL::to("lpantb/location/kecamatan") ?>',
+            '<?php echo URL::to("dash/location/kecamatan") ?>',
             '.ibu_kecamatan'
             );
     ajaxSelectLocation(
             '.ibu_kecamatan',
-            '<?php echo URL::to("lpantb/location/desa") ?>',
+            '<?php echo URL::to("dash/location/desa") ?>',
             '.ibu_desa'
             );
 </script>

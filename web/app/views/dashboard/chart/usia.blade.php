@@ -9,21 +9,21 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-6 text-center">
                     <input type="text" class="knob" data-width="90" data-height="90"
-                           value="{{$usia['0-5']}}" data-max="{{$usia['total']}}" 
+                           value="{{$usia['0-5']}}" data-max="{{$usia['total']}}"
                            data-fgcolor="#00c0ef" data-readonly="true">
                     <div class="knob-label">Usia 0 - 5 Tahun</div>
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-6 text-center">
                     <input type="text" class="knob" data-width="90" data-height="90"
-                           value="{{$usia['6-10']}}" data-max="{{$usia['total']}}" 
+                           value="{{$usia['6-10']}}" data-max="{{$usia['total']}}"
                            data-fgcolor="#932ab6" data-readonly="true">
                     <div class="knob-label">Usia 6 - 10 Tahun</div>
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-6 text-center">
                     <input type="text" class="knob" data-width="90" data-height="90"
-                           value="{{$usia['11-18']}}" data-max="{{$usia['total']}}" 
+                           value="{{$usia['11-18']}}" data-max="{{$usia['total']}}"
                            data-fgcolor="#f56954" data-readonly="true">
                     <div class="knob-label">Usia 11 - 18 Tahun</div>
                 </div>
@@ -109,7 +109,7 @@
                 this.label[1].attr({"font-weight": 400});
             }
         });
-        
+
         pie.attr({"font-size": 12, "font-family": "Verdana", "cx":"380", "x":"395"});
 
 

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="anakpop{{$val->id}}"  
+<div class="modal fade" id="anakpop{{$val->id}}"
      tabindex="-99" role="dialog" aria-hidden="true">
     <div class="modal-dialog" >
         <div class="modal-content">
@@ -10,7 +10,7 @@
                 <h4 class="modal-title">Konfirmasi Delete</h4>
             </div>
             <div class="modal-body text-left" >
-                Menghapus anak dengan nama {{$val->nama}} akan 
+                Menghapus anak dengan nama {{$val->nama}} akan
                 mengakibatkan seluruh form yang berkaitan dengan anak tersebut
                 ikut terhapus.
                 <br/><br/>
@@ -18,11 +18,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-backward"></span> 
+                    <span class="glyphicon glyphicon-backward"></span>
                     Batal
                 </button>
-                <a href="{{URL::to('lpantb/anak/delete/'.$val->id)}}" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-trash"></span> 
+                <a href="{{URL::to('dash/anak/delete/'.$val->id)}}" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span>
                     Hapus
                 </a>
             </div>

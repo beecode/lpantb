@@ -51,7 +51,7 @@ class DesaController extends BaseController {
         $data = [
             'page_title' => 'Desa',
             'panel_title' => 'Form Add',
-            'form_url' => '/lpantb/desa/add',
+            'form_url' => '/dash/setting/desa/add',
             'form_status' => 'add',
             'provinsi' => Provinsi::all(),
         ];
@@ -67,7 +67,7 @@ class DesaController extends BaseController {
         } else {
             Session::flash('message', "Error, Desa $desa->nama Failed to Add!");
         }
-        return Redirect::to('/lpantb/desa');
+        return Redirect::to('/dash/setting/desa');
     }
 
     public function updateView($id) {
@@ -76,7 +76,7 @@ class DesaController extends BaseController {
             $data = [
                 'page_title' => 'Desa',
                 'panel_title' => 'Form Edit',
-                'form_url' => '/lpantb/desa/update',
+                'form_url' => '/dash/setting/desa/update',
                 'form_status' => 'update',
                 'record' => $rec,
                 'provinsi' => Provinsi::all(),
@@ -86,7 +86,7 @@ class DesaController extends BaseController {
             return View::make("desa.form", $data);
         } else {
             Session::flash('message', "Error,  Desa with $id not found!");
-            return Redirect::to('/lpantb/desa');
+            return Redirect::to('/dash/setting/desa');
         }
     }
 
@@ -102,7 +102,7 @@ class DesaController extends BaseController {
             Session::flash('message', "Error, Desa with $id not found!");
         }
 
-        return Redirect::to('/lpantb/desa');
+        return Redirect::to('/dash/setting/desa');
     }
 
     public function delete($id) {
@@ -116,7 +116,7 @@ class DesaController extends BaseController {
             Session::flash('message', "Error, Desa with $id not found!");
         }
 
-        return Redirect::to('/lpantb/desa');
+        return Redirect::to('/dash/setting/desa');
     }
 
     public function getKabKota($provinsi_id) {

@@ -83,7 +83,7 @@
                         $('.provinsi').on('change', function() {
                             $.ajax({
                                 type: 'GET',
-                                url: "<?php echo URL::to('lpantb/kecamatan/getkabkota') ?>/" + this.value,
+                                url: "<?php echo URL::to('dash/setting/kecamatan/getkabkota') ?>/" + this.value,
                                 dataType: 'json',
                                 success: function(data) {
                                     var html = [];
@@ -105,11 +105,11 @@
                         <label class="col-sm-2 control-label">Kecamatan</label>
                         <div class="col-sm-5">
                             <?php if ($form_status == "add") { ?>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                        name="kecamatan" placeholder="Nama Kecamatan"
                                        required="required">
                                    <?php } else { ?>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                        name="kecamatan" value="{{$record->nama}}"
                                        required="required">
                                    <?php } ?>
@@ -120,12 +120,12 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <a class="btn btn-info"
-                               href="{{ URL::to('/lpantb/kecamatan') }}">
+                               href="{{ URL::to('/dash/setting/kecamatan') }}">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                                 Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-saved"></span> 
+                                <span class="glyphicon glyphicon-saved"></span>
                                 Simpan
                             </button>
                         </div>

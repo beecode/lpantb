@@ -17,13 +17,13 @@
                         <td>{{$val->jabatan}}</td>
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-warning" title="Update" 
-                                   href="{{ URL::to('/lpantb/staff/updateview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-edit"></span> 
+                                <a class="btn btn-small btn-warning" title="Update"
+                                   href="{{ URL::to('/dash/setting/staff/updateview/'.$val->id) }}">
+                                    <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
-                                   href="{{ URL::to('/lpantb/staff/delete/'.$val->id) }}">
-                                    <span class="glyphicon glyphicon-trash"></span> 
+                                <a class="btn btn-small btn-danger" title="Delete"
+                                   href="{{ URL::to('/dash/setting/staff/delete/'.$val->id) }}">
+                                    <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
                         </td>

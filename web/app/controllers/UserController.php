@@ -34,7 +34,7 @@ class UserController extends BaseController {
         $data = [
             'page_title' => 'Form Tambah User',
             'panel_title' => 'Tambah User',
-            'form_url' => '/lpantb/user/add',
+            'form_url' => '/dash/user/add',
             'form_status' => 'add'
         ];
         return View::make('user.form', $data);
@@ -44,7 +44,7 @@ class UserController extends BaseController {
         $u = Input::get('user');
         $user = UserDAO::saveOrUpdate($u);
         Session::flash('message', "User dengan username $user->username  berhasil di tambah!");
-        return Redirect::to('/lpantb/user');
+        return Redirect::to('/dash/user');
     }
 
     public function updateView($id) {
@@ -54,13 +54,13 @@ class UserController extends BaseController {
             $data = [
                 'page_title' => 'Form Ubah User',
                 'panel_title' => 'Ubah User',
-                'form_url' => '/lpantb/user/update',
+                'form_url' => '/dash/user/update',
                 'form_status' => 'edit',
                 'user' => $user,
             ];
             return View::make('user.form', $data);
         } else {
-            return Redirect::to('/lpantb/user');
+            return Redirect::to('/dash/user');
         }
     }
 
@@ -68,7 +68,7 @@ class UserController extends BaseController {
         $u = Input::get('user');
         $user = UserDAO::saveOrUpdate($u);
         Session::flash('message', "User dengan username $user->username  berhasil di ubah!");
-        return Redirect::to('/lpantb/user');
+        return Redirect::to('/dash/user');
     }
 
     public function delete($id) {
@@ -78,7 +78,7 @@ class UserController extends BaseController {
         } else {
             Session::flash('message', "Error, User dengan id $id tidak ditemukan!");
         }
-        return Redirect::to('/lpantb/user');
+        return Redirect::to('/dash/user');
     }
 
     public function search() {

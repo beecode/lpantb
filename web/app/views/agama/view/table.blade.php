@@ -15,11 +15,11 @@
                         <td>{{$val->nama}}</td>
                         <td style="text-align: center;">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-success" title="Update" 
-                                   href="{{ URL::to('/lpantb/agama/updateview/'.$val->id) }}">
+                                <a class="btn btn-small btn-success" title="Update"
+                                   href="{{ URL::to('/dash/setting/agama/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span> </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
-                                   href="{{ URL::to('/lpantb/agama/delete/'.$val->id) }}">
+                                <a class="btn btn-small btn-danger" title="Delete"
+                                   href="{{ URL::to('/dash/setting/agama/delete/'.$val->id) }}">
                                     <span class="glyphicon glyphicon-trash"></span> </a>
                             </div>
                         </td>

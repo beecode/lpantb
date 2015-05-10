@@ -1,6 +1,6 @@
 <!-- <div class="pull-right col-sm-5">
     <form  method="GET" style="margin-right: 0px; padding-left: 0px;"
-           action="{{ URL::to('/lpantb/formka7/search') }}" >
+           action="{{ URL::to('/dash/formka7/search') }}" >
 
         <div class="form-group">
             <div class="input-group">

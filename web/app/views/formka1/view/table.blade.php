@@ -31,7 +31,7 @@
       // "bSort": true,
       "bAutoWidth": false,
       // "order":[[2,'desc']],
-      "aaSorting":[[2, 'desc']],
+      // "aaSorting":[[0, 'asc']],
       "ordering": false,
     };
     $(".table").dataTable(config).fnFakeRowspan(0);

@@ -28,11 +28,11 @@
                         <label class="col-sm-2 control-label">Agama</label>
                         <div class="col-sm-5">
                             <?php if ($form_status == "add") { ?>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                        name="agama" placeholder="Nama Agama"
                                        required="required">
                                    <?php } else { ?>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                        name="agama" value="{{$agama->nama}}"
                                        required="required">
                                    <?php } ?>
@@ -41,12 +41,12 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <a class="btn btn-info"
-                               href="{{ URL::to('/lpantb/agama') }}">
+                               href="{{ URL::to('/dash/setting/agama') }}">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                                 Kembali
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-saved"></span> 
+                                <span class="glyphicon glyphicon-saved"></span>
                                 Simpan
                             </button>
                         </div>

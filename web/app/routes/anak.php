@@ -1,7 +1,7 @@
 <?php
 
 $anak = 'AnakController';
-$pr_ak = '/lpantb/anak';
+$pr_ak = '/dash/anak';
 //Crud Route
 Route::get($pr_ak, $con . $anak . "@view")->before('auth');
 Route::get($pr_ak . "/addview", $con . $anak . "@addView")->before('auth');

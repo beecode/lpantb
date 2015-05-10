@@ -24,31 +24,58 @@ use Illuminate\Support\Facades\Auth;
  */
 class FormKA6Controller extends BaseController {
 
+    private $basic = [
+      'page_title' => 'Kasus Anak 6 (KA6)',
+    ];
+
     public function view() {
-        $data = [
-            'page_title' => 'Kasus Anak 6 (KA6)',
-            'panel_title' => 'Pendapingan Table View',
-            'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka6')->orderBy('created_at','desc')->get(),
-        ];
-        return View::make('formka6.view', $data);
+      $year = date('Y');
+      $data = [
+        'panel_title' => 'Table View',
+        'location' => 'view',
+        'table'=> Form::where('nama', '=', 'ka6')
+                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                      ->orderBy('no_lka', 'desc')->get(),
+        'selectedYear' => $year
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka6.view', $data);
     }
 
     public function viewMe() {
+      $year = date('Y');
       $username = Auth::user()->username;
-      $form = Form::where('nama', '=', 'ka6')->orderBy('created_at', 'desc');
+      $form = Form::where('nama', '=', 'ka6')
+                  ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                  ->orderBy('no_lka', 'desc');
       $form->whereHas('user', function ($qa) use ($username) {
-          $qa->where('user.username', 'LIKE', '%' . $username . '%');
+        $qa->where('user.username', 'LIKE', '%' . $username . '%');
       });
 
-        $data = [
-            'title' => '',
-            'page_title' => 'Kasus Anak 6 (KA6)',
-            'panel_title' => 'Table View',
-            'location' => 'view',
-            'table' => $form->get(),
-        ];
-        return View::make('formka6.view', $data);
+      $data = [
+        'title' => '',
+        'panel_title' => 'Table View',
+        'location' => 'view',
+        'table' => $form->get(),
+        'selectedYear' => $year
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka6.view', $data);
+    }
+
+    public function viewYear() {
+      $year = Input::get('year');
+      $data = [
+        'title' => '',
+        'panel_title' => 'Table View',
+        'location' => 'view',
+        'table'=> Form::where('nama', '=', 'ka6')
+                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                      ->orderBy('no_lka', 'desc')->get(),
+        'selectedYear'=>$year
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka6.view', $data);
     }
 
     public function detailView($id) {
@@ -65,7 +92,7 @@ class FormKA6Controller extends BaseController {
         $data = [
             'page_title' => 'Kasus Anak 6 (KA6)',
             'panel_title' => 'Form Pre Add',
-            'form_url' => '/lpantb/formka6/preadd',
+            'form_url' => '/dash/formka6/preadd',
             'form_status' => 'add',
             'jenis_kasus' => JenisKasus::all(),
             'tindak_lanjut' => TindakLanjut::all(),
@@ -78,7 +105,7 @@ class FormKA6Controller extends BaseController {
         $data = [
             'page_title' => 'Kasus Anak 6 (KA6)',
             'panel_title' => 'Form Add',
-            'form_url' => '/lpantb/formka6/add',
+            'form_url' => '/dash/formka6/add',
             'form_status' => 'add',
             'jenis_kasus' => JenisKasus::all(),
             'intervensi' => Intervensi::all(),
@@ -116,7 +143,7 @@ class FormKA6Controller extends BaseController {
         JenisKasusDAO::attachAll($jk, $anak);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-        return Redirect::to('/lpantb/formka6/pendampingan/view/' . $anak->id);
+        return Redirect::to('/dash/formka6/pendampingan/view/' . $anak->id);
     }
 
     public function updateView($id) {
@@ -125,7 +152,7 @@ class FormKA6Controller extends BaseController {
         $data = [
             'page_title' => 'Kasus Anak 6 (KA6)',
             'panel_title' => 'Form Edit',
-            'form_url' => '/lpantb/formka6/update',
+            'form_url' => '/dash/formka6/update',
             'form_status' => 'edit',
             'record' => Form::find($id),
             'jenis_kasus' => JenisKasus::all(),
@@ -162,7 +189,7 @@ class FormKA6Controller extends BaseController {
         JenisKasusDAO::saveOrUpdate($jk, $anak);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
-        return Redirect::to('lpantb/formka6');
+        return Redirect::to('dash/formka6');
     }
 
     public function delete($id) {
@@ -172,7 +199,7 @@ class FormKA6Controller extends BaseController {
         } else {
             Session::flash('message', "Error, Form with $id not found!");
         }
-        return Redirect::to('/lpantb/formka6');
+        return Redirect::to('/dash/formka6');
     }
 
     public function search() {

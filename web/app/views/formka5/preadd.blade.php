@@ -24,9 +24,9 @@
         <div class="box box-primary">
             <div class="box-header">
                 <div class="box-tools pull-left">
-                    <a href="{{URL::to('lpantb/formka1')}}" class="btn btn-primary">
+                    <a href="{{URL::to('dash/formka1')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>   
+                    </a>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                                         </tr>
                                     </table>
                                     <div class="pull-right">
-                                        <a href="{{URL::to('lpantb/formka5/addview/')}}/<%loadData.anak.id%>"
+                                        <a href="{{URL::to('dash/formka5/addview/')}}/<%loadData.anak.id%>"
                                            class="btn btn-primary">
                                             Next
                                             <span class="glyphicon glyphicon-chevron-right"></span>
@@ -98,7 +98,7 @@
 
 
                             $scope.loadData = function() {
-                                var promise = $http.get('<?php echo URL::to('lpantb/service/anak/nama/') ?>/' + $scope.anakNama);
+                                var promise = $http.get('<?php echo URL::to('dash/service/anak/nama/') ?>/' + $scope.anakNama);
 
                                 promise.success(function(data, status, headers, config) {
                                     $scope.loadData.anak = data[0];
@@ -127,7 +127,7 @@
     var anak = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('nama'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: '<?php echo URL::to('lpantb/service/anak/list') ?>'
+        remote: '<?php echo URL::to('dash/service/anak/list') ?>'
     });
 
     anak.initialize();

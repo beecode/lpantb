@@ -17,11 +17,11 @@
                         <td>{{$val->provinsi->nama}}</td>
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-success" title="Update" 
-                                   href="{{ URL::to('/lpantb/kabkota/updateview/'.$val->id) }}">
+                                <a class="btn btn-small btn-success" title="Update"
+                                   href="{{ URL::to('/dash/setting/kabkota/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span> </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
-                                   href="{{ URL::to('/lpantb/kabkota/delete/'.$val->id) }}">
+                                <a class="btn btn-small btn-danger" title="Delete"
+                                   href="{{ URL::to('/dash/setting/kabkota/delete/'.$val->id) }}">
                                     <span class="glyphicon glyphicon-trash"></span> </a>
                             </div>
                         </td>

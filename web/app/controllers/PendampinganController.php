@@ -43,7 +43,7 @@ class PendampinganController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 6 (KA6) - Pendampingan',
       'panel_title' => 'Pendampingan Add View',
-      'form_url' => '/lpantb/formka6/pendampingan/add',
+      'form_url' => '/dash/formka6/pendampingan/add',
       'form_status' => 'add',
       'form_id' => $form->id,
       'location' => 'addView',
@@ -62,7 +62,7 @@ class PendampinganController extends BaseController {
     $pendamping = PendampinganDAO::saveOrUpdate($pen, $anak);
     //
     Session::flash('message', "Data Pendampingan with $pendamping->id has been added!");
-    return Redirect::to('/lpantb/formka6/pendampingan/view/' . $anak->id);
+    return Redirect::to('/dash/formka6/pendampingan/view/' . $anak->id);
   }
 
   public function updateView($id) {
@@ -70,7 +70,7 @@ class PendampinganController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 6 (KA6) - Pendampingan',
       'panel_title' => 'Pendampingan ',
-      'form_url' => '/lpantb/formka6/pendampingan/update',
+      'form_url' => '/dash/formka6/pendampingan/update',
       'form_status' => 'edit',
       'location' => 'editView',
       'data' => $pen,
@@ -86,7 +86,7 @@ class PendampinganController extends BaseController {
     $pendamping = PendampinganDAO::saveOrUpdate($pen, $anak);
 
     Session::flash('message', "Data Pendampingan with $pendamping->id has been updated!");
-    return Redirect::to('/lpantb/formka6/pendampingan/view/' . $anak->id);
+    return Redirect::to('/dash/formka6/pendampingan/view/' . $anak->id);
   }
 
   public function delete($id) {
@@ -98,7 +98,7 @@ class PendampinganController extends BaseController {
     } else {
       Session::flash('message', "Error, Pendampingan with $id not found!");
     }
-    return Redirect::to('/lpantb/formka6/pendampingan/view/' . $anak->id);
+    return Redirect::to('/dash/formka6/pendampingan/view/' . $anak->id);
   }
 
   public function printPreview($anak_id){
@@ -122,7 +122,7 @@ class PendampinganController extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 6 (KA6) - Pendampingan',
       'panel_title' => 'Pendampingan ',
-      'form_url' => '/lpantb/formka6/pendampingan/update',
+      'form_url' => '/dash/formka6/pendampingan/update',
       'form_status' => 'edit',
       'location' => 'editView',
       'data' => $pen,

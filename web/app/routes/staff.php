@@ -1,7 +1,7 @@
 <?php
 
 $st = 'StaffController';
-$pr_st = '/lpantb/staff';
+$pr_st = '/dash/staff';
 //Crud Route
 Route::get($pr_st, $con . $st . "@view")->before('auth');
 Route::get($pr_st . "/addview", $con . $st . "@addView")->before('auth');

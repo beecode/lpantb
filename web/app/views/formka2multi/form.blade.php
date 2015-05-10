@@ -25,7 +25,7 @@
             <div class="box-header">
                 <div class="box-tools pull-left">
                   <?php $enc_lka = base64_encode($lka); ?>
-                    <a href="{{URL::to('lpantb/formka2multi/view/'.$enc_lka)}}" class="btn btn-primary">
+                    <a href="{{URL::to('dash/formka2multi/view/'.$enc_lka)}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
                     </a>
                 </div>

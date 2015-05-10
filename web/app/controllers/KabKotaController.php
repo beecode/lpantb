@@ -29,10 +29,10 @@ class KabKotaController extends BaseController implements FeatureInterface {
             $kk->provinsi()->associate($pr);
             $kk->save();
             Session::flash('message', "Kabupaten Kota $kk->nama Successfully Added");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         } else {
             Session::flash('message', "Error, Kabupaten Kota with $kk->nama Failed to Add!");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         }
     }
 
@@ -55,7 +55,7 @@ class KabKotaController extends BaseController implements FeatureInterface {
         $data = [
             'page_title' => 'Kabupaten / Kota',
             'panel_title' => 'Form Add',
-            'form_url' => '/lpantb/kabkota/add',
+            'form_url' => '/dash/setting/kabkota/add',
             'form_status' => 'add',
             'provinsi' => Provinsi::all(),
         ];
@@ -68,10 +68,10 @@ class KabKotaController extends BaseController implements FeatureInterface {
         if ($kbk) {
             $kbk->delete();
             Session::flash('message', "Kabupaten / Kota $nama has been deleted!");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         } else {
             Session::flash('message', "Error, Kabupaten / Kota with $id not found!");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         }
     }
 
@@ -101,10 +101,10 @@ class KabKotaController extends BaseController implements FeatureInterface {
             $kk->provinsi()->associate($pr);
             $kk->update();
             Session::flash('message', "Kabupaten / Kota $kk->nama Successfully Updated");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         } else {
             Session::flash('message', "Error, Kabupaten / Kota with $kk->id not found!");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         }
     }
 
@@ -114,7 +114,7 @@ class KabKotaController extends BaseController implements FeatureInterface {
             $data = [
                 'page_title' => 'Kabupaten / Kota',
                 'panel_title' => 'Form Edit',
-                'form_url' => '/lpantb/kabkota/update',
+                'form_url' => '/dash/setting/kabkota/update',
                 'form_status' => 'update',
                 'record' => $rec,
                 'provinsi' => Provinsi::all(),
@@ -122,7 +122,7 @@ class KabKotaController extends BaseController implements FeatureInterface {
             return View::make("kabkota.form", $data);
         } else {
             Session::flash('message', "Error,  Kabupaten/Kota with $id not found!");
-            return Redirect::to('/lpantb/kabkota');
+            return Redirect::to('/dash/setting/kabkota');
         }
     }
 

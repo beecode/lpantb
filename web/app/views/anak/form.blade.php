@@ -24,9 +24,9 @@
         <div class="box box-primary">
             <div class="box-header">
                 <div class="box-tools pull-left">
-                    <a href="{{URL::to('lpantb/anak')}}" class="btn btn-primary">
+                    <a href="{{URL::to('dash/anak')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>   
+                    </a>
                 </div>
             </div>
             <div class="box-body">
@@ -36,7 +36,7 @@
                     @include('anak.step.anak')
                     <div class="row no-print">
                         <div class="col-xs-12" style="margin-top:61px;">
-                            <a href="{{URL::to('lpantb/anak')}}" class="btn btn-primary">
+                            <a href="{{URL::to('dash/anak')}}" class="btn btn-primary">
                                 <i class="fa fa-chevron-left"></i> Back</a>
                             <button class="btn btn-warning pull-right" type="submit">
                                 <i class="fa fa-edit"></i> Update</button>

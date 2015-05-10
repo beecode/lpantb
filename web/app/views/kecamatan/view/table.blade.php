@@ -19,11 +19,11 @@
                         <td>{{$val->kabkota->provinsi->nama}}</td>
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-success" title="Update" 
-                                   href="{{ URL::to('/lpantb/kecamatan/updateview/'.$val->id) }}">
+                                <a class="btn btn-small btn-success" title="Update"
+                                   href="{{ URL::to('/dash/setting/kecamatan/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span> </a>
-                                <a class="btn btn-small btn-danger" title="Delete" 
-                                   href="{{ URL::to('/lpantb/kecamatan/delete/'.$val->id) }}">
+                                <a class="btn btn-small btn-danger" title="Delete"
+                                   href="{{ URL::to('/dash/setting/kecamatan/delete/'.$val->id) }}">
                                     <span class="glyphicon glyphicon-trash"></span> </a>
                             </div>
                         </td>

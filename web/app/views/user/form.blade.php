@@ -24,7 +24,7 @@
         <div class="box box-primary">
             <div class="box-header">
                 <div class="box-tools pull-left">
-                    <a href="{{URL::to('lpantb/user')}}" class="btn btn-primary">
+                    <a href="{{URL::to('dash/user')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
                     </a>
                 </div>

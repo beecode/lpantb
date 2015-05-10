@@ -19,10 +19,10 @@ if (isset($record)) {
     {{ Form::label('anak[gender]', 'Gender',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $anak['gender'] = (isset($anak->gender)) ? $anak->gender : null; ?>
-        {{ Form::select('anak[gender]',  
+        {{ Form::select('anak[gender]',
                                               ['Laki-Laki' => 'Laki-Laki','Perempuan'=>'Perempuan'],
                                              $anak['gender'],
-                                             ['class'=>'form-control']) 
+                                             ['class'=>'form-control'])
         }}
     </div>
 </div>
@@ -36,10 +36,10 @@ if (isset($record)) {
     <div class="col-sm-2" style="margin-left: 0px; padding-left: 0px">
         <?php $umur_lists = ['Tahun' => 'Tahun', 'Bulan' => 'Bulan', 'Pekan' => 'Pekan', 'Hari' => 'Hari']; ?>
         <?php $anak['umur_satuan'] = (isset($anak->umur_satuan)) ? $anak->umur_satuan : null; ?>
-        {{ Form::select('anak[umur_satuan]',  
+        {{ Form::select('anak[umur_satuan]',
                                             $umur_lists ,
                                              $anak['umur_satuan'],
-                                             ['class'=>'form-control','required']) 
+                                             ['class'=>'form-control','required'])
         }}
     </div>
 
@@ -76,10 +76,10 @@ if (isset($record)) {
     {{ Form::label('anak[agama]', 'Agama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $anak['agama'] = (isset($anak->agama)) ? $anak->agama : null; ?>
-        {{ Form::select('anak[agama]',  
+        {{ Form::select('anak[agama]',
                                              $agama_lists,
                                              $anak['agama'],
-                                             ['class'=>'form-control','required']) 
+                                             ['class'=>'form-control','required'])
         }}
     </div>
 </div>
@@ -92,18 +92,18 @@ $la = $location_anak;
     {{ Form::label('anak[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['provinsi'] = (isset($la['provinsi_sel'])) ? $la['provinsi_sel'] : null; ?>
-        {{ Form::select('anak[provinsi]',  
+        {{ Form::select('anak[provinsi]',
                                              $la['provinsi_lists'],
                                              $pel['provinsi'],
-                                             ['class'=>'form-control anak_provinsi','required']) 
+                                             ['class'=>'form-control anak_provinsi','required'])
         }}
     </div>
     {{ Form::label('anak[kabkota]', 'Kabupaten / Kota', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['kabkota'] = (isset($la['kabkota_sel'])) ? $la['kabkota_sel'] : null; ?>
-        {{ Form::select('anak[kabkota]', 
-                                        $la['kabkota_lists'], 
-                                        $pel['kabkota'], 
+        {{ Form::select('anak[kabkota]',
+                                        $la['kabkota_lists'],
+                                        $pel['kabkota'],
                                         ['class'=>'form-control anak_kabkota','required'])  }}
     </div>
 
@@ -115,18 +115,18 @@ $la = $location_anak;
     {{ Form::label('anak[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['kecamatan'] = (isset($la['kecamatan_sel'])) ? $la['kecamatan_sel'] : null; ?>
-        {{ Form::select('anak[kecamatan]', 
-                                        $la['kecamatan_lists'], 
-                                        $pel['kecamatan'], 
+        {{ Form::select('anak[kecamatan]',
+                                        $la['kecamatan_lists'],
+                                        $pel['kecamatan'],
                                         ['class'=>'form-control anak_kecamatan','required'])  }}
     </div>
 
     {{ Form::label('anak[desa]', 'Desa', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['desa'] = (isset($la['desa_sel'])) ? $la['desa_sel'] : null; ?>
-        {{ Form::select('anak[desa]', 
-                                        $la['desa_lists'], 
-                                        $pel['desa'], 
+        {{ Form::select('anak[desa]',
+                                        $la['desa_lists'],
+                                        $pel['desa'],
                                         ['class'=>'form-control anak_desa','required'])  }}
     </div>
 </div>
@@ -170,17 +170,17 @@ $la = $location_anak;
 <script type="text/javascript">
     ajaxSelectLocation(
             '.anak_provinsi',
-            '<?php echo URL::to("lpantb/location/kabkota") ?>',
+            '<?php echo URL::to("dash/location/kabkota") ?>',
             '.anak_kabkota'
             );
     ajaxSelectLocation(
             '.anak_kabkota',
-            '<?php echo URL::to("lpantb/location/kecamatan") ?>',
+            '<?php echo URL::to("dash/location/kecamatan") ?>',
             '.anak_kecamatan'
             );
     ajaxSelectLocation(
             '.anak_kecamatan',
-            '<?php echo URL::to("lpantb/location/desa") ?>',
+            '<?php echo URL::to("dash/location/desa") ?>',
             '.anak_desa'
             );
 </script>

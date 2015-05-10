@@ -10,7 +10,7 @@
                         {{$val->no_lka}} &nbsp;
                         <?php $lka = base64_encode($val->no_lka); ?>
                         <a class="btn btn-small btn-info pull-right" title="Multi Kasus"
-                           href="{{ URL::to('/lpantb/formka2multi/view/'.$lka)}}">
+                           href="{{ URL::to('/dash/formka2multi/view/'.$lka)}}">
                              <span class=" glyphicon glyphicon-th-large"></span>
                         </a>
                      </td>
@@ -23,7 +23,7 @@
               {{$val->no_lka}}
               <?php $lka = base64_encode($val->no_lka); ?>
               <a class="btn btn-small btn-info pull-right" title="Multi Kasus"
-                 href="{{ URL::to('/lpantb/formka2multi/view/'.$lka)}}">
+                 href="{{ URL::to('/dash/formka2multi/view/'.$lka)}}">
                    <span class=" glyphicon glyphicon-th-large"></span>
               </a>
             </td>
@@ -36,22 +36,22 @@
             <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
               <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                 <a class="btn btn-small btn-info" title="Detail Form"
-                   href="{{ URL::to('/lpantb/formka2/detailview/'.$val->id) }}">
+                   href="{{ URL::to('/dash/formka2/detailview/'.$val->id) }}">
                     <span class=" glyphicon glyphicon-th-list"></span>
                 </a>
                 <a class="btn btn-small btn-warning" title="Update"
-                   href="{{ URL::to('/lpantb/formka2/updateview/'.$val->id) }}">
+                   href="{{ URL::to('/dash/formka2/updateview/'.$val->id) }}">
                     <span class=" glyphicon glyphicon-edit"></span>
                 </a>
                 <a class="btn btn-small btn-danger" title="Delete"
-                   href="{{ URL::to('/lpantb/formka2/delete/'.$val->id) }}">
+                   href="{{ URL::to('/dash/formka2/delete/'.$val->id) }}">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
               </div>
         <?php } else { ?>
             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
               <a class="btn btn-small btn-info" title="Detail Form"
-                 href="{{ URL::to('/lpantb/formka2/detailview/'.$val->id) }}">
+                 href="{{ URL::to('/dash/formka2/detailview/'.$val->id) }}">
                    <span class=" glyphicon glyphicon-th-list"></span>
               </a>
             </div>

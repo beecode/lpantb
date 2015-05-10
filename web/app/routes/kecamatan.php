@@ -1,7 +1,7 @@
 <?php
 
 $kec = 'KecamatanController';
-$pr_kc = '/lpantb/kecamatan';
+$pr_kc = '/lpantb/setting/kecamatan';
 //Crud Route
 Route::get($pr_kc, $con . $kec . "@view")->before('auth');
 Route::get($pr_kc . "/addview", $con . $kec . "@addView")->before('auth');

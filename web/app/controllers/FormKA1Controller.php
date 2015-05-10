@@ -30,25 +30,27 @@ use App\Helpers\LKAHelper;
 class FormKA1Controller extends BaseController {
 
   public function view() {
+    $year = date('Y');
     $data = [
       'title' => '',
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Table View',
       'location' => 'view',
-      'table'=> Form::where('nama', '=', 'ka1')->orderBy('created_at', 'desc')->get(),
-      'single' => Form::where('nama', '=', 'ka1')
-                      ->where('mode','=','single')
-                      ->orderBy('tanggal', 'desc')->get(),
-      'multiple'=>Form::where('nama', '=', 'ka1')
-                      ->where('mode','=','multiple')
-                      ->orderBy('created_at', 'desc')->get(),
+      'table'=> Form::where('nama', '=', 'ka1')
+                     ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                     ->orderBy('no_lka', 'desc')->get(),
+      'selectedYear'=>$year,
     ];
     return View::make('formka1.view', $data);
+    // echo $year;
   }
 
   public function viewMe() {
+    $year = date('Y');
     $username = Auth::user()->username;
-    $form = Form::where('nama', '=', 'ka1')->orderBy('created_at', 'desc');
+    $form = Form::where('nama', '=', 'ka1')
+                  ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                  ->orderBy('tanggal', 'desc');
     $form->whereHas('user', function ($qa) use ($username) {
       $qa->where('user.username', 'LIKE', '%' . $username . '%');
     });
@@ -59,9 +61,26 @@ class FormKA1Controller extends BaseController {
       'panel_title' => 'Table View',
       'location' => 'view',
       'table' => $form->get(),
+      'selectedYear'=>$year
     ];
     return View::make('formka1.view', $data);
   }
+
+  public function viewYear() {
+    $year = Input::get('year');
+    $data = [
+      'title' => '',
+      'page_title' => 'Kasus Anak 1 (KA1)',
+      'panel_title' => 'Table View',
+      'location' => 'view',
+      'table'=> Form::where('nama', '=', 'ka1')
+                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                      ->orderBy('no_lka', 'desc')->get(),
+      'selectedYear'=>$year
+    ];
+    return View::make('formka1.view', $data);
+  }
+
 
   public function detailView($id) {
     $data = [
@@ -77,7 +96,7 @@ class FormKA1Controller extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Add',
-      'form_url' => '/lpantb/formka1/add',
+      'form_url' => '/dash/formka1/add',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
@@ -111,6 +130,8 @@ class FormKA1Controller extends BaseController {
     $sign = json_encode($sign);
     $fm['sign'] = $sign;
 
+    $fm['mode']="single";
+
     $form = FormDAO::saveOrUpdate($fm);
     $anak = AnakDAO::saveOrUpdate($an);
     $pelapor = PelaporDAO::saveOrUpdate($pel, $anak);
@@ -124,14 +145,14 @@ class FormKA1Controller extends BaseController {
     LKAHelper::doCounter();
 
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
-    return Redirect::to('/lpantb/formka1');
+    return Redirect::to('/dash/formka1');
   }
 
   public function addMultiView() {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Add',
-      'form_url' => '/lpantb/formka1/addmulti',
+      'form_url' => '/dash/formka1/addmulti',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
@@ -160,7 +181,7 @@ class FormKA1Controller extends BaseController {
     Session::put('multi.tanggal', $fm['tanggal']);
 
 
-    return Redirect::to('/lpantb/formka1multi/view/'.$lka);
+    return Redirect::to('/dash/formka1multi/view/'.$lka);
   }
 
   public function updateView($id) {
@@ -171,7 +192,7 @@ class FormKA1Controller extends BaseController {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Edit',
-      'form_url' => '/lpantb/formka1/update',
+      'form_url' => '/dash/formka1/update',
       'form_status' => 'edit',
       'location_pelapor' => LocationHelper::location($pelapor->desa->id),
       'location_anak' => LocationHelper::location($anak->desa->id),
@@ -205,7 +226,7 @@ class FormKA1Controller extends BaseController {
     $no_lka = $fm['no_lka'];
     Session::flash('message', "Form with No LKA $no_lka has been updated!");
 
-    return Redirect::to('lpantb/formka1');
+    return Redirect::to('dash/formka1');
   }
 
   public function delete($id) {
@@ -215,7 +236,7 @@ class FormKA1Controller extends BaseController {
     } else {
       Session::flash('message', "Error, Form with $id not found!");
     }
-    return Redirect::to('/lpantb/formka1');
+    return Redirect::to('/dash/formka1');
   }
 
   public function searchLKA(){

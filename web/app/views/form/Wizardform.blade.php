@@ -78,7 +78,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jk">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -136,8 +136,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control input-sm" 
-                                                           name="lain-lain" placeholder="Lain-Lain"> 
+                                                    <input type="text" class="form-control input-sm"
+                                                           name="lain-lain" placeholder="Lain-Lain">
                                                 </div>
                                             </div>
 
@@ -201,9 +201,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" 
-                                                           class="form-control input-sm" 
-                                                           name="lain-lain" placeholder="Lain-Lain"> 
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           name="lain-lain" placeholder="Lain-Lain">
                                                 </div>
                                             </div>
                                         </div>
@@ -224,14 +224,14 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Kepada</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kepada" placeholder="Kepada">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Isi Disposisi</label>
                                 <div class="col-sm-7">
-                                    <textarea type="text" class="form-control" 
+                                    <textarea type="text" class="form-control"
                                               name="isidispo" ></textarea>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Nama </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="nameanak" placeholder="Nama">
                                 </div>
                             </div>
@@ -279,7 +279,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jkanak">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -289,7 +289,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Tempat/Tgl Lahir</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="tmpanak" placeholder="Tempat">
                                 </div>
                                 <div class="col-md-5">
@@ -302,13 +302,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Pendidikan</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="pendidikananak" placeholder="Pendidikan">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Suku </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="sukuanak" placeholder="Suku">
                                     </div>
                                 </div>
@@ -316,27 +316,27 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Pekerjaan </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kerjaanak" placeholder="Pekerjaan">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Alamat </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="alamatanak" placeholder="Alamat">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Desa/Kelurahan</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="desaanak" placeholder="Desa">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Kec. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="kecanak" placeholder="Kecamatan">
                                     </div>
                                 </div>
@@ -344,13 +344,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Kab./Kota</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kotaanak" placeholder="Kota">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-2 control-label">Prop. </label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="Propanak" placeholder="Provinsi">
                                     </div>
                                 </div>
@@ -372,13 +372,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Anak ke-</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="anakke" placeholder="Anaka ke-">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-5 control-label">Jumlah Saudara </label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="jmlsaudara" placeholder="jumlah Saudara">
                                     </div>
                                 </div>
@@ -387,7 +387,7 @@
                                 <label class="col-sm-2 control-label">Akta Kelahiran </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="aktaanak">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Akta...!</option>
                                         <option value="punya">Punya</option>
                                         <option value="tidak punya">Tidak Punya</option>
@@ -417,7 +417,7 @@
                                                 <div class="col-md-8">
                                                     <label class="col-sm-4 control-label">Sebutkan </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" 
+                                                        <input type="text" class="form-control"
                                                                name="sebutkan" placeholder="Sebutkan">
                                                     </div>
                                                 </div>
@@ -435,13 +435,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Tinggi Badan</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="tinggi" placeholder="Tinggi Badan">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-4 control-label">Berat Badan </label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="berat" placeholder="Berat Badan">
                                     </div>
                                 </div>
@@ -449,13 +449,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Warna Kulit</label>
                                 <div class="col-sm-2">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="warnakulit" placeholder="Warna Kulit">
                                 </div>
                                 <div class="col-md-5">
                                     <label class="col-sm-4 control-label">Ranbut </label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="rambut" placeholder="Rambut">
                                     </div>
                                 </div>
@@ -476,14 +476,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nama Bapak </label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="namabapak" placeholder="Nama Bapak">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tempat/Tgl Lahir</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="tmpbapak" placeholder="Tempat">
                                     </div>
                                     <div class="col-md-5">
@@ -496,20 +496,20 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Alamat </label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="alamatbapak" placeholder="Alamat">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Desa/Kelurahan</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="desabapak" placeholder="Desa">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-sm-2 control-label">Kec. </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" 
+                                            <input type="text" class="form-control"
                                                    name="kecbapak" placeholder="Kecamatan">
                                         </div>
                                     </div>
@@ -517,13 +517,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Kab./Kota</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="kotabapak" placeholder="Kota">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-sm-2 control-label">Prop. </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" 
+                                            <input type="text" class="form-control"
                                                    name="propbapak" placeholder="Provinsi">
                                         </div>
                                     </div>
@@ -531,13 +531,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Pekerjaan</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="pekerjaanbapak" placeholder="Pekerjaan">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-sm-2 control-label">Telp. </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" 
+                                            <input type="text" class="form-control"
                                                    name="telpbapak" placeholder="Telp">
                                         </div>
                                     </div>
@@ -545,7 +545,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Pendidakan Terakhir </label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="pendidikanbapak" placeholder="Pendidakan Terakhir">
                                     </div>
                                 </div>
@@ -553,14 +553,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nama Ibu </label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="namaibu" placeholder="Nama Ibu">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tempat/Tgl Lahir</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="tmpibu" placeholder="Tempat">
                                     </div>
                                     <div class="col-md-5">
@@ -573,20 +573,20 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Alamat </label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="alamatibu" placeholder="Alamat">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Desa/Kelurahan</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="desaibu" placeholder="Desa">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-sm-2 control-label">Kec. </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" 
+                                            <input type="text" class="form-control"
                                                    name="kecibu" placeholder="Kecamatan">
                                         </div>
                                     </div>
@@ -594,13 +594,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Kab./Kota</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="kotaibu" placeholder="Kota">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-sm-2 control-label">Prop. </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" 
+                                            <input type="text" class="form-control"
                                                    name="propibu" placeholder="Provinsi">
                                         </div>
                                     </div>
@@ -608,13 +608,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Pekerjaan</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="pekerjaanibu" placeholder="Pekerjaan">
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-sm-2 control-label">Telp. </label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" 
+                                            <input type="text" class="form-control"
                                                    name="telpibu" placeholder="Telp">
                                         </div>
                                     </div>
@@ -622,7 +622,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Pendidakan Terakhir </label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="pendidikanibu" placeholder="Pendidakan Terakhir">
                                     </div>
                                 </div>
@@ -631,7 +631,7 @@
                                     <label class="col-sm-2 control-label">Setatus Perkawinan Ortu </label>
                                     <div class="col-sm-3">
                                         <select class="form-control" name="jkanak">
-                                            <option value="" disabled="" 
+                                            <option value="" disabled=""
                                                     selected="">Pilih Perkawinan Ortu...!</option>
                                             <option value="suami istri">Suami Istri</option>
                                             <option value="cerai hidup">Cerai Hidup</option>
@@ -646,30 +646,30 @@
                             <div class="panel-body">
                                 <div class="container-fluid">
                                     <div class="form-group">
-                                        <label class="control-label">a. Gambaran Khusus 
+                                        <label class="control-label">a. Gambaran Khusus
                                             Menurut Anak </label>
-                                        <textarea class="form-control" 
+                                        <textarea class="form-control"
                                                   name="gambaran" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">b. Harapan Anak </label>
-                                        <textarea class="form-control" 
+                                        <textarea class="form-control"
                                                   name="harapann" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">c. Gambaran Kasus Menurut Keluarga,
                                             Teman dan/atau Masyarakat </label>
-                                        <textarea class="form-control" 
+                                        <textarea class="form-control"
                                                   name="gambarankasus" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">d. Harapan Keluarga, 
+                                        <label class="control-label">d. Harapan Keluarga,
                                             Teman dan Masyarakat</label>
                                         <textarea class="form-control"
                                                   name="harapannkeluarga" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">e. Kesimpulan Kasus 
+                                        <label class="control-label">e. Kesimpulan Kasus
                                             Yang Terjadi</label>
                                         <textarea class="form-control"
                                                   name="kesimpulan" rows="2"></textarea>
@@ -682,27 +682,27 @@
                             <div class="panel-body">
                                 <div class="container-fluid">
                                     <div class="form-group">
-                                        <label class="control-label">a. Riwayat Keluarga 
+                                        <label class="control-label">a. Riwayat Keluarga
                                             dan Pengasuhan Anak</label>
                                         <textarea class="form-control"
                                                   name="riwayatasuh" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">b. Riwayat Pendidikan 
+                                        <label class="control-label">b. Riwayat Pendidikan
                                             Anak</label>
                                         <textarea class="form-control"
                                                   name="riwayatpendidikan" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">c. Kondisi Mental Psikologis
-                                            (keadaan emisi, perasaan-perasaan yang dominan, 
+                                            (keadaan emisi, perasaan-perasaan yang dominan,
                                             gejala-gejala kenakalan)</label>
                                         <textarea class="form-control"
                                                   name="kodisimental" rows="2"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">d. Kondisi Sosial (
-                                            interaksi dengan orang lain, penyesuaian diri, 
+                                            interaksi dengan orang lain, penyesuaian diri,
                                             perhatian dari keluarga, nilai-nilai sosial yang dimilike)</label>
                                         <textarea class="form-control"
                                                   name="kodisisosial" rows="2"></textarea>
@@ -716,7 +716,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tanggal</label>
                                     <div class="col-sm-3">
-                                        <input type="date" class="form-control" 
+                                        <input type="date" class="form-control"
                                                name="tglasssor">
                                     </div>
                                 </div>
@@ -725,7 +725,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nama Assesor</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="namaassesor">
                                     </div>
                                 </div>
@@ -734,7 +734,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tanggal</label>
                                     <div class="col-sm-3">
-                                        <input type="date" class="form-control" 
+                                        <input type="date" class="form-control"
                                                name="tglasssor">
                                     </div>
                                 </div>
@@ -743,7 +743,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nama Pelayanan</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" 
+                                        <input type="text" class="form-control"
                                                name="namapelayanan">
                                     </div>
                                 </div>
@@ -752,7 +752,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Catatan</label>
                                     <div class="col-sm-7">
-                                        <textarea type="text" class="form-control" 
+                                        <textarea type="text" class="form-control"
                                                   name="catatan"></textarea>
                                     </div>
                                 </div>
@@ -801,7 +801,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jk">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -859,8 +859,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control input-sm" 
-                                                           name="lain-lain" placeholder="Lain-Lain"> 
+                                                    <input type="text" class="form-control input-sm"
+                                                           name="lain-lain" placeholder="Lain-Lain">
                                                 </div>
                                             </div>
 
@@ -920,9 +920,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" 
-                                                           class="form-control input-sm" 
-                                                           name="lain-lain" placeholder="Lain-Lain"> 
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           name="lain-lain" placeholder="Lain-Lain">
                                                 </div>
                                             </div>
                                         </div>
@@ -932,7 +932,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Pelapor / Pengadu </label>
                                                 <div class="col-sm-8">
-                                                    <textarea type="text" class="form-control" 
+                                                    <textarea type="text" class="form-control"
                                                               name="pelapor" rows="3"></textarea>
                                                 </div>
                                             </div>
@@ -954,14 +954,14 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Kepada</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="kepadainter" placeholder="Kepada">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Isi Disposisi</label>
                                 <div class="col-sm-7">
-                                    <textarea type="text" class="form-control" 
+                                    <textarea type="text" class="form-control"
                                               name="isidispointer" ></textarea>
                                 </div>
                             </div>
@@ -1103,7 +1103,7 @@
                                 <label class="col-sm-2 control-label">Jenis Kelamin </label>
                                 <div class="col-sm-3">
                                     <select class="form-control" name="jk">
-                                        <option value="" disabled="" 
+                                        <option value="" disabled=""
                                                 selected="">Pilih Jenis kelamin...!</option>
                                         <option value="Laki-Laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -1161,8 +1161,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control input-sm" 
-                                                           name="lain-lain" placeholder="Lain-Lain"> 
+                                                    <input type="text" class="form-control input-sm"
+                                                           name="lain-lain" placeholder="Lain-Lain">
                                                 </div>
                                             </div>
 
@@ -1179,14 +1179,14 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Penerima Lapiran </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="penerima" placeholder="Penerima laporan">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Koordinator </label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control"
                                            name="koordinator" placeholder="Koordinator Pelayanan">
                                 </div>
                             </div>
@@ -1194,7 +1194,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Catatan</label>
                                 <div class="col-sm-5">
-                                    <textarea type="text" class="form-control" 
+                                    <textarea type="text" class="form-control"
                                               name="catatan" rows="3" ></textarea>
                                 </div>
                             </div>

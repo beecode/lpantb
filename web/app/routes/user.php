@@ -1,7 +1,7 @@
 <?php
 
 $user = 'UserController';
-$pr_ur = '/lpantb/user';
+$pr_ur = '/dash/user';
 //Crud Route
 Route::get($pr_ur, $con . $user . "@view")->before('auth');
 Route::get($pr_ur . "/addview", $con . $user . "@addView")->before('auth');

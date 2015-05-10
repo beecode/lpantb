@@ -23,7 +23,7 @@
             </td>
             <td>
               {{$anak->nama}}
-              <a href="{{URL::to('lpantb/anak/detailview/'.$anak->id)}}"
+              <a href="{{URL::to('dash/anak/detailview/'.$anak->id)}}"
                 class="btn btn-sm btn-info pull-right" title="Detail Anak">
                 <span class=" glyphicon glyphicon-th-list"></span>
               </a>
@@ -32,22 +32,22 @@
               <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
                 <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                   <a class="btn btn-small btn-info" title="Detail Form"
-                  href="{{ URL::to('/lpantb/formka2multi/detailview/'.$val->id) }}">
+                  href="{{ URL::to('/dash/formka2multi/detailview/'.$val->id) }}">
                   <span class=" glyphicon glyphicon-th-list"></span>
                 </a>
                 <a class="btn btn-small btn-warning" title="Update"
-                href="{{ URL::to('/lpantb/formka2multi/updateview/'.$val->id) }}">
+                href="{{ URL::to('/dash/formka2multi/updateview/'.$val->id) }}">
                 <span class=" glyphicon glyphicon-edit"></span>
               </a>
               <a class="btn btn-small btn-danger" title="Delete"
-              href="{{ URL::to('/lpantb/formka2multi/delete/'.$val->id.'/'.$lka) }}">
+              href="{{ URL::to('/dash/formka2multi/delete/'.$val->id.'/'.$lka) }}">
               <span class="glyphicon glyphicon-trash"></span>
             </a>
           </div>
           <?php } else { ?>
             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
               <a class="btn btn-small btn-info" title="Detail Form"
-              href="{{ URL::to('/lpantb/formka2multi/detailview/'.$val->id) }}">
+              href="{{ URL::to('/dash/formka2multi/detailview/'.$val->id) }}">
               <span class=" glyphicon glyphicon-th-list"></span>
             </a>
           </div>

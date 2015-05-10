@@ -32,10 +32,10 @@
         <div class="row invoice-info">
             <div class="col-xs-12" style="padding-bottom: 10px;">
                 <span class="pull-left">
-                    <label>No. LKA {{$data->no_lka}}</label> 
+                    <label>No. LKA {{$data->no_lka}}</label>
                 </span>
                 <span class="pull-right">
-                    <label>Tanggal  {{date('d-m-Y',strtotime($data->tanggal))}}</label> 
+                    <label>Tanggal  {{date('d-m-Y',strtotime($data->tanggal))}}</label>
                 </span>
                 <span class="clearfix"></span>
             </div>
@@ -48,7 +48,7 @@
 
         <div class="row no-print">
             <div class="col-xs-12" style="margin-top:61px;">
-                <a href="{{URL::to('lpantb/formka6')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
+                <a href="{{URL::to('dash/formka6')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
                 <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
                 <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
             </div>

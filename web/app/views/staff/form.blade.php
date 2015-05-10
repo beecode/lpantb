@@ -24,9 +24,9 @@
         <div class="box box-primary">
             <div class="box-header">
                 <div class="box-tools pull-left">
-                    <a href="{{URL::to('lpantb/staff')}}" class="btn btn-primary">
+                    <a href="{{URL::to('dash/setting/staff')}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>   
+                    </a>
                 </div>
             </div>
             <div class="box-body">
@@ -52,7 +52,7 @@
                             {{ Form::text('staff[jabatan]', $jabatan, ['class' => 'form-control','required'])  }}
                         </div>
                     </div>
-                        
+
                     <div class="form-actions ">
                         <label class="col-sm-2 control-label"></label>
                         <button class="btn btn-primary" type="submit">

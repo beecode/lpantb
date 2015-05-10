@@ -10,7 +10,7 @@
     } ?>
 
     {{Form::input('hidden','form[nama]','ka1')}}
-    
+
     <div class="form-group">
       {{ Form::label('lka', 'No LKA',['class'=>'col-sm-2 control-label']) }}
       <div class="col-sm-3">
@@ -19,11 +19,9 @@
                 name="form[no_lka]" value="{{$lka}}"
                 ng-disabled="vm.isLKA" ng-change="vm.LKAOnChange()">
       </div>
-      <span class="btn btn-default"
-            ng-click="vm.LKAToggle()"
-            style="margin:0px;">
-      <i class="glyphicon <% vm.LKAIcon %>"></i>
-    </span>
+      <span class="btn btn-default" ng-click="vm.LKAToggle()" style="margin:0px;">
+        <i class="glyphicon <% vm.LKAIcon %>"></i>
+      </span>
     </div>
 
     <div class="form-group">
@@ -34,11 +32,9 @@
                 name="form[tanggal]" value="{{$tanggal}}"
                 ng-disabled="vm.isTanggal">
       </div>
-      <span class="btn btn-default"
-            ng-click="vm.tanggalToggle()"
-            style="margin:0px;">
-      <i class="glyphicon <% vm.tanggalIcon %>"></i>
-    </span>
+      <span class="btn btn-default" ng-click="vm.tanggalToggle()" style="margin:0px;">
+        <i class="glyphicon <% vm.tanggalIcon %>"></i>
+      </span>
   </div>
 </div>
 

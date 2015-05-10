@@ -26,7 +26,7 @@ class LoginController extends BaseController {
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-            return Redirect::to('lpantb/login')
+            return Redirect::to('/login')
                             ->withErrors($validator)
                             ->withInput(Input::except('password'));
         } else {
@@ -42,16 +42,16 @@ class LoginController extends BaseController {
             }
 
             if ($isAuth) {
-                return Redirect::intended('lpantb/dashboard');
+                return Redirect::intended('/dash');
             } else {
-                return Redirect::to('lpantb/login');
+                return Redirect::to('/login');
             }
         }
     }
 
     public function doLogout() {
         Auth::logout(); // log the user out of our application
-        return Redirect::to('/'); // redirect the user to the login 
+        return Redirect::to('/'); // redirect the user to the login
     }
 
 }

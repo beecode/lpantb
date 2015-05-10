@@ -1,7 +1,7 @@
 <?php
 
 $lka = 'LKASettingController';
-$pr_lka = '/lpantb/lka';
+$pr_lka = '/dash/setting/lka';
 //Crud Route
 Route::get($pr_lka, $con . $lka . "@view")->before('auth');
 Route::get($pr_lka . "/addview", $con . $lka . "@addView")->before('auth');

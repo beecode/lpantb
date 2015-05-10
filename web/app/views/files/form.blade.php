@@ -25,7 +25,7 @@
             <div class="box-header">
                 <div class="box-tools pull-left">
                     <a class="btn btn-primary" style="color: white;"
-                       href="{{URL::to('lpantb/anak/files/view/'.$anak->id)}}">
+                       href="{{URL::to('dash/anak/files/view/'.$anak->id)}}">
                         <span class="glyphicon glyphicon-arrow-left"></span>
                         Kembali
                     </a>

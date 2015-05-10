@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="box box-info">
     <div class="box-body">
-      <form action="<?php echo URL::to('lpantb/dashboard/filter') ?>" method="get">
+      <form action="<?php echo URL::to('dash/filter') ?>" method="get">
         <div class="row">
           <div class="col-sm-1" style="padding-top:8px; padding-right:0px; margin-right: 0px;">
             <label>Filter Dari</label>

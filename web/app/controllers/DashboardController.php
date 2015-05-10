@@ -43,7 +43,7 @@ class DashboardController extends BaseController {
     public function filter() {
       $in = Input::all();
       if (empty($in)){
-        return Redirect::to('lpantb/dashboard');
+        return Redirect::to('dash');
       } else {
         if ($in['start_year'] == "Tahun" ||
             $in['start_month']== "Bulan" ||
@@ -52,7 +52,7 @@ class DashboardController extends BaseController {
 
             Session::flash('message', "Error, Anda belum memilih Bulan dan Tahun untuk di Filter!");
             Session::flash('alert','danger');
-            return Redirect::to('lpantb/dashboard');
+            return Redirect::to('dash');
 
         } else {
           $start = $in['start_year']."-".$in['start_month']."-01";

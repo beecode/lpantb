@@ -93,18 +93,18 @@ $lay = $loc_ayah;
     {{ Form::label('ayah[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $la['provinsi'] = (isset($lay['provinsi_sel'])) ? $lay['provinsi_sel'] : null; ?>
-        {{ Form::select('ayah[provinsi]',  
+        {{ Form::select('ayah[provinsi]',
                                              $lay['provinsi_lists'],
                                              $la['provinsi'],
-                                             ['class'=>'form-control ayah_provinsi']) 
+                                             ['class'=>'form-control ayah_provinsi'])
         }}
     </div>
     {{ Form::label('ayah[kabkota]', 'Kabupaten / Kota', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $la['kabkota'] = (isset($lay['kabkota_sel'])) ? $lay['kabkota_sel'] : null; ?>
-        {{ Form::select('ayah[kabkota]', 
-                                        $lay['kabkota_lists'], 
-                                        $la['kabkota'], 
+        {{ Form::select('ayah[kabkota]',
+                                        $lay['kabkota_lists'],
+                                        $la['kabkota'],
                                         ['class'=>'form-control ayah_kabkota'])  }}
     </div>
 
@@ -116,18 +116,18 @@ $lay = $loc_ayah;
     {{ Form::label('ayah[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $la['kecamatan'] = (isset($lay['kecamatan_sel'])) ? $lay['kecamatan_sel'] : null; ?>
-        {{ Form::select('ayah[kecamatan]', 
-                                        $lay['kecamatan_lists'], 
-                                        $la['kecamatan'], 
+        {{ Form::select('ayah[kecamatan]',
+                                        $lay['kecamatan_lists'],
+                                        $la['kecamatan'],
                                         ['class'=>'form-control ayah_kecamatan'])  }}
     </div>
 
     {{ Form::label('ayah[desa]', 'Desa', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $la['desa'] = (isset($lay['desa_sel'])) ? $lay['desa_sel'] : null; ?>
-        {{ Form::select('ayah[desa]', 
-                                        $lay['desa_lists'], 
-                                        $la['desa'], 
+        {{ Form::select('ayah[desa]',
+                                        $lay['desa_lists'],
+                                        $la['desa'],
                                         ['class'=>'form-control ayah_desa'])  }}
     </div>
 </div>
@@ -144,17 +144,17 @@ $lay = $loc_ayah;
 <script type="text/javascript">
     ajaxSelectLocation(
             '.ayah_provinsi',
-            '<?php echo URL::to("lpantb/location/kabkota") ?>',
+            '<?php echo URL::to("dash/location/kabkota") ?>',
             '.ayah_kabkota'
             );
     ajaxSelectLocation(
             '.ayah_kabkota',
-            '<?php echo URL::to("lpantb/location/kecamatan") ?>',
+            '<?php echo URL::to("dash/location/kecamatan") ?>',
             '.ayah_kecamatan'
             );
     ajaxSelectLocation(
             '.ayah_kecamatan',
-            '<?php echo URL::to("lpantb/location/desa") ?>',
+            '<?php echo URL::to("dash/location/desa") ?>',
             '.ayah_desa'
             );
 </script>

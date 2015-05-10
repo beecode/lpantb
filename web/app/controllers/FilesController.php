@@ -38,7 +38,7 @@ class FilesController extends BaseController {
         $data = [
             'page_title' => 'Anak - Files',
             'panel_title' => 'Files Add View',
-            'form_url' => '/lpantb/anak/files/add',
+            'form_url' => '/dash/anak/files/add',
             'form_status' => 'add',
             'location' => 'addView',
             'anak' => $anak,
@@ -63,14 +63,14 @@ class FilesController extends BaseController {
             if ($uploadSuccess) {
                 FilesDAO::saveOrUpdate($fl, $anak);
                 Session::flash('message', "File berhasil di upload!");
-                return Redirect::to('/lpantb/anak/files/view/' . $anak->id);
+                return Redirect::to('/dash/anak/files/view/' . $anak->id);
             } else {
                 Session::flash('message', "Upload File Gagal!");
-                return Redirect::to('/lpantb/anak/files/addview/' . $anak->id);
+                return Redirect::to('/dash/anak/files/addview/' . $anak->id);
             }
         } else {
             Session::flash('message', "Error, Pilih File yang ingin di upload!");
-            return Redirect::to('/lpantb/anak/files/addview/' . $anak->id);
+            return Redirect::to('/dash/anak/files/addview/' . $anak->id);
         }
     }
 
@@ -79,7 +79,7 @@ class FilesController extends BaseController {
         $data = [
              'page_title' => 'Anak - Files',
             'panel_title' => 'Files Add View',
-            'form_url' => '/lpantb/anak/files/update',
+            'form_url' => '/dash/anak/files/update',
             'form_status' => 'edit',
             'location' => 'editView',
             'data' => $fl,
@@ -95,7 +95,7 @@ class FilesController extends BaseController {
 
         FilesDAO::saveOrUpdate($files, $anak);
         Session::flash('message', "Informasi file berhasil di ubah!");
-        return Redirect::to('/lpantb/anak/files/view/' . $anak->id);
+        return Redirect::to('/dash/anak/files/view/' . $anak->id);
     }
 
     public function delete($id) {
@@ -108,7 +108,7 @@ class FilesController extends BaseController {
         } else {
             Session::flash('message', "Error, Files with $id not found!");
         }
-        return Redirect::to('/lpantb/anak/files/view/' . $anak->id);
+        return Redirect::to('/dash/anak/files/view/' . $anak->id);
     }
 
 }

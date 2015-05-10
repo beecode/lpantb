@@ -6,45 +6,43 @@ use App\Models\Form;
 
 
 /**
- * PrintLog Helpers
- * @author nunenuh
- */
- class FormMultiHelper{
+* PrintLog Helpers
+* @author nunenuh
+*/
+class FormMultiHelper{
 
-   public static function synchronize($lka){
-     $form = Form::where('no_lka','=',$lka);
-     $count = $form->count();
-     if ($count > 1){
+  public static function synchronize($lka){
+    $form = Form::where('no_lka','=',$lka);
+    $count = $form->count();
+    if ($count > 1){
 
-       // looping pada tiap data..
-       $fm = $form->orderBy('tanggal', 'asc')->get();
-       $c=1;
-       foreach($fm as $ofm){
-         if ($ofm->mode=="multiple"){
-           // cek nilai multiple total dan ubah nilai multiple total
-           // sesuai dengan jumlah mutilple total
-           $upFm = Form::find($ofm->id);
-           if ($ofm->multiple_total != $count){
-             $upFm->multiple_total = $count;
-           }
+      // looping pada tiap data..
+      $fm = $form->orderBy('tanggal', 'asc')->get();
+      $c=1;
+      foreach($fm as $ofm){
 
-           // ubah nilai multiple sequence
-           $upFm->multiple_sequence = $c;
-           $c++;
+          // cek nilai multiple total dan ubah nilai multiple total
+          // sesuai dengan jumlah mutilple total
+          $upFm = Form::find($ofm->id);
+          if ($ofm->multiple_total != $count){
+            $upFm->multiple_total = $count;
+          }
 
-           // ubah data
-           $upFm->save();
-         }
-       }
+          // ubah nilai multiple sequence
+          $upFm->multiple_sequence = $c;
+          $c++;
 
-     } else {
-         $fm = $form->first();
-         if ($fm->mode=="multiple"){
-           $fm->multiple_total = 1;
-           $fm->multiple_sequence = 1;
-           $fm->update();
-         }
+          $upFm->mode = "multiple";
+          // ubah data
+          $upFm->save();
+      }
 
-     }
-   }
- }
+    } else if ($count==1){
+      $fm = $form->first();
+      $fm->mode = "multiple";
+      $fm->multiple_total = 1;
+      $fm->multiple_sequence = 1;
+      $fm->update();
+    }
+  }
+}

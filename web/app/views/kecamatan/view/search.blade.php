@@ -1,8 +1,8 @@
 <div class="pull-right col-sm-4">  
-    <form method="GET" action="{{ URL::to('/lpantb/kecamatan/search') }}" >
+    <form method="GET" action="{{ URL::to('/dash/setting/kecamatan/search') }}" >
 
         <div class="input-group">
-            <input class="form-control" type="search" name="keyword" 
+            <input class="form-control" type="search" name="keyword"
                    placeholder="Masukan Kata Kunci Pencarian">
             <span class="input-group-btn">
                 <button class="btn btn-info btn-flat" type="submit">

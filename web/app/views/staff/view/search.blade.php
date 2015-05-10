@@ -1,10 +1,10 @@
 <div class="pull-right col-sm-4">  
-    <form method="GET" 
-          action="{{ URL::to('/lpantb/staff/search') }}" >
+    <form method="GET"
+          action="{{ URL::to('/dash/setting/staff/search') }}" >
         <div class="input-group custom-search-form">
             <div class="col-xs-12 col-xs-offset-1">
-                <input type="search" name="keyword" class="form-control typeahead" 
-                       autocomplete="off" data-provide="typeahead" 
+                <input type="search" name="keyword" class="form-control typeahead"
+                       autocomplete="off" data-provide="typeahead"
                        placeholder="Berdasarkan Kode & Nama">
 
             </div>

@@ -1,10 +1,10 @@
 <div class="pull-right col-sm-4">  
     <form  method="GET" style="margin-right: 0px; padding-left: 0px;"
-           action="{{ URL::to('/lpantb/anak/search') }}" >
+           action="{{ URL::to('/dash/anak/search') }}" >
 
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control" type="search" name="keyword" 
+                <input class="form-control" type="search" name="keyword"
                        placeholder="Kode|Nama|Gender|Jenis Kasus">
                 <span class="input-group-btn">
                     <button class="btn btn-info btn-flat" type="submit">

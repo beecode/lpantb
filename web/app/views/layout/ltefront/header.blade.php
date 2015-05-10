@@ -16,20 +16,20 @@
             <ul class="nav navbar-nav">
 		<?php if (Auth::check()) { ?>
 			<li class="dropdown user user-menu">
-               		     <a class="" href="{{URL::to('lpantb/dashboard')}}">
+               		     <a class="" href="{{URL::to('dash')}}">
                         	<i class="glyphicon glyphicon-dashboard"></i>
                         	<span>Dashboard</span>
                     	     </a>
                 	</li>
 			<li class="dropdown user user-menu">
-               		     <a class="" href="{{URL::to('lpantb/login/doLogout')}}">
+               		     <a class="" href="{{URL::to('login/doLogout')}}">
                         	<i class="glyphicon glyphicon-log-out"></i>
                         	<span>Log Out</span>
                     	     </a>
                 	</li>
 		<?php } else { ?>
 			<li class="dropdown user user-menu">
-               		     <a class="" href="{{URL::to('lpantb/login')}}">
+               		     <a class="" href="{{URL::to('login')}}">
                         	<i class="glyphicon glyphicon-log-in"></i>
                         	<span>Login</span>
                     	     </a>
