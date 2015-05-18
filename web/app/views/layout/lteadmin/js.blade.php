@@ -37,6 +37,13 @@
 <script src="<?php echo URL::to('com/angular-1.3.0/angular-cookies.js'); ?>"></script>
 <script src="<?php echo URL::to('com/angular-1.3.0/angular-messages.js'); ?>"></script>
 
+<script src="<?php echo URL::to('com/moment/moment.js'); ?>"></script>
+<script src="<?php echo URL::to('com/moment/locale/id.js'); ?>"></script>
+<script src="<?php echo URL::to('com/moment-timezone/moment-timezone.js'); ?>"></script>
+<script src="<?php echo URL::to('com/moment-timezone-utils/moment-timezone-utils.js'); ?>"></script>
+
+<script src="<?php echo URL::to('com/angular-moment/angular-moment.js'); ?>"></script>
+
 <script src="<?php echo URL::to('com/autocomplete/autocomplete.js'); ?>"></script>
 <script src="<?php echo URL::to('com/autocomplete/app.js'); ?>"></script>
 
@@ -55,9 +62,14 @@
 <script src="<?php echo URL::to('js/app.js'); ?>" type="text/javascript"></script>
 
 <script type="text/javascript">
-var app = angular.module("app", ['ngTouch', 'angucomplete'], function($interpolateProvider) {
+var app = angular.module("app", ['ngTouch', 'angucomplete', 'angularMoment'], function($interpolateProvider) {
   $interpolateProvider.startSymbol('<%');
   $interpolateProvider.endSymbol('%>');
+});
+
+app.constant('angularMomentConfig', {
+    // preprocess: 'unix', // optional
+    timezone: 'Asia/Makassar' // optional
 });
 </script>
 @include('layout.lteadmin.js.lkactrl')

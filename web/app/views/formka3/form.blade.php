@@ -33,6 +33,9 @@
 
                 <form id="myWizard" method="POST" action="{{$form_url}}" class="form-horizontal">
                     <div class="row">
+                      <section class="step" data-step-title="Disposisi">
+                          @include('formka3.step.disposisi')
+                      </section>
 
                         <section class="step" data-step-title="No LKA">
                             @include('formka3.step.lka')
@@ -43,9 +46,7 @@
                         <section class="step" data-step-title="Tindak Lanjut">
                             @include('formka3.step.tindak')
                         </section>
-                        <section class="step" data-step-title="Disposisi">
-                            @include('formka3.step.disposisi')
-                        </section>
+
                     </div>
                 </form>
             </div>

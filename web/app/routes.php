@@ -17,7 +17,14 @@ use Illuminate\Support\Facades\Redirect;
 $con = 'App\\Controllers\\';
 Route::get('/', $con. 'FrontController@home');
 
+require "routes/test.php";
+
+
 require "routes/login.php";
+
+require "routes/notifservice.php";
+require "routes/notifikasi.php";
+
 
 require "routes/dashboard.php";
 require "routes/anak.php";

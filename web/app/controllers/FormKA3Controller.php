@@ -18,6 +18,7 @@ use App\DAO\JenisKasusDAO;
 use App\DAO\DisposisiDAO;
 use App\DAO\UserDAO;
 use App\Helpers\PrintLog;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Description of Testerform1Controller
@@ -67,17 +68,60 @@ class FormKA3Controller extends BaseController {
     }
 
     public function preAddView() {
+      $year = date('Y');
         $data = [
             'page_title' => 'Kasus Anak 3 (KA3)',
             'panel_title' => 'Form Pre Add',
-            'form_url' => '/dash/formka3/preadd',
+            'form_url' => '/dash/formka3/preaddresult',
             'form_status' => 'add',
-            'jenis_kasus' => JenisKasus::all(),
-            'tindak_lanjut' => TindakLanjut::all(),
-            'agama_lists' => Agama::lists('nama', 'nama'),
+            'keyword' =>'',
+            'based' =>'anak',
+            'result_status'=> null,
+            'selectedYear'=>$year,
         ];
         return View::make('formka3.preadd', $data);
     }
+
+   public function preAddResult(){
+     $keyword = Input::get('keyword');
+     $based = Input::get('based');
+     $year = Input::get('year');
+
+     $result = null;
+     $form = null;
+     if ($based == "anak"){
+       $result = Anak::where('nama','LIKE','%'.$keyword.'%');
+       $result = $result->whereHas('form', function ($qa) use ($year) {
+           $qa->whereRaw('YEAR(`tanggal`) = ?',array($year));
+       });
+     } else if ($based == "lka"){
+       $result = Form::where('no_lka','LIKE','%'.$keyword.'%')
+                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                      ->whereRaw('nama IN (?,?)',['ka1','ka2']);
+       $form = Form::where('no_lka','=','%'.$keyword.'%');
+     }
+
+     $status = 'multiple';
+     if ($result->count() == 0){
+       $status = null;
+     } else if ($result->count()==1){
+       $status == "single";
+     }
+
+     $data = [
+         'page_title' => 'Kasus Anak 3 (KA3)',
+         'panel_title' => 'Form Pre Add Result',
+         'form_url' => '/dash/formka3/preaddresult',
+         'form_status' => 'add',
+         'keyword' =>$keyword,
+         'based' =>$based,
+         'selectedYear'=>$year,
+         'result_status'=>$status,
+         'result_data'=>$result->get(),
+         'form'=>$form,
+     ];
+     return View::make('formka3.preadd', $data);
+   }
 
     public function addView($anak_id) {
         $data = [
@@ -174,7 +218,8 @@ class FormKA3Controller extends BaseController {
 
         // inject tanggal if not set
         if (!isset($fm['tanggal'])){
-          $fm['tanggal']=date('Y-m-d');
+          $form = Form::find($fm['id']);
+          $fm['tanggal']=$form->tanggal;
         }
 
 

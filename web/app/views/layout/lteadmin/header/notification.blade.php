@@ -1,77 +1,157 @@
+<style>
+  .notif-new {
+    background: rgba(60,141,188,0.2);
+  }
+  .notif-read{
+    background: rgba(0,0,0,0.05);;
+  }
 
-<li class="dropdown messages-menu">
+  .left-notif{
+    width:55px;
+    /*height:89px;*/
+    font-size:21px;
+    text-align:center;
+    padding:19px 0px;
+    background:#00c0ef;
+    color:rgba(255, 255, 255, 0.7);
+    margin-right:5px;
+  }
+</style>
+
+<!-- Messages: style can be found in dropdown.less-->
+<li class="dropdown messages-menu" ng-controller="NotifCtrl as vm">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    <strong>Notifikasi</strong> &nbsp;
-    <i class="fa fa-envelope"></i>
-    <span class="label label-danger">4</span>
+    <strong>Notifikasi</strong>
+    <i class="fa fa-globe"></i>
+    <span class="label label-danger" ng-show="vm.notifNew != 0"><% vm.notifNew %></span>
   </a>
-  <ul class="dropdown-menu">
-    <li class="header">You have 4 messages</li>
+  <ul class="dropdown-menu" style="width:610px;">
+    <li class="header">
+      You have <% vm.notifNew %> new messages
+      <div class="pull-right">
+        <a href="#" style="color: rgba(60,141,188,1);" ng-click="vm.markAllRead()">
+          Mark All As Read
+        </a>
+        |
+        <a href="{{URL::to('dash/setting/notification')}}" style="color: rgba(60,141,188,1);">
+          Setting Notification
+        </a>
+      </div>
+    </li>
     <li>
       <!-- inner menu: contains the actual data -->
-      <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"><ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
-        <li><!-- start message -->
-          <a href="#">
-            <div class="pull-left">
-              <img src="img/avatar3.png" class="img-circle" alt="User Image">
+      <ul class="menu" style="height:377px;">
+        <!-- start message -->
+        <li ng-repeat="notif in vm.notif track by $index"
+            ng-class="{'notif-new': notif.status=='new', 'notif-read': notif.status=='read'}">
+
+          <a href="{{URL::to('dash/notifikasi/read/<% notif.id %>')}}">
+            <!-- <div class="pull-left" style="color:black;"> -->
+              <!-- <i class="fa fa-warning danger" style=""></i> -->
+            <!-- </div> -->
+            <div class="pull-left left-notif">
+              <% (vm.notif.length - $index) %>
             </div>
             <h4>
-              Support Team
-              <small><i class="fa fa-clock-o"></i> 5 mins</small>
+              <% notif.title %>
+              <!-- <small><i class="fa fa-clock-o"></i> <% notif.created_at | amCalendar %> </small> -->
+              <small style="font-size:11px;">
+                <i class="fa fa-clock-o"></i> <span am-time-ago="notif.created_at">
+              </span></small>
             </h4>
-            <p>Why not buy a new awesome theme?</p>
+            <p ng-bind-html="vm.showHTML(notif.desc)"></p>
           </a>
         </li><!-- end message -->
-        <li>
-          <a href="#">
-            <div class="pull-left">
-              <img src="img/avatar2.png" class="img-circle" alt="user image">
-            </div>
-            <h4>
-              AdminLTE Design Team
-              <small><i class="fa fa-clock-o"></i> 2 hours</small>
-            </h4>
-            <p>Why not buy a new awesome theme?</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="pull-left">
-              <img src="img/avatar.png" class="img-circle" alt="user image">
-            </div>
-            <h4>
-              Developers
-              <small><i class="fa fa-clock-o"></i> Today</small>
-            </h4>
-            <p>Why not buy a new awesome theme?</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="pull-left">
-              <img src="img/avatar2.png" class="img-circle" alt="user image">
-            </div>
-            <h4>
-              Sales Department
-              <small><i class="fa fa-clock-o"></i> Yesterday</small>
-            </h4>
-            <p>Why not buy a new awesome theme?</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="pull-left">
-              <img src="img/avatar.png" class="img-circle" alt="user image">
-            </div>
-            <h4>
-              Reviewers
-              <small><i class="fa fa-clock-o"></i> 2 days</small>
-            </h4>
-            <p>Why not buy a new awesome theme?</p>
-          </a>
-        </li>
-      </ul><div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 131.147540983607px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+      </ul>
     </li>
-    <li class="footer"><a href="#">See All Messages</a></li>
+    <li class="footer">
+      <a href="{{URL::to('dash/notifikasi/view')}}">See All Messages</a>
+      </li>
   </ul>
 </li>
+<!-- Notifications: style can be found in dropdown.less -->
+
+
+<script type="text/javascript">
+app.controller('NotifCtrl',NotifCtrl);
+NotifCtrl.$inject = ['$http','$interval','$sce'];
+
+function NotifCtrl($http, $interval,$sce){
+  var vm = this;
+  vm.getNotif = getNotif;
+  vm.getNewNotifCount = getNewNotifCount;
+  vm.showHTML = showHTML;
+  vm.markAllRead = markAllRead;
+
+  vm.my_user_id = <?php echo Auth::user()->id; ?>;
+  vm.countDown = 1;
+  vm.notif=null;
+  vm.intervalTime = 1000;
+  vm.notifNum = 0;
+  vm.notifNew = 0;
+
+  activate();
+
+  function getNotif(){
+    var url = 'http://lpantb.dev/dash/notifserv/mynotif/'+vm.my_user_id;
+    $http.get(url)
+    .success(function(data, status, header, config){
+      vm.notif = data;
+
+    })
+    .error(function(data, status, header, config){
+      console.log('data '+data);
+      console.log('status '+status);
+      console.log('header '+header);
+    });
+  }
+
+  function getNewNotifCount(){
+    var url = 'http://lpantb.dev/dash/notifserv/mynotif/new/count/'+vm.my_user_id;
+    $http.get(url)
+    .success(function(data, status, header, config){
+      vm.notifNew = data;
+    })
+    .error(function(data, status, header, config){
+      console.log('data '+data);
+      console.log('status '+status);
+      console.log('header '+header);
+    });
+  }
+
+  function markAllRead() {
+    var url = 'http://lpantb.dev/dash/notifserv/markread';
+    $http.get(url)
+    .success(function(data, status, header, config){
+      console.log(data);
+      activate();
+    })
+    .error(function(data, status, header, config){
+      console.log('data '+data);
+      console.log('status '+status);
+      console.log('header '+header);
+    });
+  }
+
+  function showHTML($data){
+    return $sce.trustAsHtml($data);
+  }
+
+  function activate(){
+    $interval(
+      function(){
+        getNotif();
+        getNewNotifCount();
+        console.log(vm.countDown++);
+      },
+      vm.intervalTime
+    );
+    getNotif();
+    getNewNotifCount();
+  }
+
+
+
+
+}
+</script>

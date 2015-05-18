@@ -21,6 +21,8 @@ use App\Models\Anak;
 use Illuminate\Support\Facades\Auth;
 
 use App\Helpers\LKAHelper;
+use App\Helpers\NotifikasiFormLKAHelper;
+use App\Models\User;
 
 /**
 * Description of Testerform1Controller
@@ -37,8 +39,8 @@ class FormKA1Controller extends BaseController {
       'panel_title' => 'Table View',
       'location' => 'view',
       'table'=> Form::where('nama', '=', 'ka1')
-                     ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                     ->orderBy('no_lka', 'desc')->get(),
+      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+      ->orderBy('no_lka', 'desc')->get(),
       'selectedYear'=>$year,
     ];
     return View::make('formka1.view', $data);
@@ -49,8 +51,8 @@ class FormKA1Controller extends BaseController {
     $year = date('Y');
     $username = Auth::user()->username;
     $form = Form::where('nama', '=', 'ka1')
-                  ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                  ->orderBy('tanggal', 'desc');
+    ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+    ->orderBy('tanggal', 'desc');
     $form->whereHas('user', function ($qa) use ($username) {
       $qa->where('user.username', 'LIKE', '%' . $username . '%');
     });
@@ -74,8 +76,8 @@ class FormKA1Controller extends BaseController {
       'panel_title' => 'Table View',
       'location' => 'view',
       'table'=> Form::where('nama', '=', 'ka1')
-                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                      ->orderBy('no_lka', 'desc')->get(),
+      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+      ->orderBy('no_lka', 'desc')->get(),
       'selectedYear'=>$year
     ];
     return View::make('formka1.view', $data);
@@ -144,9 +146,13 @@ class FormKA1Controller extends BaseController {
     //counter tambah lka
     LKAHelper::doCounter();
 
+    //notifikasi
+    NotifikasiFormLKAHelper::addNotif($form->id);
+
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
     return Redirect::to('/dash/formka1');
   }
+
 
   public function addMultiView() {
     $data = [
@@ -217,19 +223,40 @@ class FormKA1Controller extends BaseController {
     $fm['sign'] = $sign;
 
 
+    //get no lka and tanggal for update
+    $form = Form::find($fm['id']);
+    $no_lka = $form->no_lka;;
+
+    // inject lka if not set
+    if (!isset($fm['no_lka'])){
+      $fm['no_lka']=$form->no_lka;
+    }
+
+    // inject tanggal if not set
+    if (!isset($fm['tanggal'])){
+      $fm['tanggal']=$form->tanggal;
+    }
+
+
+
     $form = FormDAO::saveOrUpdate($fm);
     $anak = AnakDAO::saveOrUpdate($an);
     $pelapor = PelaporDAO::saveOrUpdate($pel, $anak);
     $ct = ContactPersonDAO::saveOrUpdate($ct, $anak);
 
-    //        $form = Form::find($form->id);
-    $no_lka = $fm['no_lka'];
-    Session::flash('message', "Form with No LKA $no_lka has been updated!");
 
+
+    //notifikasi
+    NotifikasiFormLKAHelper::updateNotif($form->id);
+
+    Session::flash('message', "Form with No LKA $no_lka has been updated!");
     return Redirect::to('dash/formka1');
   }
 
   public function delete($id) {
+    //notifikasi
+    NotifikasiFormLKAHelper::deleteNotif($id);
+
     $form = FormDAO::delete($id);
     if ($form) {
       Session::flash('message', "Form with $id has been deleted!");
@@ -238,6 +265,7 @@ class FormKA1Controller extends BaseController {
     }
     return Redirect::to('/dash/formka1');
   }
+
 
   public function searchLKA(){
     $lka = Input::get('lka');
@@ -289,5 +317,7 @@ class FormKA1Controller extends BaseController {
     ];
     return View::make('formka1.view', $data);
   }
+
+
 
 }

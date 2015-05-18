@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('/lpantb/login');
+			return Redirect::guest('/login');
 		}
 	}
 });

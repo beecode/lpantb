@@ -19,6 +19,7 @@ use App\DAO\AnakDAO;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\LKAHelper;
 use App\Helpers\FormMultiHelper;
+use App\Helpers\NotifikasiFormLKAHelper;
 
 /**
 * Description of Testerform1Controller
@@ -135,8 +136,12 @@ class FormKA2Controller extends BaseController {
     $sum->anak()->attach($anak->id);
     $form->user()->attach($user->id);
 
+    //LKA do COunter
     LKAHelper::doCounter();
 
+
+    //notifikasi
+    NotifikasiFormLKAHelper::addNotif($form->id);
 
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
     return Redirect::to('/dash/formka2');
@@ -200,14 +205,19 @@ class FormKA2Controller extends BaseController {
     $an = Input::get('anak');
     $ct = Input::get('contact');
 
-    $f = Form::find($fm['id']);
+
+    //get no lka and tanggal for update
+    $form = Form::find($fm['id']);
+    $no_lka = $form->no_lka;;
+
+    // inject lka if not set
     if (!isset($fm['no_lka'])){
-      $fm['no_lka'] = $f->no_lka;
+      $fm['no_lka']=$form->no_lka;
     }
 
     // inject tanggal if not set
     if (!isset($fm['tanggal'])){
-      $fm['tanggal']=date('Y-m-d');
+      $fm['tanggal']=$form->tanggal;
     }
 
     $user = Auth::user();
@@ -224,11 +234,18 @@ class FormKA2Controller extends BaseController {
     ContactPersonDAO::saveOrUpdate($ct, $anak);
 
     $lka = $fm['no_lka'];
+
+    //notifikasi
+    NotifikasiFormLKAHelper::updateNotif($form->id);
+
     Session::flash('message', "Form with No LKA $lka has been updated!");
     return Redirect::to('dash/formka2');
   }
 
   public function delete($id) {
+    //notifikasi
+    NotifikasiFormLKAHelper::deleteNotif($id);
+
     $f = Form::find($id);
     $form = FormDAO::delete($id);
 

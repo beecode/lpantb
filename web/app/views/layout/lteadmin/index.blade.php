@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
     <head>
         @include('layout.lteadmin.head')
     </head>
-    <body class="skin-blue">
+    <body class="skin-blue" >
         @include('layout.lteadmin.js')
         @include('layout.lteadmin.header')
         @include('layout.lteadmin.nav')

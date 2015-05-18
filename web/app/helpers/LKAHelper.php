@@ -28,7 +28,7 @@ use App\DAO\FormDAO;
         $number =  str_pad($last, 3, "0", STR_PAD_LEFT);
         $year = $yearNow;
      }
-     
+
      $year = date('Y');
      $month = RomanHelper::numberToRoman(date('m'));
      $lka = $number.'/'.$part.'/'.$month.'/'.$year;
@@ -64,7 +64,7 @@ use App\DAO\FormDAO;
      $last = SettingDAO::getValue("LKA_LAST_NUMBER");
      $number =  str_pad($last, 3, "0", STR_PAD_LEFT);
 
-     if ($yearDB!=$yearNow){
+     if ($yearDb!=$yearNow){
         $last = SettingDAO::getValue("LKA_START_NUMBER");
         $number =  str_pad($last, 3, "0", STR_PAD_LEFT);
         $year = $yearNow;

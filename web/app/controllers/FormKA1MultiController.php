@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Anak;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\FormMultiHelper;
+use App\Helpers\NotifikasiFormLKAHelper;
 
 /**
 * Description of Testerform1Controller
@@ -122,6 +123,9 @@ class FormKA1MultiController extends BaseController {
     //synchornize multiple total and sequence multiview
     FormMultiHelper::synchronize($fm['no_lka']);
 
+    //notifikasi
+    NotifikasiFormLKAHelper::addNotif($form->id);
+
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
     return Redirect::to('/dash/formka1multi/view/'.$lka);
@@ -175,6 +179,9 @@ class FormKA1MultiController extends BaseController {
     //synchornize multiple total and sequence multiview
     FormMultiHelper::synchronize($fm['no_lka']);
 
+    //notifikasi
+    NotifikasiFormLKAHelper::updateNotif($form->id);
+
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
 
@@ -182,6 +189,9 @@ class FormKA1MultiController extends BaseController {
   }
 
   public function delete($id, $enc_lka) {
+    //notifikasi
+    NotifikasiFormLKAHelper::deleteNotif($id);
+
     $form = FormDAO::delete($id);
     if ($form) {
       Session::flash('message', "Form with $id has been deleted!");

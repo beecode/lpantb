@@ -7,6 +7,8 @@ use View;
 use Input;
 use Session;
 use App\Models\Provinsi;
+use App\Helpers\NotifikasiHelper;
+use App\Models\Notifikasi;
 
 /**
  * Description of TestController
@@ -16,10 +18,13 @@ use App\Models\Provinsi;
 class TestController extends BaseController {
 
     public function test() {
-//        echo $this->getRandomIDs();
-
-        return View::make('admin.wizard', ['page_title' => '']);
+      $user_from_id = 5;
+      $user_to_id = 1;
+      $form_id = 58;
+      NotifikasiHelper::KA2Create($user_from_id, $user_to_id, $form_id);
+      return  Notifikasi::all()->toJson();
     }
+
 
     public function wizardTest() {
         return View::make('tester.Wizardtes');

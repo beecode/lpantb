@@ -23,7 +23,7 @@
                 <?php } ?>
 
                 <li class="active">
-                    <a href="<?php echo URL::to('/dash/user'); ?>">
+                    <a href="<?php echo URL::to('/dash/notifikasi/view'); ?>">
                       <i class="fa fa-envelope"></i>
                         <span>Notifikasi</span>
                     </a>

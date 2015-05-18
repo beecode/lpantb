@@ -12,22 +12,16 @@
   <?php } ?>
 
 
-    <div class="form-group" ng-repeat="num in vm.list track by $index">
-      <label class="col-sm-2 control-label">Kepada (<% $index+1 %>)</label>
+    <div class="form-group" ng-repeat="num in vm.list" ng-init="parentIndex = $index">
+      <label class="col-sm-2 control-label">Kepada (<% parentIndex+1 %>)</label>
       <div class="col-sm-4">
         <select class="form-control"
-                ng-model="vm.kepada[$index]"
-                ng-options="user.id as user.name for user in vm.user track by user.id "
-                ng-change="vm.change($index)">
-
-              <!-- <option ng-repeat="user in vm.user track by $index"
-                      ng-selected=""
-                      value="<% user.id %>">
-                      <% user.name %>
-              </option> -->
-
+                ng-model="vm.kepada[parentIndex]"
+                ng-options="user.id as user.name for user in vm.user track by user.id"
+                ng-change="vm.change(parentIndex)">
         </select>
       </div>
+
       <span class="btn btn-default"
             ng-show="$index>0"
             ng-click="vm.remove(num)"
@@ -42,10 +36,16 @@
       </span>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label class="col-sm-2 control-label">Kepada</label>
       <div class="col-sm-10">
       <pre><% vm.kepada %></pre>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Kepada Selected</label>
+      <div class="col-sm-10">
+      <pre><% vm.kepadaSelected %></pre>
       </div>
     </div>
     <div class="form-group">
@@ -53,7 +53,7 @@
       <div class="col-sm-10">
       <pre><% vm.list %></pre>
       </div>
-    </div>
+    </div> -->
 
 
     <div style="display: none;">
@@ -81,6 +81,7 @@ function DisposisiCtrl(){
 
 
   <?php if (isset($dis->kepada)){?>
+    vm.kepadaSelected = <?php echo $dis->kepada ?>;
     vm.kepada = <?php echo $dis->kepada ?>;
     vm.list = <?php echo $dis->kepada ?>;
   <?php } else { ?>
@@ -91,13 +92,27 @@ function DisposisiCtrl(){
   vm.user = <?php echo $user; ?>
 
 
-  function change(index){
-    // vm.kepada[array_index] = vm.user[user_index];
-    var selected = vm.kepada[index]-1;
-    var user = vm.user[selected];
+  //Pencarian untuk user index array berdasarkan id object yang dipilih
+  //START
+  function findIndexOfUser(user_id){
+    var indexOut = null;
+    for (var index = 0; index < vm.user.length; index++){
+      var user = vm.user[index];
+      if (user.id == user_id){
+        indexOut = index;
+      }
+    }
+    return indexOut;
+  }
+  //END
+
+  function change(parentIndex){
+    var user_id = vm.kepada[parentIndex];
+    var user_index = findIndexOfUser(user_id);
+    var user = vm.user[user_index];
     var select = {id:user.id, name:user.name};
-    vm.kepada[index] = select;
-    console.log(select);
+    vm.kepadaSelected[parentIndex] = select;
+    vm.kepada[parentIndex] = select;
   }
 
   function add(){
@@ -110,6 +125,7 @@ function DisposisiCtrl(){
     if (index > -1) {
       vm.list.splice(index, 1);
       vm.kepada.splice(index, 1);
+      vm.kepadaSelected.splice(index,1);
     }
   }
 }

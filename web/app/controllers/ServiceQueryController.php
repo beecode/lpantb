@@ -29,6 +29,7 @@ class ServiceQueryController extends BaseController {
 
     public function anakQueryNama($q) {
         $anak = Anak::where('nama', 'LIKE', '%' . $q . '%')->get();
+        $anak[0]->form->first();
         return $anak->toJSON();
     }
 
