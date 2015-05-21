@@ -21,6 +21,8 @@ use App\DAO\FormDAO,
     App\DAO\DisposisiDAO;
 
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\DisposisiHelper;
+use App\Helpers\FormKA5DisposisiHelper;
 
 /**
  * Description of Testerform1Controller
@@ -41,7 +43,8 @@ class FormKA5Controller extends BaseController {
         'table'=> Form::where('nama', '=', 'ka5')
                       ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                       ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear' => $year
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -62,7 +65,8 @@ class FormKA5Controller extends BaseController {
         'panel_title' => 'Table View',
         'location' => 'view',
         'table' => $form->get(),
-        'selectedYear' => $year
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -77,7 +81,8 @@ class FormKA5Controller extends BaseController {
         'table'=> Form::where('nama', '=', 'ka5')
                         ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                         ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear'=>$year
+        'selectedYear'=>$year,
+        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -91,6 +96,35 @@ class FormKA5Controller extends BaseController {
             'data' => Form::where('nama', '=', 'ka5')->where('id', '=', $id)->first(),
         ];
         return View::make('formka5.detail', $data);
+    }
+
+    public function disposisi(){
+      $year = date('Y');
+      $dis = FormKA5DisposisiHelper::getDisposisiForm($year);
+      $data = [
+        'panel_title' => 'Table View',
+        'location' => 'disposisi',
+        'table'=> $dis,
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka5.view', $data);
+    }
+
+    public function disposisiYear(){
+      $year = Input::get('year');
+      $dis = FormKA5DisposisiHelper::getDisposisiForm($year);
+      $data = [
+        'panel_title' => 'Table View',
+        'location' => 'disposisi',
+        'table'=> $dis,
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka5.view', $data);
+
     }
 
     public function preAddView() {

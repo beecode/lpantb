@@ -16,6 +16,7 @@ use App\DAO\FormDAO,
     App\DAO\JenisKasusDAO,
     App\DAO\AnakDAO;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\FormKA7DisposisiHelper;
 
 /**
  * Description of Testerform1Controller
@@ -24,59 +25,91 @@ use Illuminate\Support\Facades\Auth;
  */
 class FormKA7Controller extends BaseController {
 
-    private $basic = [
-      'page_title' => 'Kasus Anak 7 (KA7)',
+  private $basic = [
+    'page_title' => 'Kasus Anak 7 (KA7)',
+  ];
+
+  public function view() {
+    $year = date('Y');
+    $data = [
+      'panel_title' => 'Table View',
+      'location' => 'view',
+      'table'=> Form::where('nama', '=', 'ka7')
+                    ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                    ->orderBy('no_lka', 'desc')->get(),
+      'selectedYear' => $year,
+      'disposisiCount'=>FormKA7DisposisiHelper::count($year),
     ];
+    $data = array_merge($data, $this->basic);
+    return View::make('formka7.view', $data);
+  }
 
-    public function view() {
-      $year = date('Y');
-      $data = [
-        'panel_title' => 'Table View',
-        'location' => 'view',
-        'table'=> Form::where('nama', '=', 'ka7')
-                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                      ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear' => $year
-      ];
-      $data = array_merge($data, $this->basic);
-      return View::make('formka7.view', $data);
-    }
-
-    public function viewMe() {
-      $year = date('Y');
-      $username = Auth::user()->username;
-      $form = Form::where('nama', '=', 'ka7')
+  public function viewMe() {
+    $year = date('Y');
+    $username = Auth::user()->username;
+    $form = Form::where('nama', '=', 'ka7')
                   ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                   ->orderBy('no_lka', 'desc');
-      $form->whereHas('user', function ($qa) use ($username) {
-        $qa->where('user.username', 'LIKE', '%' . $username . '%');
-      });
+    $form->whereHas('user', function ($qa) use ($username) {
+      $qa->where('user.username', 'LIKE', '%' . $username . '%');
+    });
 
-      $data = [
-        'title' => '',
-        'panel_title' => 'Table View',
-        'location' => 'view',
-        'table' => $form->get(),
-        'selectedYear' => $year
-      ];
-      $data = array_merge($data, $this->basic);
-      return View::make('formka7.view', $data);
-    }
+    $data = [
+      'title' => '',
+      'panel_title' => 'Table View',
+      'location' => 'view',
+      'table' => $form->get(),
+      'selectedYear' => $year,
+      'disposisiCount'=>FormKA7DisposisiHelper::count($year),
+    ];
+    $data = array_merge($data, $this->basic);
+    return View::make('formka7.view', $data);
+  }
 
-    public function viewYear() {
-      $year = Input::get('year');
-      $data = [
-        'title' => '',
-        'panel_title' => 'Table View',
-        'location' => 'view',
-        'table'=> Form::where('nama', '=', 'ka7')
+  public function viewYear() {
+    $year = Input::get('year');
+    $data = [
+      'title' => '',
+      'panel_title' => 'Table View',
+      'location' => 'view',
+      'table'=> Form::where('nama', '=', 'ka7')
                       ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                       ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear'=>$year
-      ];
-      $data = array_merge($data, $this->basic);
-      return View::make('formka7.view', $data);
-    }
+      'selectedYear'=>$year,
+      'disposisiCount'=>FormKA7DisposisiHelper::count($year),
+    ];
+    $data = array_merge($data, $this->basic);
+    return View::make('formka7.view', $data);
+  }
+
+  public function disposisi(){
+    $year = date('Y');
+    $dis = FormKA7DisposisiHelper::getDisposisiForm($year);
+    $data = [
+      'panel_title' => 'Table View',
+      'location' => 'disposisi',
+      'table'=> $dis,
+      'selectedYear' => $year,
+      'disposisiCount'=>FormKA7DisposisiHelper::count($year),
+    ];
+    $data = array_merge($data, $this->basic);
+    return View::make('formka7.view', $data);
+  }
+
+  public function disposisiYear(){
+    $year = Input::get('year');
+    $dis = FormKA7DisposisiHelper::getDisposisiForm($year);
+    $data = [
+      'panel_title' => 'Table View',
+      'location' => 'disposisi',
+      'table'=> $dis,
+      'selectedYear' => $year,
+      'disposisiCount'=>FormKA7DisposisiHelper::count($year),
+    ];
+    $data = array_merge($data, $this->basic);
+    return View::make('formka7.view', $data);
+
+  }
 
     public function preAddView() {
         $data = [

@@ -74,6 +74,50 @@ class NotifikasiHelper{
   }
 
 
+  public static function disposisiNotifNew($title, $user_from_id, $user_to_id, $form_id){
+    $user_from = User::find($user_from_id);
+    $user_to = User::find($user_to_id);
+    $form = Form::find($form_id);
+
+    $user_from_level = ucfirst($user_from->level);
+    $user_from_name = $user_from->name;
+    $form_nama = strtoupper($form->nama);
+
+    $status = 'new';
+    $action_status = 'disposisi';
+
+    $desc = "<b>".$user_from_level."</b> dengan Nama <b>".$user_from_name."</b>"
+    ."<br/>memberikan <b>disposisi</b> kepada anda melalui Form <b>".$form_nama."</b>"
+    ." dengan Nomer LKA ".$form->no_lka;
+
+    $action_from = $user_from->id;
+    $action_from_json = json_encode($user_from->get());
+
+    $action_to = $user_to->id;
+    $action_to_json = json_encode($user_to);
+
+    $form_id = $form->id;
+    $form_nama = $form->nama;
+    $form_json = json_encode($form);
+
+    $notif = [
+      'status' => $status,
+      'title'=>$title,
+      'desc'=> $desc,
+      'action_status'=>$action_status,
+      'action_from'=>$action_from,
+      'action_from_json'=>$action_from_json,
+      'action_to'=>$action_to,
+      'action_to_json'=>$action_to_json,
+      'form_id'=>$form_id,
+      'form_nama'=>$form_nama,
+      'form_json'=>$form_json,
+    ];
+
+    NotifikasiDAO::saveOrUpdate($notif);
+  }
+
+
   public function FunctionName(){
   }
 

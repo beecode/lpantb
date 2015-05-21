@@ -19,6 +19,7 @@ use App\DAO\DisposisiDAO;
 use App\DAO\UserDAO;
 use App\Helpers\PrintLog;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\NotifikasiDisposisiHelper;
 
 /**
  * Description of Testerform1Controller
@@ -177,6 +178,10 @@ class FormKA3Controller extends BaseController {
         TindakLanjutDAO::attachAll($ti, $anak);
         JenisKasusDAO::attachAll($jk, $anak);
 
+
+        //notifikasi
+        NotifikasiDisposisiHelper::disposisiCreate($form->id);
+
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
         return Redirect::to('/dash/formka3');
     }
@@ -233,11 +238,18 @@ class FormKA3Controller extends BaseController {
         JenisKasusDAO::saveOrUpdate($jk, $anak);
 
         $form = Form::find($form->id);
+
+        //notifikasi
+        NotifikasiDisposisiHelper::disposisiUpdate($form->id);
+
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
         return Redirect::to('/dash/formka3');
     }
 
     public function delete($id) {
+        //notifikasi
+        NotifikasiDisposisiHelper::formDelete($form->id);
+
         $form = FormDAO::delete($id);
         if ($form) {
             Session::flash('message', "Form with $id has been deleted!");

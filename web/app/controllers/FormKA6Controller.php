@@ -17,6 +17,8 @@ use App\DAO\FormDAO,
     App\DAO\JenisKasusDAO;
 use Illuminate\Support\Facades\Auth;
 
+use App\Helpers\FormKA6DisposisiHelper;
+
 /**
  * Description of Testerform1Controller
  *
@@ -36,7 +38,8 @@ class FormKA6Controller extends BaseController {
         'table'=> Form::where('nama', '=', 'ka6')
                       ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                       ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear' => $year
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -46,8 +49,8 @@ class FormKA6Controller extends BaseController {
       $year = date('Y');
       $username = Auth::user()->username;
       $form = Form::where('nama', '=', 'ka6')
-                  ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                  ->orderBy('no_lka', 'desc');
+                    ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                    ->orderBy('no_lka', 'desc');
       $form->whereHas('user', function ($qa) use ($username) {
         $qa->where('user.username', 'LIKE', '%' . $username . '%');
       });
@@ -57,7 +60,8 @@ class FormKA6Controller extends BaseController {
         'panel_title' => 'Table View',
         'location' => 'view',
         'table' => $form->get(),
-        'selectedYear' => $year
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -70,9 +74,10 @@ class FormKA6Controller extends BaseController {
         'panel_title' => 'Table View',
         'location' => 'view',
         'table'=> Form::where('nama', '=', 'ka6')
-                      ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                      ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear'=>$year
+                        ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                        ->orderBy('no_lka', 'desc')->get(),
+        'selectedYear'=>$year,
+        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -83,10 +88,40 @@ class FormKA6Controller extends BaseController {
             'page_title' => 'Kasus Anak 6 (KA6)',
             'panel_title' => 'Detail View',
             'location' => 'view',
-            'data' => Form::where('nama', '=', 'ka5')->where('id', '=', $id)->first(),
+            'data' => Form::where('nama', '=', 'ka6')->where('id', '=', $id)->first(),
         ];
         return View::make('formka6.detail', $data);
     }
+
+    public function disposisi(){
+      $year = date('Y');
+      $dis = FormKA6DisposisiHelper::getDisposisiForm($year);
+      $data = [
+        'panel_title' => 'Table View',
+        'location' => 'disposisi',
+        'table'=> $dis,
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka6.view', $data);
+    }
+
+    public function disposisiYear(){
+      $year = Input::get('year');
+      $dis = FormKA6DisposisiHelper::getDisposisiForm($year);
+      $data = [
+        'panel_title' => 'Table View',
+        'location' => 'disposisi',
+        'table'=> $dis,
+        'selectedYear' => $year,
+        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+      ];
+      $data = array_merge($data, $this->basic);
+      return View::make('formka6.view', $data);
+
+    }
+
 
     public function preAddView() {
         $data = [

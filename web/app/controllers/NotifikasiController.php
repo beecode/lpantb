@@ -62,8 +62,13 @@ class NotifikasiController extends BaseController {
     $form_id = $notifikasi->form_id;
     $form_nama = $notifikasi->form_nama;
     $url = 'dash/form'.$form_nama.'/detailview/'.$form_id;
+
     if ($notifikasi->action_status=='delete'){
       $url = 'dash/form'.$form_nama;
+    }
+
+    if ($notifikasi->action_status=="disposisi"){
+      $url = 'dash/formka4/disposisi';
     }
 
     return $url;

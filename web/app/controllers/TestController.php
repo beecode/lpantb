@@ -9,7 +9,11 @@ use Session;
 use App\Models\Provinsi;
 use App\Helpers\NotifikasiHelper;
 use App\Models\Notifikasi;
-
+use App\Helpers\NotifikasiDisposisiHelper;
+use App\Helpers\DisposisiHelper;
+use App\Models\Form;
+use App\Helpers\FormKA5DisposisiHelper;
+use App\Helpers\FormKA6DisposisiHelper;
 /**
  * Description of TestController
  *
@@ -18,13 +22,10 @@ use App\Models\Notifikasi;
 class TestController extends BaseController {
 
     public function test() {
-      $user_from_id = 5;
-      $user_to_id = 1;
-      $form_id = 58;
-      NotifikasiHelper::KA2Create($user_from_id, $user_to_id, $form_id);
-      return  Notifikasi::all()->toJson();
+      $year = "2015";
+      $dis = DisposisiHelper::getDisposisiForm($year);
+      // var_dump($dis);
     }
-
 
     public function wizardTest() {
         return View::make('tester.Wizardtes');

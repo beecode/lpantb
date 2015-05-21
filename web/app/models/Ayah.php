@@ -12,7 +12,7 @@ Use Illuminate\Database\Eloquent\Model as Eloquent;
 class Ayah extends Eloquent {
 
     protected $table = "ayah";
-    // public $timestamps = false;
+    public $timestamps = false;
     private $ns = "App\\Models\\";
 
     public function Keluarga() {

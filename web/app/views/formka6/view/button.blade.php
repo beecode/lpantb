@@ -6,10 +6,21 @@
             Kembali
         </a>
     <?php } ?>
-    <a class="btn btn-default"
-       href="{{URL::to('/dash/formka6/preaddview')}}">
-        <span class="glyphicon glyphicon-plus"></span>
-        Tambah
+
+    <?php if (Auth::user()->level == "admin"){?>
+      <a class="btn btn-default"
+         href="{{URL::to('/dash/formka6/preaddview')}}">
+          <span class="glyphicon glyphicon-plus"></span>
+          Tambah
+      </a>
+    <?php } ?>
+
+
+    <a href="{{URL::to('dash/formka6/disposisi')}}" class="btn btn-default">
+      Disposisi
+      <label class="label label-danger">
+        {{$disposisiCount}}
+      </label>
     </a>
 
     &nbsp;&nbsp;
@@ -29,7 +40,14 @@
 </div>
 
 <div class="pull-left col-sm-2">
-  <form role="form" method="POST" action="{{URL::to('/dash/formka6/viewYear')}}">
+  <?php
+    if ($location=="disposisi"){
+      $action = 'dash/formka6/disposisiYear';
+    } else {
+      $action = '/dash/formka6/viewYear';
+    }
+  ?>
+  <form role="form" method="POST" action="{{URL::to($action)}}">
     <div class="input-group input-group has-warning">
       <?php
         $yearArray =[];

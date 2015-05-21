@@ -8,6 +8,10 @@ Route::get($pr_k7 . "/viewMe", $con . $fk7 . "@viewMe")->before('auth');
 Route::post($pr_k7 . "/viewYear", $con . $fk7 . "@viewYear")->before('auth');
 Route::get($pr_k7 . "/detailview/{anak_id}", $con . $fk7 . "@detailView")->before('auth');
 
+Route::get($pr_k7 . "/disposisi", $con . $fk7 . "@disposisi")->before('auth');
+Route::post($pr_k7 . "/disposisiYear", $con . $fk7 . "@disposisiYear")->before('auth');
+
+
 Route::get($pr_k7 . "/preaddview", $con . $fk7 . "@preAddView")->before('auth');
 Route::get($pr_k7 . "/addview/{anak_id}", $con . $fk7 . "@addView")->before('auth');
 Route::post($pr_k7 . "/add", $con . $fk7 . "@add")->before('auth');
