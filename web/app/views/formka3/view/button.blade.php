@@ -6,18 +6,39 @@
             Kembali
         </a>
     <?php } ?>
+
     <?php if (UserHelper::amIAdmin()){  ?>
+
+      <a class="btn btn-default"
+         href="{{URL::to('/dash/formka3/preaddview')}}">
+          <span class="glyphicon glyphicon-plus"></span>
+          Tambah
+      </a>
+
+      <a class="btn btn-default"
+         href="{{URL::to('/dash/formka3')}}">
+          <span class="glyphicon glyphicon-th-list"></span>
+          Semua
+      </a>
     <a class="btn btn-default"
-       href="{{URL::to('/dash/formka3/preaddview')}}">
-        <span class="glyphicon glyphicon-plus"></span>
-        Tambah
+       href="{{URL::to('/dash/formka3/viewLKA')}}">
+        LKA Baru &nbsp;
+        <label class="label label-danger">{{$countLKA}}</label>
     </a>
     <?php } ?>
 </div>
 
 
 <div class="pull-left col-sm-2">
-  <form role="form" method="POST" action="{{URL::to('/dash/formka3/viewYear')}}">
+
+  <?php
+    if ($location=="lka"){
+      $action = '/dash/formka3/viewLKA';
+    } else {
+      $action = '/dash/formka3/viewYear';
+    }
+  ?>
+  <form role="form" method="GET" action="{{$action}}">
     <div class="input-group input-group has-warning">
       <?php
         $yearArray =[];

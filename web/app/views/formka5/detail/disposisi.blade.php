@@ -8,7 +8,14 @@
             <tbody>
                 <tr>
                     <th style="width:21%">Kepada</th>
-                    <td>{{$dis->kepada}}</td>
+                    <td>
+                      <?php
+                        $kepada = json_decode($dis->kepada);
+                        foreach($kepada as $kpd){
+                          echo $kpd->name."<br/>";
+                        }
+                       ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>Isi</th>

@@ -58,6 +58,15 @@
 
             @include('formka2.detail.sumber')
             @include('formka2.detail.anak')
+            <div class="col-xs-12">
+              <div class="ringkasan">
+                <h5>
+                  <strong>User Pembuat Form</strong>
+                </h5>
+                <hr style="margin-top:0px;margin-bottom:6px;">
+                <p>{{$data->user->first()->name}}</p>
+              </div>
+            </div>
             @include('formka2.detail.ringkasan')
             @include('formka2.detail.sign')
 

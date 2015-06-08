@@ -12,8 +12,9 @@ use App\Models\Notifikasi;
 use App\Helpers\NotifikasiDisposisiHelper;
 use App\Helpers\DisposisiHelper;
 use App\Models\Form;
-use App\Helpers\FormKA5DisposisiHelper;
+use App\Helpers\FormKA5AssessmentHelper;
 use App\Helpers\FormKA6DisposisiHelper;
+use App\Helpers\FormKA3Helper;
 /**
  * Description of TestController
  *
@@ -22,9 +23,12 @@ use App\Helpers\FormKA6DisposisiHelper;
 class TestController extends BaseController {
 
     public function test() {
-      $year = "2015";
-      $dis = DisposisiHelper::getDisposisiForm($year);
-      // var_dump($dis);
+      $year = date('Y');
+      // $c = FormKA5AssessmentHelper::count($year);
+      // $form = FormKA5AssessmentHelper::getAssessment($year);
+      // print_r($form);
+      $c = FormKA6DisposisiHelper::getDisposisiForm($year);
+      echo count($c);
     }
 
     public function wizardTest() {

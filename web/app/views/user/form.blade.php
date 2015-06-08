@@ -77,19 +77,30 @@
                         </div>
                     </div>
 
+
+                  <?php if (Auth::user()->level == "creator"){ ?>
+                      <div class="form-group">
+                          {{ Form::label('Level', 'Level', ['class'=>'col-sm-2 control-label']) }}
+                          <div class="col-sm-3">
+                              <?php
+                              $list = [
+                                  'admin' => 'Administrator',
+                                  'operator' => 'Operator',
+                              ];
+                              ?>
+                              <?php $level = (isset($user->level)) ? $user->level : 'operator'; ?>
+                              {{ Form::select('user[level]', $list, $level, ['class'=>'form-control','required']) }}
+                          </div>
+                      </div>
+                  <?php } else if (Auth::user()->level =="admin") { ?>
                     <div class="form-group">
-                        {{ Form::label('Level', 'Level', ['class'=>'col-sm-2 control-label']) }}
-                        <div class="col-sm-3">
-                            <?php
-                            $list = [
-                                'admin' => 'Administrator',
-                                'operator' => 'Operator',
-                            ];
-                            ?>
-                            <?php $level = (isset($user->level)) ? $user->level : 'operator'; ?>
-                            {{ Form::select('user[level]', $list, $level, ['class'=>'form-control','required']) }}
-                        </div>
+                      <label class="col-sm-2 control-label">Level</label>
+                      <div class="col-sm-3">
+                        <label class="control-label">Operator</label>
+                      </div>
                     </div>
+                    {{Form::input('hidden','user[level]','operator')}}
+                  <?php } ?>
 
                     <div class="form-actions ">
                         <label class="col-sm-2 control-label"></label>

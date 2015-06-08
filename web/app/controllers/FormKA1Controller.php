@@ -163,7 +163,6 @@ class FormKA1Controller extends BaseController {
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
       'agama_lists' => Agama::lists('nama', 'nama'),
-
     ];
     return View::make('formka1.multi', $data);
   }
@@ -236,8 +235,6 @@ class FormKA1Controller extends BaseController {
     if (!isset($fm['tanggal'])){
       $fm['tanggal']=$form->tanggal;
     }
-
-
 
     $form = FormDAO::saveOrUpdate($fm);
     $anak = AnakDAO::saveOrUpdate($an);

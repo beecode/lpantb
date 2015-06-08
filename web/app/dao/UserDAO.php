@@ -60,5 +60,9 @@ class UserDAO {
         $u = User::all();
         return $u->toJson();
     }
+    public static function jsonAllOperator(){
+        $u = User::where('level','=','operator')->get();
+        return $u->toJson();
+    }
 
 }

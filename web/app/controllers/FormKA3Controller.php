@@ -20,27 +20,30 @@ use App\DAO\UserDAO;
 use App\Helpers\PrintLog;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\NotifikasiDisposisiHelper;
+use App\Helpers\FormKA3Helper;
 
 /**
  * Description of Testerform1Controller
  *
  * @author aljufry
+ * @author nunenuh
  */
 class FormKA3Controller extends BaseController {
 
     public function view() {
       $year = date('Y');
-        $data = [
-            'title' => '',
-            'page_title' => 'Kasus Anak 3 (KA3)',
-            'panel_title' => 'Table View',
-            'location' => 'view',
-            'table' => Form::where('nama', '=', 'ka3')
-                            ->whereRaw('YEAR(`tanggal`) = ?',array($year))
-                            ->orderBy('created_at','desc')->get(),
-            'selectedYear'=>$year,
-        ];
-        return View::make('formka3.view', $data);
+      $data = [
+          'title' => '',
+          'page_title' => 'Kasus Anak 3 (KA3)',
+          'panel_title' => 'Table View',
+          'location' => 'view',
+          'table' => Form::where('nama', '=', 'ka3')
+                          ->whereRaw('YEAR(`tanggal`) = ?',array($year))
+                          ->orderBy('created_at','desc')->get(),
+          'selectedYear'=>$year,
+          'countLKA'=>FormKA3Helper::countLKAData($year)
+      ];
+      return View::make('formka3.view', $data);
     }
 
     public function viewYear() {
@@ -53,10 +56,29 @@ class FormKA3Controller extends BaseController {
         'table'=> Form::where('nama', '=', 'ka3')
                         ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                         ->orderBy('no_lka', 'desc')->get(),
-        'selectedYear'=>$year
+        'selectedYear'=>$year,
+        'countLKA'=>FormKA3Helper::countLKAData($year)
       ];
       return View::make('formka3.view', $data);
     }
+
+    public function viewLKA(){
+      $year = Input::get('year');
+      if ($year==null){
+        $year == date('Y');
+      }
+      $data = [
+            'title' => '',
+            'page_title' => 'Kasus Anak 3 (KA3)',
+            'panel_title' => 'Table View',
+            'location' => 'lka',
+            'table' => FormKA3Helper::getLKAData($year),
+            'selectedYear'=>$year,
+            'countLKA'=>FormKA3Helper::countLKAData($year)
+        ];
+        return View::make('formka3.view', $data);
+    }
+
 
     public function detailView($id) {
         $data = [
@@ -135,7 +157,7 @@ class FormKA3Controller extends BaseController {
             'agama_lists' => Agama::lists('nama', 'nama'),
             'anak' => Anak::find($anak_id),
             'form'=>Anak::find($anak_id)->form->first(),
-            'user'=>UserDAO::jsonAll(),
+            'user'=>UserDAO::jsonAllOperator(),
         ];
         return View::make('formka3.form', $data);
     }
@@ -174,6 +196,7 @@ class FormKA3Controller extends BaseController {
        //save many to many
         $form = Form::find($form->id);
         $form->Anak()->attach($an['id']);
+        $form->user()->attach($user->id);
 
         TindakLanjutDAO::attachAll($ti, $anak);
         JenisKasusDAO::attachAll($jk, $anak);
@@ -196,7 +219,7 @@ class FormKA3Controller extends BaseController {
             'record' => Form::find($id),
             'jenis_kasus' => JenisKasus::all(),
             'tindak_lanjut' => TindakLanjut::all(),
-            'user'=>UserDAO::jsonAll(),
+            'user'=>UserDAO::jsonAllOperator(),
         ];
         return View::make('formka3.form', $data);
     }

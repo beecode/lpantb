@@ -6,7 +6,7 @@
             Kembali
         </a>
     <?php } ?>
-
+    <?php if (UserHelper::amIAdmin()){  ?>
     <?php if (Auth::user()->level == "admin"){?>
       <a class="btn btn-default"
          href="{{URL::to('/dash/formka5/preaddview')}}">
@@ -16,8 +16,8 @@
     <?php } ?>
 
 
-    <a href="{{URL::to('dash/formka5/disposisi')}}" class="btn btn-default">
-      Disposisi
+    <a href="{{URL::to('dash/formka5/assessment')}}" class="btn btn-default">
+      Assessment
       <label class="label label-danger">
         {{$disposisiCount}}
       </label>
@@ -37,12 +37,13 @@
           Kasus Saya
       </a>
     </div>
+    <?php } ?>
 </div>
 
 <div class="pull-left col-sm-2">
   <?php
     if ($location=="disposisi"){
-      $action = 'dash/formka5/disposisiYear';
+      $action = 'dash/formka5/assessmentYear';
     } else {
       $action = '/dash/formka5/viewYear';
     }

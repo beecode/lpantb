@@ -54,43 +54,4 @@
         </div>
     </section>
 </aside>
-<script type="text/javascript">
-  var app = angular.module("app", ['ngTouch', 'angucomplete'], function($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-  });
-
-  app.controller('LKACtrl',LKACtrl);
-  LKACtrl.$inject = [];
-
-  function LKACtrl(){
-    var vm = this;
-    vm.tanggalToggle = tanggalToggle;
-    vm.tanggalIcon = "glyphicon-ok";
-    vm.isTanggal = true;
-
-    vm.LKAToggle = LKAToggle;
-    vm.LKAIcon = "glyphicon-ok"
-    vm.isLKA = true;
-
-
-    function tanggalToggle(){
-      vm.isTanggal = !vm.isTanggal;
-      if (vm.isTanggal==true){
-        vm.tanggalIcon = "glyphicon-ok";
-      } else {
-        vm.tanggalIcon = "glyphicon-remove";
-      }
-    }
-
-    function LKAToggle(){
-      vm.isLKA = !vm.isLKA;
-      if (vm.isLKA==true){
-        vm.LKAIcon = "glyphicon-ok"
-      } else {
-        vm.LKAIcon = "glyphicon-remove"
-      }
-    }
-  }
-</script>
 @stop

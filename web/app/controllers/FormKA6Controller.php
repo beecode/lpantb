@@ -39,7 +39,7 @@ class FormKA6Controller extends BaseController {
                       ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                       ->orderBy('no_lka', 'desc')->get(),
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+        'disposisiCount'=>count(FormKA6DisposisiHelper::getDisposisiForm($year)),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -61,7 +61,7 @@ class FormKA6Controller extends BaseController {
         'location' => 'view',
         'table' => $form->get(),
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+        'disposisiCount'=>count(FormKA6DisposisiHelper::getDisposisiForm($year)),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -77,7 +77,7 @@ class FormKA6Controller extends BaseController {
                         ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                         ->orderBy('no_lka', 'desc')->get(),
         'selectedYear'=>$year,
-        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+        'disposisiCount'=>count(FormKA6DisposisiHelper::getDisposisiForm($year)),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -101,7 +101,7 @@ class FormKA6Controller extends BaseController {
         'location' => 'disposisi',
         'table'=> $dis,
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+        'disposisiCount'=>count(FormKA6DisposisiHelper::getDisposisiForm($year)),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -115,7 +115,7 @@ class FormKA6Controller extends BaseController {
         'location' => 'disposisi',
         'table'=> $dis,
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA6DisposisiHelper::count($year),
+        'disposisiCount'=>count(FormKA6DisposisiHelper::getDisposisiForm($year)),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka6.view', $data);
@@ -156,6 +156,7 @@ class FormKA6Controller extends BaseController {
         $an = Input::get('anak');
         $jk = Input::get('jenis_kasus');
 
+        $user = Auth::user();
 
         // inject lka if not set
         if (!isset($fm['no_lka'])){
@@ -175,6 +176,8 @@ class FormKA6Controller extends BaseController {
 //        //save many to many
         $form = Form::find($form->id);
         $form->Anak()->attach($an['id']);
+        $form->user()->attach($user->id);
+
         JenisKasusDAO::attachAll($jk, $anak);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");

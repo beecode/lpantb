@@ -154,6 +154,8 @@ class FormKA7Controller extends BaseController {
         $an = Input::get('anak');
         $jk = Input::get('jenis_kasus');
 
+        $user = Auth::user();
+
         // inject lka if not set
         if (!isset($fm['no_lka'])){
           $form = Anak::find($an['id'])->form->first();
@@ -172,6 +174,8 @@ class FormKA7Controller extends BaseController {
 //        //save many to many
         $form = Form::find($form->id);
         $form->Anak()->attach($an['id']);
+        $form->user()->attach($user->id);
+
         JenisKasusDAO::attachAll($jk, $anak);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");

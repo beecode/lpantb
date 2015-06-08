@@ -62,6 +62,16 @@
             @include('formka4.detail.identifikasi')
             @include('formka4.detail.psikososial')
             @include('formka4.detail.rekomendasi')
+            <div class="col-xs-12">
+              <div class="ringkasan">
+                <h5>
+                  <strong>User Pembuat Form</strong>
+                </h5>
+                <hr style="margin-top:0px;margin-bottom:6px;">
+                <p>{{$data->user->first()->name}}</p>
+              </div>
+            </div>
+            <br/><br/><br/><br/><br/><br/>
             @include('formka4.detail.sign')
 
 

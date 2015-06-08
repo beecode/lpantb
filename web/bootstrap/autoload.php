@@ -1,7 +1,5 @@
 <?php
-
 define('LARAVEL_START', microtime(true));
-
 /*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader
@@ -13,9 +11,7 @@ define('LARAVEL_START', microtime(true));
 | loading of any our classes "manually". Feels great to relax.
 |
 */
-
 require __DIR__.'/../vendor/autoload.php';
-
 /*
 |--------------------------------------------------------------------------
 | Include The Compiled Class File
@@ -26,12 +22,10 @@ require __DIR__.'/../vendor/autoload.php';
 | by a request. The Artisan "optimize" is used to create this file.
 |
 */
-
 if (file_exists($compiled = __DIR__.'/compiled.php'))
 {
 	require $compiled;
 }
-
 /*
 |--------------------------------------------------------------------------
 | Setup Patchwork UTF-8 Handling
@@ -42,9 +36,7 @@ if (file_exists($compiled = __DIR__.'/compiled.php'))
 | are not available by default in PHP. We'll setup this stuff here.
 |
 */
-
 Patchwork\Utf8\Bootup::initMbstring();
-
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Auto Loader
@@ -55,9 +47,7 @@ Patchwork\Utf8\Bootup::initMbstring();
 | regenerated for the application. We'll add it to the stack here.
 |
 */
-
 Illuminate\Support\ClassLoader::register();
-
 /*
 |--------------------------------------------------------------------------
 | Register The Workbench Loaders
@@ -68,7 +58,6 @@ Illuminate\Support\ClassLoader::register();
 | auto-load files for the packages so that these can be used here.
 |
 */
-
 if (is_dir($workbench = __DIR__.'/../workbench'))
 {
 	Illuminate\Workbench\Starter::start($workbench);

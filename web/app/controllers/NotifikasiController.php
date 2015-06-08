@@ -68,7 +68,12 @@ class NotifikasiController extends BaseController {
     }
 
     if ($notifikasi->action_status=="disposisi"){
-      $url = 'dash/formka4/disposisi';
+      if ($form_nama == "ka3"){
+        $url = 'dash/formka4/disposisi';
+      } else if ($form_nama =="ka5"){
+        $url = 'dash/formka6/disposisi';
+      }
+
     }
 
     return $url;

@@ -17,7 +17,7 @@ use App\Helpers\NotifikasiHelper;
 use App\Helpers\NotifikasiFormHelper;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Disposisi;
-use App\Helpers\DisposisiHelper;
+use App\Helpers\KA5DisposisiHelper;
 
 /**
 * Notifikasi Helpers
@@ -64,7 +64,7 @@ class FormKA6DisposisiHelper{
   public static function countFormKA6($year){
     $fmOut = [];
     $c = 0;
-    $forms  = DisposisiHelper::getDisposisiForm($year);
+    $forms  = KA5DisposisiHelper::getDisposisiForm($year);
     if ($forms!=null){
       foreach($forms as $fm){
         $anak = $fm->anak->first();

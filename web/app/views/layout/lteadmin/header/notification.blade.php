@@ -86,7 +86,7 @@ function NotifCtrl($http, $interval,$sce){
   vm.my_user_id = <?php echo Auth::user()->id; ?>;
   vm.countDown = 1;
   vm.notif=null;
-  vm.intervalTime = 1000;
+  vm.intervalTime = 5000;
   vm.notifNum = 0;
   vm.notifNew = 0;
 
@@ -142,7 +142,6 @@ function NotifCtrl($http, $interval,$sce){
       function(){
         getNotif();
         getNewNotifCount();
-        console.log(vm.countDown++);
       },
       vm.intervalTime
     );

@@ -13,7 +13,7 @@
                     </a>
                 </li>
 
-                <?php  if (Auth::user()->level == "admin") {?>
+                <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "creator") {?>
                 <li class="active">
                     <a href="<?php echo URL::to('/dash/user'); ?>">
                         <i class="fa fa-users"></i>
@@ -31,9 +31,11 @@
                 <li class="treeview">
                     @include('layout.lteadmin.nav.kasus')
                 </li>
+                <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "creator") {?>
                 <li class="treeview">
                     @include('layout.lteadmin.nav.setting')
                 </li>
+                <?php } ?>
                 <li>
                     <a href="<?php echo URL::to('/dash/report'); ?>">
                         <i class="fa  fa-file-text-o"></i>

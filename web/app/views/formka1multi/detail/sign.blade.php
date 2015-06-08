@@ -1,15 +1,21 @@
+<?php
+$sign = json_decode($data->sign);
+$penerima = $sign->penerima;
+$pelapor = $sign->pelapor;
+?>
+
 
 <div class="col-xs-12">
   <div class="sign">
     <div class="sign-left">
       <span class="sign-title">Penerima Laporan</span>
       <div class="spacer"></div>
-      <span class="sign-name">(Lalu Erfandi Maula Yusnu, S.Kom)</span>
+      <span class="sign-name">({{$penerima->name}})</span>
     </div>
     <div class="sign-right">
       <span class="sign-title">Pelapor/Pengadu</span>
       <div class="spacer"></div>
-      <span class="sign-name">(Abdul Manan)</span>
+      <span class="sign-name">({{$pelapor}})</span>
     </div>
   </div>
   <div class="clearfix"></div>

@@ -58,6 +58,16 @@
 
       @include('formka3.detail.anak')
       @include('formka3.detail.tindak')
+      <div class="col-xs-12">
+        <div class="ringkasan">
+          <h5>
+            <strong>User Pembuat Form</strong>
+          </h5>
+          <hr style="margin-top:0px;margin-bottom:6px;">
+          <p>{{$data->user->first()->name}}</p>
+        </div>
+      </div>
+      <br/><br/><br/><br/><br/><br/>
       @include('formka3.detail.disposisi')
       @include('formka3.detail.sign')
 

@@ -24,7 +24,9 @@
                         <!-- <td>{{$val->password}}</td> -->
                         <td>
                           <?php
-                          if ($val->level == "admin"){
+                          if ($val->level == "creator"){
+                            echo "Creator";
+                          } else if ($val->level == "admin"){
                             echo "Administrator";
                           } else {
                             echo "Operator";

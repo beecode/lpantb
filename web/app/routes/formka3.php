@@ -4,7 +4,9 @@ $fk3 = 'FormKA3Controller';
 $pr_k3 = '/dash/formka3';
 //Crud Route
 Route::get($pr_k3, $con . $fk3 . "@view")->before('auth');
-Route::post($pr_k3 . "/viewYear", $con . $fk3 . "@viewYear")->before('auth');
+Route::get($pr_k3 . "/viewYear", $con . $fk3 . "@viewYear")->before('auth');
+Route::get($pr_k3 . "/viewLKA", $con . $fk3 . "@viewLKA")->before('auth');
+
 Route::get($pr_k3 . "/detailview/{anak_id}", $con . $fk3 . "@detailView")->before('auth');
 
 Route::get($pr_k3 . "/preaddview", $con . $fk3 . "@preAddView")->before('auth');

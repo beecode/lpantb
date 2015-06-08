@@ -88,9 +88,9 @@
               <?php } ?>
             <?php } else { ?>
               <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                  <a class="btn btn-small btn-info" title="Detail"
-                     href="{{ URL::to('/dash/formka6/pendampingan/view/'.$anak->id) }}">
-                      <span class=" glyphicon glyphicon-th-list"></span>
+                  <a class="btn btn-small btn-default" title="Detail"
+                     href="{{ URL::to('/dash/formka6/addview/'.$anak->id) }}">
+                      <span class=" glyphicon glyphicon-plus"></span>
                   </a>
               </div>
             <?php } ?>

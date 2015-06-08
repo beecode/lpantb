@@ -55,6 +55,15 @@
             </div>
             @include('formka2multi.detail.pelapor')
             @include('formka2multi.detail.anak')
+            <div class="col-xs-12">
+              <div class="ringkasan">
+                <h5>
+                  <strong>User Pembuat Form</strong>
+                </h5>
+                <hr style="margin-top:0px;margin-bottom:6px;">
+                <p>{{$data->user->first()->name}}</p>
+              </div>
+            </div>
             @include('formka2multi.detail.ringkasan')
             @include('formka2multi.detail.sign')
         </div><!-- /.row -->

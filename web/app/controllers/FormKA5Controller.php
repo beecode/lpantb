@@ -18,11 +18,13 @@ use App\DAO\FormDAO,
     App\DAO\AnakDAO,
     App\DAO\IntervensiDAO,
     App\DAO\JenisKasusDAO,
-    App\DAO\DisposisiDAO;
+    App\DAO\DisposisiDAO,
+    App\DAO\UserDAO;
 
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\DisposisiHelper;
-use App\Helpers\FormKA5DisposisiHelper;
+use App\Helpers\FormKA5AssessmentHelper;
+use App\Helpers\NotifikasiDisposisiHelper;
 
 /**
  * Description of Testerform1Controller
@@ -44,7 +46,7 @@ class FormKA5Controller extends BaseController {
                       ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                       ->orderBy('no_lka', 'desc')->get(),
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+        'disposisiCount'=>FormKA5AssessmentHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -66,7 +68,7 @@ class FormKA5Controller extends BaseController {
         'location' => 'view',
         'table' => $form->get(),
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+        'disposisiCount'=>FormKA5AssessmentHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -82,7 +84,7 @@ class FormKA5Controller extends BaseController {
                         ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                         ->orderBy('no_lka', 'desc')->get(),
         'selectedYear'=>$year,
-        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+        'disposisiCount'=>FormKA5AssessmentHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -98,29 +100,29 @@ class FormKA5Controller extends BaseController {
         return View::make('formka5.detail', $data);
     }
 
-    public function disposisi(){
+    public function assessment(){
       $year = date('Y');
-      $dis = FormKA5DisposisiHelper::getDisposisiForm($year);
+      $dis = FormKA5AssessmentHelper::getAssessment($year);
       $data = [
         'panel_title' => 'Table View',
         'location' => 'disposisi',
         'table'=> $dis,
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+        'disposisiCount'=>FormKA5AssessmentHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
     }
 
-    public function disposisiYear(){
+    public function assessmentYear(){
       $year = Input::get('year');
-      $dis = FormKA5DisposisiHelper::getDisposisiForm($year);
+      $dis = FormKA5AssessmentHelper::getAssessment($year);
       $data = [
         'panel_title' => 'Table View',
         'location' => 'disposisi',
         'table'=> $dis,
         'selectedYear' => $year,
-        'disposisiCount'=>FormKA5DisposisiHelper::count($year),
+        'disposisiCount'=>FormKA5AssessmentHelper::count($year),
       ];
       $data = array_merge($data, $this->basic);
       return View::make('formka5.view', $data);
@@ -151,6 +153,7 @@ class FormKA5Controller extends BaseController {
             'agama_lists' => Agama::lists('nama', 'nama'),
             'anak' => Anak::find($anak_id),
             'form'=>Anak::find($anak_id)->form->first(),
+            'user'=>UserDAO::jsonAllOperator(),
         ];
         return View::make('formka5.form', $data);
     }
@@ -161,6 +164,8 @@ class FormKA5Controller extends BaseController {
         $jk = Input::get('jenis_kasus');
         $int = Input::get('intervensi');
         $dis = Input::get('disposisi');
+
+        $user = Auth::user();
 
         // inject lka if not set
         if (!isset($fm['no_lka'])){
@@ -182,9 +187,13 @@ class FormKA5Controller extends BaseController {
         //save many to many
         $form = Form::find($form->id);
         $form->Anak()->attach($an['id']);
+        $form->user()->attach($user->id);
 
         JenisKasusDAO::attachAll($jk, $anak);
         IntervensiDAO::attachAll($int, $anak);
+
+        //notifikasi
+        NotifikasiDisposisiHelper::disposisiCreate($form->id);
 
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
         return Redirect::to('/dash/formka5');
@@ -201,6 +210,7 @@ class FormKA5Controller extends BaseController {
             'record' => Form::find($id),
             'jenis_kasus' => JenisKasus::all(),
             'intervensi' => Intervensi::all(),
+            'user'=>UserDAO::jsonAllOperator(),
         ];
         return View::make('formka5.form', $data);
     }
@@ -236,6 +246,10 @@ class FormKA5Controller extends BaseController {
 
         //save many to many
         $form = Form::find($form->id);
+
+        //notifikasi
+        NotifikasiDisposisiHelper::disposisiUpdate($form->id);
+
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
         return Redirect::to('dash/formka5');
     }

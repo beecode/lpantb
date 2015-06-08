@@ -10,9 +10,9 @@ List Bugs Aplikasi Pengolahan Data LPANTB
 	* Pada setiap form tidak bisa menampilkan secara spesifik nama yang di inputkan (autocomplete error)
 
 * Tanggal
-	* Pada setiap form tanggal tidak bisa menyimpan hanya tahun 
+	* Pada setiap form tanggal tidak bisa menyimpan hanya tahun
 	  saja atau bulan dan tahun saja tanpa hari (single input mode, separate field for month, day, year)
-	* Perlu diganti dari Input type Text menjadi Select Option untuk kemudahan pemilihan tanggal 
+	* Perlu diganti dari Input type Text menjadi Select Option untuk kemudahan pemilihan tanggal
 
 *FormKA5
 	* Input textArea "catatan untuk intervensi" belum ada
@@ -26,4 +26,3 @@ List Bugs Aplikasi Pengolahan Data LPANTB
 
 *Form
 	* Setiap Form belum memiliki Sign (Tanda Tangan Pelapor/Koordinator/Ketua/dll)
-

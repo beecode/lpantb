@@ -24,8 +24,8 @@ App\DAO\IdentifikasiMasalahDAO,
 App\DAO\KondisiPsikososialDAO;
 
 use Illuminate\Support\Facades\Auth;
-use App\Helpers\DisposisiHelper;
-use App\Helpers\NotifikasiFormIntHelper;
+use App\Helpers\KA3DisposisiHelper;
+use App\Helpers\FormKA4DisposisiHelper;
 
 /**
 * Description of Form4Controller
@@ -47,7 +47,7 @@ class FormKA4Controller extends BaseController {
                     ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                     ->orderBy('no_lka', 'desc')->get(),
       'selectedYear' => $year,
-      'disposisiCount'=>DisposisiHelper::count($year),
+      'disposisiCount'=>KA3DisposisiHelper::count($year),
     ];
     $data = array_merge($data, $this->basic);
     return View::make('formka4.view', $data);
@@ -69,7 +69,7 @@ class FormKA4Controller extends BaseController {
       'location' => 'view',
       'table' => $form->get(),
       'selectedYear' => $year,
-      'disposisiCount'=>DisposisiHelper::count($year),
+      'disposisiCount'=>KA3DisposisiHelper::count($year),
     ];
     $data = array_merge($data, $this->basic);
     return View::make('formka4.view', $data);
@@ -85,7 +85,7 @@ class FormKA4Controller extends BaseController {
                       ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                       ->orderBy('no_lka', 'desc')->get(),
       'selectedYear'=>$year,
-      'disposisiCount'=>DisposisiHelper::count($year),
+      'disposisiCount'=>KA3DisposisiHelper::count($year),
     ];
     $data = array_merge($data, $this->basic);
     return View::make('formka4.view', $data);
@@ -104,13 +104,13 @@ class FormKA4Controller extends BaseController {
 
   public function disposisi(){
     $year = date('Y');
-    $dis = DIsposisiHelper::getDisposisiForm($year);
+    $dis = KA3DisposisiHelper::getDisposisiForm($year);
     $data = [
       'panel_title' => 'Table View',
       'location' => 'disposisi',
       'table'=> $dis,
       'selectedYear' => $year,
-      'disposisiCount'=>DisposisiHelper::count($year),
+      'disposisiCount'=>KA3DisposisiHelper::count($year),
     ];
     $data = array_merge($data, $this->basic);
     return View::make('formka4.view', $data);
@@ -118,13 +118,13 @@ class FormKA4Controller extends BaseController {
 
   public function disposisiYear(){
     $year = Input::get('year');
-    $dis = DisposisiHelper::getDisposisiForm($year);
+    $dis = KA3DisposisiHelper::getDisposisiForm($year);
     $data = [
       'panel_title' => 'Table View',
       'location' => 'disposisi',
       'table'=> $dis,
       'selectedYear' => $year,
-      'disposisiCount'=>DisposisiHelper::count($year),
+      'disposisiCount'=>KA3DisposisiHelper::count($year),
     ];
     $data = array_merge($data, $this->basic);
     return View::make('formka4.view', $data);
@@ -173,6 +173,8 @@ class FormKA4Controller extends BaseController {
     $ms = Input::get('masalah');
     $ps = Input::get('psiko');
 
+
+    $user = Auth::user();
     // inject lka if not set
     if (!isset($fm['no_lka'])){
       $form = Anak::find($an['id'])->form->first();
@@ -197,9 +199,10 @@ class FormKA4Controller extends BaseController {
 
     $form = Form::find($form->id);
     $form->Anak()->attach($an['id']);
+    $form->user()->attach($user->id);
 
     //notifikasi
-    NotifikasiFormIntHelper::addNotif($form->id);
+    FormKA4DisposisiHelper::addNotif($form->id);
 
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
     return Redirect::to('/dash/formka4');
@@ -271,7 +274,7 @@ class FormKA4Controller extends BaseController {
     $form = Form::find($form->id);
 
     //notifikasi
-    NotifikasiFormIntHelper::updateNotif($form->id);
+    FormKA4DisposisiHelper::updateNotif($form->id);
 
     Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
     return Redirect::to('/dash/formka4');
@@ -279,7 +282,7 @@ class FormKA4Controller extends BaseController {
 
   public function delete($id) {
     //notifikasi
-    NotifikasiFormIntHelper::deleteNotif($id);
+    FormKA4DisposisiHelper::deleteNotif($id);
 
     $form = FormDAO::delete($id);
     if ($form) {

@@ -111,7 +111,7 @@ function DisposisiCtrl(){
     var user_index = findIndexOfUser(user_id);
     var user = vm.user[user_index];
     var select = {id:user.id, name:user.name};
-    vm.kepadaSelected[parentIndex] = select;
+    // vm.kepadaSelected[parentIndex] = select;
     vm.kepada[parentIndex] = select;
   }
 

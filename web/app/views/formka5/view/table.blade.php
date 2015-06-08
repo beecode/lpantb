@@ -1,6 +1,6 @@
 
 <?php if ($location=="view") { ?>
-  @include('formka5.view.normal-table')
+  @include('formka5.view.normal')
 <?php } else { ?>
-  @include('formka5.view.disposisi-table')
+  @include('formka5.view.assessment')
 <?php } ?>

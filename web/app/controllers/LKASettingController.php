@@ -17,6 +17,7 @@ use App\DAO\AnakDAO;
 use App\DAO\ContactPersonDAO;
 use Illuminate\Support\Facades\DB;
 use App\Models\Anak;
+use App\DAO\SettingDAO;
 
 /**
 * Description of Testerform1Controller
@@ -35,26 +36,12 @@ class LKASettingController extends BaseController {
     return View::make('lka.view', $data);
   }
 
-  public function detailView($id) {
-    $data = [
-      'page_title' => 'Kasus Anak 1 (KA1)',
-      'panel_title' => 'Detail View',
-      'location' => 'view',
-      'data' => Form::where('nama', '=', 'ka1')->where('id', '=', $id)->first(),
-    ];
-    return View::make('formka1.detail', $data);
-  }
+  public function update() {
+    $part = Input::get('lka_part');
+    SettingDAO::setValue("LKA_PART",$part);
 
-  public function addView() {
-    $data = [
-      'page_title' => 'Kasus Anak 1 (KA1)',
-      'panel_title' => 'Form Add',
-      'form_url' => '/dash/setting/lka/add',
-      'form_status' => 'add',
-      'location_pelapor' => LocationHelper::location(),
-      'location_anak' => LocationHelper::location(),
-      'agama_lists' => Agama::lists('nama', 'nama'),
-    ];
-    return View::make('formka1.form', $data);
+
+    Session::flash('message', "LKA Setting telah di ubah!");
+    return Redirect::to('/dash/setting/lka');
   }
 }
