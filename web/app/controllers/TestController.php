@@ -14,21 +14,31 @@ use App\Helpers\DisposisiHelper;
 use App\Models\Form;
 use App\Helpers\FormKA5AssessmentHelper;
 use App\Helpers\FormKA6DisposisiHelper;
+use App\Helpers\FormKA7DisposisiHelper;
+
 use App\Helpers\FormKA3Helper;
+use App\Helpers\KA5DisposisiHelper;
+use App\Helpers\KA3DisposisiHelper;
+
+use App\Helpers\LKAHelper;
+use Auth;
+
+
 /**
  * Description of TestController
  *
- * @author aljufry
+ * @author nunenuh
  */
 class TestController extends BaseController {
 
     public function test() {
       $year = date('Y');
-      // $c = FormKA5AssessmentHelper::count($year);
-      // $form = FormKA5AssessmentHelper::getAssessment($year);
-      // print_r($form);
-      $c = FormKA6DisposisiHelper::getDisposisiForm($year);
-      echo count($c);
+      $c = FormKA6DisposisiHelper::count($year);
+      $get = FormKA6DisposisiHelper::getDisposisiForm($year);
+
+      echo $c;
+      var_dump($get);
+
     }
 
     public function wizardTest() {

@@ -14,7 +14,7 @@ if (isset($record)) {
     <?php } ?>
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('fisik[tinggi]', 'Tinggi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $fisik['tinggi'] = (isset($gfis->tinggi)) ? $gfis->tinggi : null; ?>
@@ -27,7 +27,7 @@ if (isset($record)) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('fisik[warna_kulit]', 'Warna Kulit', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $fisik['warna_kulit'] = (isset($gfis->warna_kulit)) ? $gfis->warna_kulit : null; ?>
@@ -41,7 +41,7 @@ if (isset($record)) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('fisik[tanda_lain]', 'Tanda Lainnya', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-8">
         <?php $fisik['tanda_lain'] = (isset($gfis->tanda_lain)) ? $gfis->tanda_lain : null; ?>

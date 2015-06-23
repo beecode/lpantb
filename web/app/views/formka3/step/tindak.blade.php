@@ -5,7 +5,7 @@ if (isset($record)) {
 ?>
 
 <?php $c = 1; ?>
-<div class="form-group">
+<div class="form-group has-primary">
     <?php foreach ($tindak_lanjut as $tl) { ?>
         <?php
         if ($tl->other == "F") {
@@ -77,7 +77,7 @@ if (isset($record)) {
     <?php } ?>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ringkasan_kasus', 'Catatan Tindak Lanjut',['class'=>'control-label col-sm-3']) }}
     <div class="col-sm-9">
         <?php $ctl = (isset($record->catatan_tindak_lanjut)) ? $record->catatan_tindak_lanjut : null; ?>

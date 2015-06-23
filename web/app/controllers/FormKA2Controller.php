@@ -137,7 +137,7 @@ class FormKA2Controller extends BaseController {
     $form->user()->attach($user->id);
 
     //LKA do COunter
-    LKAHelper::doCounter();
+    // LKAHelper::doCounter();
 
 
     //notifikasi

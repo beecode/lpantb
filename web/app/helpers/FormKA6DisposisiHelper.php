@@ -45,14 +45,31 @@ class FormKA6DisposisiHelper{
 
      $mydis = [];
      $i=0;
+
      foreach($form as $fm){
+
+       //mengecek apakah form ka4 telah dibuat
+       //pada sequence form secara menyeluruh
+       $isFormKA6HasBeenCreated = false;
+       $anak = $fm->anak;
+       foreach($anak as $an){
+         $fma = $an->form;
+         foreach($fma as $f){
+           if ($f->nama == "ka6"){
+               $isFormKA6HasBeenCreated = true;
+           }
+         }
+       }
+
        $dis = $fm->disposisi->first();
-       if ($dis!=NULL){
+       if ($dis!=NULL && $fm->nama =="ka5" && $isFormKA6HasBeenCreated==false){
          $kepada = json_decode($dis->kepada);
          foreach($kepada as $user){
            if ($user->id == $myUser->id){
-             $mydis[$i] = $dis->form->id;
-             $i++;
+             if (strftime("%Y", strtotime($dis->form->tanggal))==$year){
+               $mydis[$i] = $dis->form->id;
+               $i++;
+             }
            }
          }
        }
@@ -64,7 +81,7 @@ class FormKA6DisposisiHelper{
   public static function countFormKA6($year){
     $fmOut = [];
     $c = 0;
-    $forms  = KA5DisposisiHelper::getDisposisiForm($year);
+    $forms  = FormKA6DisposisiHelper::countMyDisposisi($year);
     if ($forms!=null){
       foreach($forms as $fm){
         $anak = $fm->anak->first();
@@ -85,11 +102,11 @@ class FormKA6DisposisiHelper{
   }
 
   public static function count($year){
-    return count(FormKA6DisposisiHelper::countFormKA6($year));
+    return count(FormKA6DisposisiHelper::countMyDisposisi($year));
   }
 
   public static function getDisposisiForm($year){
-    $formDisArray = FormKA6DisposisiHelper::countFormKA6($year);
+    $formDisArray = FormKA6DisposisiHelper::countMyDisposisi($year);
     if (is_array($formDisArray) && count($formDisArray)!=0){
       $form = Form::wherein('id',$formDisArray)
                     ->whereRaw('YEAR(`tanggal`) = ?',array($year))

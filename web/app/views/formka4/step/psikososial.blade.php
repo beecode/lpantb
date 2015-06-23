@@ -13,7 +13,7 @@ if ($anak) {
     <?php } ?>
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('psiko[gka]', 'Riwayat Keluarga dan Pengasuhan Anak',['class'=>'col-sm-5 control-label']) }}
     <div class="col-sm-7">
         <?php $psi['rk'] = (isset($psiko->rk)) ? $psiko->rk : null; ?>
@@ -22,7 +22,7 @@ if ($anak) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('psiko[rp]', 'Riwayat Pendidikan Anak',['class'=>'col-sm-5 control-label']) }}
     <div class="col-sm-7">
         <?php $psi['rp'] = (isset($psiko->rp)) ? $psiko->rp : null; ?>
@@ -30,7 +30,7 @@ if ($anak) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('psiko[ha]', 'Kondisi Mental Psikologis',['class'=>'col-sm-5 control-label']) }}
     <div class="col-sm-7">
         <?php $psi['km'] = (isset($psiko->km)) ? $psiko->km : null; ?>
@@ -38,11 +38,10 @@ if ($anak) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('psiko[ks]', 'Kondisi Sosial',['class'=>'col-sm-5 control-label']) }}
     <div class="col-sm-7">
         <?php $psi['ks'] = (isset($psiko->ks)) ? $psiko->ks : null; ?>
         {{ Form::textarea('psiko[ks]', $psi['ks'], ['class' => 'form-control ckeditor','rows'=>'3'])  }}
     </div>
 </div>
-

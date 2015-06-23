@@ -15,7 +15,7 @@
                     <span class="">
                         <button class="btn btn-primary" type="button">Check</button>
                     </span>
-                    
+
                 </form>
             </div>
             <div class="modal-footer">

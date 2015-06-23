@@ -12,7 +12,7 @@
     {{Form::input('hidden','form[no_lka]',$lka)}}
     {{Form::input('hidden','form[nama]','ka2')}}
     {{Form::input('hidden','form[mode]','multiple')}}
-    <div class="form-group">
+    <div class="form-group has-primary">
       {{ Form::label('tgl', 'Tanggal',['class'=>'col-sm-2 control-label']) }}
       <div class="col-sm-3">
         <?php $tanggal = (isset($record->tanggal)) ? $record->tanggal : date('Y-m-d'); ?>

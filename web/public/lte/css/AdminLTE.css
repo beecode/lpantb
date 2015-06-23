@@ -1142,6 +1142,24 @@ All form elements including input, select, textarea etc.
   border-color: #3c8dbc !important;
   box-shadow: none;
 }
+
+/*.form-group.has-primary label {
+  color:   #3c8dbc;
+}*/
+.form-group.has-primary .form-control {
+  border-color:   #3c8dbc !important;
+  box-shadow: none;
+}
+
+
+.form-group.has-info label {
+  color: #00c0ef;
+}
+.form-group.has-info .form-control {
+  border-color: #00c0ef !important;
+  box-shadow: none;
+}
+
 .form-group.has-success label {
   color: #00a65a;
 }
@@ -2548,7 +2566,7 @@ Page: Invoice
   }
 
   .input-group{
-    font-size:10px; 
+    font-size:10px;
   }
 
   .input-group-sm{

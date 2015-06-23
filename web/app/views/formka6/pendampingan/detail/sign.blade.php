@@ -1,10 +1,15 @@
 <?php
+
   $pel = json_decode($data->pelaksana);
   $c = count($pel);
   $i=0;
 ?>
 
-<?php foreach($pel as $p){ ?>
+<?php
+if ($c>0){
+foreach($pel as $p){
+
+?>
 <?php if ($i % ($c)==0){ ?>
   <div class="col-xs-6">
     <div class="sign">
@@ -29,4 +34,5 @@
       }
     $i++;
   }
+}
 ?>

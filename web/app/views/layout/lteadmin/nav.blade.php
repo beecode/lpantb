@@ -20,7 +20,7 @@
                         <span>Users</span>
                     </a>
                 </li>
-                <?php } ?>
+                  <?php } ?>
 
                 <li class="active">
                     <a href="<?php echo URL::to('/dash/notifikasi/view'); ?>">
@@ -36,12 +36,6 @@
                     @include('layout.lteadmin.nav.setting')
                 </li>
                 <?php } ?>
-                <li>
-                    <a href="<?php echo URL::to('/dash/report'); ?>">
-                        <i class="fa  fa-file-text-o"></i>
-                        <span>Report</span>
-                    </a>
-                </li>
             </ul>
         </section>
         <!-- /.sidebar -->

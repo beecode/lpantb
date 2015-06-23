@@ -74,7 +74,7 @@ class FormKA3Controller extends BaseController {
             'location' => 'lka',
             'table' => FormKA3Helper::getLKAData($year),
             'selectedYear'=>$year,
-            'countLKA'=>FormKA3Helper::countLKAData($year)
+            'countLKA'=> FormKA3Helper::countLKAData($year)
         ];
         return View::make('formka3.view', $data);
     }

@@ -9,22 +9,22 @@
 
     <?php if (UserHelper::amIAdmin()){  ?>
 
-      <a class="btn btn-default"
+      <!-- <a class="btn btn-default"
          href="{{URL::to('/dash/formka3/preaddview')}}">
           <span class="glyphicon glyphicon-plus"></span>
           Tambah
+      </a> -->
+      <a class="btn btn-default"
+         href="{{URL::to('/dash/formka3/viewLKA')}}">
+          LKA Baru &nbsp;
+          <label class="label label-danger">{{$countLKA}}</label>
       </a>
-
       <a class="btn btn-default"
          href="{{URL::to('/dash/formka3')}}">
           <span class="glyphicon glyphicon-th-list"></span>
           Semua
       </a>
-    <a class="btn btn-default"
-       href="{{URL::to('/dash/formka3/viewLKA')}}">
-        LKA Baru &nbsp;
-        <label class="label label-danger">{{$countLKA}}</label>
-    </a>
+
     <?php } ?>
 </div>
 

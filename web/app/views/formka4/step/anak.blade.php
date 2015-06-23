@@ -6,7 +6,7 @@ if (isset($record)) {
 
 {{Form::input('hidden','anak[id]',$anak->id)}}
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[nama]', 'Nama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ank['nama'] = (isset($anak->nama)) ? $anak->nama : null; ?>
@@ -26,7 +26,7 @@ if (isset($record)) {
 
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[umur]', 'Umur', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-1">
         <?php $ank['umur'] = (isset($anak->umur)) ? $anak->umur : null; ?>
@@ -55,7 +55,7 @@ if (isset($record)) {
 
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[tempat_lahir]', 'Tempat Lahir', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ank['tempat_lahir'] = (isset($anak->tempat_lahir)) ? $anak->tempat_lahir : null; ?>
@@ -90,7 +90,7 @@ if (isset($record)) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[pendidikan]', 'Pendidikan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ank['pendidikan'] = (isset($anak->pendidikan)) ? $anak->pendidikan : null; ?>
@@ -124,7 +124,7 @@ if (isset($record)) {
 $la = $location_anak;
 ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['provinsi'] = (isset($la['provinsi_sel'])) ? $la['provinsi_sel'] : null; ?>
@@ -147,7 +147,7 @@ $la = $location_anak;
 
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['kecamatan'] = (isset($la['kecamatan_sel'])) ? $la['kecamatan_sel'] : null; ?>
@@ -168,7 +168,7 @@ $la = $location_anak;
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[alamat]', 'Alamat',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-8">
         <?php $ank['alamat'] = (isset($anak->alamat)) ? $anak->alamat : null; ?>
@@ -189,7 +189,7 @@ $la = $location_anak;
 
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[ke]', 'Anak Ke-', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ank['anak_ke'] = (isset($anak->anak_ke)) ? $anak->anak_ke : null; ?>
@@ -203,7 +203,7 @@ $la = $location_anak;
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[ke]', 'Akta Kelahiran', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-5">
         <label class="radio">
@@ -227,7 +227,7 @@ $la = $location_anak;
         </label>
     </div>
 </div>
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[ke]', 'Disabilitas', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php
@@ -253,7 +253,7 @@ $la = $location_anak;
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     <label class="control-label col-sm-2"></label>
     <div class="col-sm-3">
         <?php $ank['disabilitas_keterangan'] = (isset($anak->disabilitas_keterangan)) ? $anak->disabilitas_keterangan : null; ?>

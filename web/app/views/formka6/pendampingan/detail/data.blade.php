@@ -31,6 +31,7 @@
           $pel = json_decode($data->pelaksana);
           $c = count($pel);
           $i=0;
+         if ($c>0){
           foreach($pel as $p){
             if ($i==$c-1){
               echo $p->text;
@@ -39,6 +40,7 @@
             }
             $i++;
           }
+        }
         ?>
       </td>
     </tr>

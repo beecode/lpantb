@@ -44,13 +44,9 @@ class KA5DisposisiHelper{
 
     $mydis = [];
     $i=0;
-    $isFormKA6HasBeenCreated = false;
     foreach($form as $fm){
       $dis = $fm->disposisi->first();
-      if ($fm->nama == "ka6"){
-          $isFormKA6HasBeenCreated = true;
-      }
-      if ($dis!=NULL && $fm->nama ="ka5"){
+      if ($dis!=NULL && $fm->nama =="ka5"){
         $kepada = json_decode($dis->kepada);
         foreach($kepada as $user){
           if ($user->id == $myUser->id){
@@ -62,12 +58,8 @@ class KA5DisposisiHelper{
         }
       }
     }
+    return $mydis;
 
-    if ($isFormKA6HasBeenCreated==true){
-      return [];
-    } else {
-      return $mydis;
-    }
   }
 
   /**

@@ -55,9 +55,9 @@
                         <section class="step" data-step-title="Rekomendasi">
                             @include('formka4.step.rekomendasi')
                         </section>
-                        <section class="step" data-step-title="Tanda Tangan">
+                        <!-- <section class="step" data-step-title="Tanda Tangan">
                             @include('formka4.step.sign')
-                        </section>
+                        </section> -->
                     </div>
                 </form>
             </div>

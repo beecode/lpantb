@@ -9,8 +9,8 @@ app = QApplication(sys.argv)
 
 
 web = QWebView()
-web.setWindowFlags(Qt.FramelessWindowHint)
-web.showFullScreen()
+#web.setWindowFlags(Qt.FramelessWindowHint)
+#web.showFullScreen()
 web.load(QUrl("http://lpantb.dev"))
 web.show()
 

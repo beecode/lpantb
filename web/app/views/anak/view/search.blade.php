@@ -1,4 +1,4 @@
-<div class="pull-right col-sm-4">  
+<!-- <div class="pull-right col-sm-4">
     <form  method="GET" style="margin-right: 0px; padding-left: 0px;"
            action="{{ URL::to('/dash/anak/search') }}" >
 
@@ -42,4 +42,4 @@
             </div>
         </div>
     </form>
-</div>
+</div> -->

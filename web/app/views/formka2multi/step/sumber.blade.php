@@ -10,7 +10,7 @@ if (isset($record)) {
     {{Form::input('hidden','sumber[id]',$sumber->id)}}
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('sumber[sumber]', 'Sumber',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <div class="typeahead-basic">
@@ -47,14 +47,14 @@ if (isset($record)) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('sumber[dasar_rujukan]', 'Dasar Rujukan',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-8">
         <?php $sum['dasar_rujukan'] = (isset($sumber->dasar_rujukan)) ? $sumber->dasar_rujukan : null; ?>
         {{ Form::text('sumber[dasar_rujukan]', $sum['dasar_rujukan'], ['class' => 'form-control','required'])  }}
     </div>
 </div>
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('sumber[contact_person]', 'Contact Person',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $sum['contact_person'] = (isset($sumber->contact_person)) ? $sumber->contact_person : null; ?>

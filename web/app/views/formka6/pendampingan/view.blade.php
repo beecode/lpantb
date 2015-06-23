@@ -23,6 +23,7 @@
         @endif
         <div class="box box-primary">
             <div  class="box-body">
+                
                 @include('formka6.pendampingan.view.search')
                 @include('formka6.pendampingan.view.button')
                 @include('formka6.pendampingan.view.table')

@@ -83,6 +83,20 @@ $jenis = $anak->jenis_kasus;
                         <td>{{$val->keterangan}}</td>
 
                         <td class="text-center">
+                          <?php
+                            $amICreateThis = false;
+                            $loggedUser = Auth::user();
+                            $forms = $anak->form;
+                            foreach($forms as $fm){
+                              if ($fm->nama == "ka6"){ //if this form is ka6 then
+                                  $authorUser = $fm->user->first();
+                                  if ($loggedUser->id == $authorUser->id){
+                                    $amICreateThis = true;
+                                  }
+                              }
+                            }
+                           ?>
+                          <?php if ($amICreateThis == true){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                <a class="btn btn-small btn-info" title="Detail"
                                    href="{{ URL::to('/dash/formka6/pendampingan/detailview/'.$val->id) }}">
@@ -97,6 +111,12 @@ $jenis = $anak->jenis_kasus;
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </div>
+                            <?php } else { ?>
+                              <a class="btn btn-small btn-info" title="Detail"
+                                  href="{{ URL::to('/dash/formka6/pendampingan/detailview/'.$val->id) }}">
+                                   <span class=" glyphicon glyphicon-th-list"></span>
+                               </a>
+                            <?php } ?>
                         </td>
 
                     </tr>

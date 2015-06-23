@@ -13,7 +13,7 @@
         Tambah
     </a>
     <a class="btn btn-info"
-       href="{{URL::to('/dash/formka1/addmultiview')}}">
+       href="{{URL::to('/dash/formka1/addmulti')}}">
         <span class="glyphicon glyphicon-plus"></span>
         Tambah Multi Kasus
     </a>

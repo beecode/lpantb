@@ -10,9 +10,9 @@ if (isset($record)) {
     {{Form::input('hidden','pelapor[id]',$pelapor->id)}}
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('pelapor[nama]', 'Nama',['class'=>'col-sm-2 control-label']) }}
-    <div class="col-sm-3">
+    <div class="col-sm-3 ">
         <div class="typeahead-basic">
             <?php $pel['nama'] = (isset($pelapor->nama)) ? $pelapor->nama : null; ?>
             {{ Form::text('pelapor[nama]', $pel['nama'], ['class' => 'form-control typeahead','required'])  }}
@@ -30,7 +30,7 @@ if (isset($record)) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('pelapor[tempat_lahir]', 'Tempat Lahir',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['tempat_lahir'] = (isset($pelapor->tempat_lahir)) ? $pelapor->tempat_lahir : null; ?>
@@ -67,7 +67,7 @@ if (isset($record)) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('pelapor[agama]', 'Agama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['agama'] = (isset($pelapor->agama)) ? $pelapor->agama : null; ?>
@@ -88,7 +88,7 @@ if (isset($record)) {
 $lp = $location_pelapor;
 ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('pelapor[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['provinsi'] = (isset($lp['provinsi_sel'])) ? $lp['provinsi_sel'] : null; ?>
@@ -113,7 +113,7 @@ $lp = $location_pelapor;
 
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('pelapor[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['kecamatan'] = (isset($lp['kecamatan_sel'])) ? $lp['kecamatan_sel'] : null; ?>
@@ -133,7 +133,7 @@ $lp = $location_pelapor;
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('pelapor[alamat]', 'Alamat',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $pel['alamat'] = (isset($pelapor->alamat)) ? $pelapor->alamat : null; ?>

@@ -11,8 +11,8 @@ Route::get($pr_k1 . '/detailview/{id}', $con . $fk1 . '@detailView')->before('au
 Route::get($pr_k1 . "/addview", $con . $fk1 . "@addView")->before('auth');
 Route::post($pr_k1 . "/add", $con . $fk1 . "@add")->before('auth');
 
-Route::get($pr_k1 . "/addmultiview", $con . $fk1 . "@addMultiView")->before('auth');
-Route::post($pr_k1 . "/addmulti", $con . $fk1 . "@addMulti")->before('auth');
+// Route::get($pr_k1 . "/addmultiview", $con . $fk1 . "@addMultiView")->before('auth');
+Route::get($pr_k1 . "/addmulti", $con . $fk1 . "@addMulti")->before('auth');
 
 Route::get($pr_k1 . '/updateview/{id}', $con . $fk1 . '@updateView')->before('auth');
 

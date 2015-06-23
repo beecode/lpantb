@@ -16,13 +16,13 @@ if (!is_null($anak->keluarga)) {
     <?php } ?>
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     <label class="control-label" style="margin-left: 5.6%;">
         <p class="lead">Identitas Ibu</p>
     </label>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ibu[nama]', 'Nama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ib['nama'] = (isset($ibu->nama)) ? $ibu->nama : null; ?>
@@ -35,7 +35,7 @@ if (!is_null($anak->keluarga)) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ibu[tempat_lahir]', 'Tempat Lahir', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ib['tempat_lahir'] = (isset($ibu->tempat_lahir)) ? $ibu->tempat_lahir : null; ?>
@@ -70,7 +70,7 @@ if (!is_null($anak->keluarga)) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ibu[pendidikan]', 'Pendidikan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ib['pendidikan'] = (isset($ibu->pendidikan_terakhir)) ? $ibu->pendidikan_terakhir : null; ?>
@@ -88,7 +88,7 @@ if (!is_null($anak->keluarga)) {
 $lib = $loc_ibu;
 ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ibu[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $lb['provinsi'] = (isset($lib['provinsi_sel'])) ? $lib['provinsi_sel'] : null; ?>
@@ -111,7 +111,7 @@ $lib = $loc_ibu;
 
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ibu[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $lb['kecamatan'] = (isset($lib['kecamatan_sel'])) ? $lib['kecamatan_sel'] : null; ?>
@@ -132,7 +132,7 @@ $lib = $loc_ibu;
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ibu[alamat]', 'Alamat',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-8">
         <?php $ib['alamat'] = (isset($ibu->alamat)) ? $ibu->alamat : null; ?>

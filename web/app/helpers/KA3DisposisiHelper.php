@@ -44,13 +44,24 @@ class KA3DisposisiHelper{
 
     $mydis = [];
     $i=0;
-    $isFormKA4HasBeenCreated = false;
+
     foreach($form as $fm){
-      $dis = $fm->disposisi->first();
-      if ($fm->nama == "ka4"){
-          $isFormKA4HasBeenCreated = true;
+
+      //mengecek apakah form ka4 telah dibuat
+      //pada sequence form secara menyeluruh
+      $isFormKA4HasBeenCreated = false;
+      $anak = $fm->anak;
+      foreach($anak as $an){
+        $fma = $an->form;
+        foreach($fma as $f){
+          if ($f->nama == "ka4"){
+              $isFormKA4HasBeenCreated = true;
+          }
+        }
       }
-      if ($dis!=NULL && $fm->nama =="ka3"){
+
+      $dis = $fm->disposisi->first();
+      if ($dis!=NULL && $fm->nama =="ka3" && $isFormKA4HasBeenCreated==false){
         $kepada = json_decode($dis->kepada);
         foreach($kepada as $user){
           if ($user->id == $myUser->id){
@@ -63,11 +74,13 @@ class KA3DisposisiHelper{
       }
     }
 
-    if ($isFormKA4HasBeenCreated==true){
-      return [];
-    } else {
-      return $mydis;
-    }
+    // print_r($mydis);
+    // if ($isFormKA4HasBeenCreated==true){
+    //   return [];
+    // } else {
+    //   return $mydis;
+    // }
+    return $mydis;
   }
 
   /**

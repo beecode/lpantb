@@ -12,7 +12,7 @@
   <?php } ?>
 
 
-    <div class="form-group" ng-repeat="num in vm.list" ng-init="parentIndex = $index">
+    <div class="form-group has-primary" ng-repeat="num in vm.list" ng-init="parentIndex = $index">
       <label class="col-sm-2 control-label">Kepada (<% parentIndex+1 %>)</label>
       <div class="col-sm-4">
         <select class="form-control"
@@ -36,19 +36,19 @@
       </span>
     </div>
 
-    <!-- <div class="form-group">
+    <!-- <div class="form-group has-primary">
       <label class="col-sm-2 control-label">Kepada</label>
       <div class="col-sm-10">
       <pre><% vm.kepada %></pre>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group has-primary">
       <label class="col-sm-2 control-label">Kepada Selected</label>
       <div class="col-sm-10">
       <pre><% vm.kepadaSelected %></pre>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group has-primary">
       <label class="col-sm-2 control-label">List</label>
       <div class="col-sm-10">
       <pre><% vm.list %></pre>
@@ -60,7 +60,7 @@
       <input type="text" name="disposisi[kepada]" value="<% vm.kepada %>">
     </div>
 
-    <div class="form-group">
+    <div class="form-group has-primary">
       {{ Form::label('disposisi[isi]', 'Isi Disposisi',['class'=>'control-label col-sm-2']) }}
       <div class="col-sm-9">
         <?php $isi = (isset($dis->isi)) ? $dis->isi : null; ?>

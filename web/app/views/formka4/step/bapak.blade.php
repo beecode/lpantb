@@ -17,13 +17,13 @@ if (!is_null($anak->keluarga)) {
     <?php } ?>
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     <label class="control-label" style="margin-left: 5.6%;">
         <p class="lead">Identitas Bapak</p>
     </label>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ayah[nama]', 'Nama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ayh['nama'] = (isset($ayah->nama)) ? $ayah->nama : null; ?>
@@ -36,7 +36,7 @@ if (!is_null($anak->keluarga)) {
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ayah[tempat_lahir]', 'Tempat Lahir', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ayh['tempat_lahir'] = (isset($ayah->tempat_lahir)) ? $ayah->tempat_lahir : null; ?>
@@ -71,7 +71,7 @@ if (!is_null($anak->keluarga)) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ayah[pendidikan]', 'Pendidikan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $ayh['pendidikan'] = (isset($ayah->pendidikan_terakhir)) ? $ayah->pendidikan_terakhir : null; ?>
@@ -89,7 +89,7 @@ if (!is_null($anak->keluarga)) {
 $lay = $loc_ayah;
 ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ayah[provinsi]', 'Provinsi', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $la['provinsi'] = (isset($lay['provinsi_sel'])) ? $lay['provinsi_sel'] : null; ?>
@@ -112,7 +112,7 @@ $lay = $loc_ayah;
 
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ayah[kecamatan]', 'Kecamatan', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3">
         <?php $la['kecamatan'] = (isset($lay['kecamatan_sel'])) ? $lay['kecamatan_sel'] : null; ?>
@@ -133,7 +133,7 @@ $lay = $loc_ayah;
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('ayah[alamat]', 'Alamat',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-8">
         <?php $ayh['alamat'] = (isset($ayah->alamat)) ? $ayah->alamat : null; ?>

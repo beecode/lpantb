@@ -6,7 +6,7 @@ if (!isset($record)) {
 }
 ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
   <label class="control-label col-sm-4">Assesor/Tracer</label>
   <div class="col-sm-4">
     <?php
@@ -23,7 +23,7 @@ if (!isset($record)) {
 </div>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
   <label class="control-label col-sm-4">Pelayanan dan Penanganan Kasus LPA NTB</label>
   <div class="col-sm-4">
     <?php

@@ -6,7 +6,7 @@
 
   {{Form::input('hidden','anak[id]', $anak->id)}}
 
-  <div class="form-group">
+  <div class="form-group has-primary">
     {{ Form::label('tgl', 'Tanggal',['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-3">
       <?php $pen['tanggal'] = (isset($data->tanggal)) ? $data->tanggal : null; ?>
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group has-primary">
     {{ Form::label('lka', 'Bentuk Pendampingan',['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-5">
       <?php $pen['bentuk'] = (isset($data->bentuk)) ? $data->bentuk : null; ?>
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group has-primary">
     {{ Form::label('lka', 'Tempat',['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-5">
       <?php $pen['tempat'] = (isset($data->tempat)) ? $data->tempat : null; ?>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="form-group" ng-repeat="pelaksana in vm.list track by $index">
+  <div class="form-group has-primary" ng-repeat="pelaksana in vm.list track by $index">
     <label class="col-sm-3 control-label">Pelaksana</label>
     <div class="col-sm-4" >
       <!-- <?php $pen['pelaksana'] = (isset($data->pelaksana)) ? $data->pelaksana : null; ?>
@@ -49,7 +49,7 @@
     <input type="text" name="pendamping[pelaksana]" value="<% vm.list %>">
   </div>
 
-  <div class="form-group">
+  <div class="form-group has-primary">
     {{ Form::label('lka', 'Hasil Yang Dicapai',['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-5">
       <?php $pen['hasil'] = (isset($data->hasil)) ? $data->hasil : null; ?>
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group has-primary">
     {{ Form::label('lka', 'Rencana Tindak Lanjut',['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-5">
       <?php $pen['rencana'] = (isset($data->rencana)) ? $data->rencana : null; ?>
@@ -65,7 +65,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group has-primary">
     {{ Form::label('lka', 'Keterangan',['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-5">
       <?php $pen['ket'] = (isset($data->keterangan)) ? $data->keterangan : null; ?>

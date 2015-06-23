@@ -18,12 +18,17 @@ use App\Helpers\NotifikasiFormHelper;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Disposisi;
 use App\Helpers\DisposisiHelper;
+use App\Helpers\FormKA5DisposisiHelper;
+use App\Helpers\KA5DisposisiHelper;
 
 /**
 * Notifikasi Helpers
 * @author nunenuh
 */
 class FormKA7DisposisiHelper{
+
+
+
 
   /**
    * Method ini digunakan untuk mendapatkan
@@ -35,69 +40,56 @@ class FormKA7DisposisiHelper{
    * Jumlah id FormKA3 ini digunakan pada Form KA4
    */
    public static function countMyDisposisi($year=null){
-     $myUser = Auth::user();
-     if ($year!=null){
-       $form = Form::whereRaw('YEAR(`tanggal`) = ?',array($year))->get();
-     } else {
-       $form = Form::all();
-     }
+    $diska5 = KA5DisposisiHelper::getDisposisiForm($year);
 
+    if ($diska5!=NULL){
+      $mydis = [];
+      $i=0;
+      $c = 0;
 
-     $mydis = [];
-     $i=0;
-     foreach($form as $fm){
-       $dis = $fm->disposisi->first();
-       if ($dis!=NULL){
-         $kepada = json_decode($dis->kepada);
-         foreach($kepada as $user){
-           if ($user->id == $myUser->id){
-             $mydis[$i] = $dis->form->id;
-             $i++;
-           }
-         }
-       }
-     }
+      foreach($diska5 as $fm){
 
-     return $mydis;
-   }
-
-  public static function countFormKA7($year){
-    $fmOut = [];
-    $c = 0;
-    $forms  = DisposisiHelper::getDisposisiForm($year);
-    if ($forms!=null){
-      foreach($forms as $fm){
+        //mengecek apakah form ka4 telah dibuat
+        //pada sequence form secara menyeluruh
+        $isFormKA7HasBeenCreated = false;
         $anak = $fm->anak->first();
-        $fmAll = $anak->form;
-
-        foreach($fmAll as $fa){
-          if (strftime("%Y", strtotime($fa->tanggal))==$year){
-            if ($fa->nama == "ka6"){
-              $fmOut[$c] = $fa->id;
-              $c++;
-            }
+        $fma = $anak->form;
+        foreach($fma as $f){
+          if ($f->nama == "ka7"){
+              $isFormKA7HasBeenCreated = true;
           }
         }
+
+        foreach($fma as $fm){
+          if ($fm->nama == "ka6" && $isFormKA7HasBeenCreated==false){ //berarti ka6 udah dibuat
+            $mydis[$c] = $fm->id;
+            $c++;
+          }
+        }
+
       }
-    }
+     return $mydis;
+   } else {
+     return [];
+   }
 
-    return $fmOut;
-  }
-
-  public static function count($year){
-    return count(FormKA7DisposisiHelper::countFormKA7($year));
-  }
+   }
 
   public static function getDisposisiForm($year){
-    $formDisArray = FormKA7DisposisiHelper::countFormKA7($year);
+    $formDisArray = FormKA7DisposisiHelper::countMyDisposisi($year);
     if (is_array($formDisArray) && count($formDisArray)!=0){
       $form = Form::wherein('id',$formDisArray)
                     ->whereRaw('YEAR(`tanggal`) = ?',array($year))
                     ->orderBy('no_lka', 'desc')->get();
+
       return $form;
     } else {
       return null;
     }
+  }
+
+  public static function count($year){
+    return count(FormKA7DisposisiHelper::getDisposisiForm($year));
   }
 
 

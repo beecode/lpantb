@@ -6,7 +6,7 @@ if (!is_null($anak->keluarga)) {
 ?>
 
 
-<div class="form-group">
+<div class="form-group has-primary">
     <label class="control-label" style="margin-left: 5.6%;">
         <p class="lead">Status Perkawinan Orang Tua</p>
     </label>
@@ -19,7 +19,7 @@ if (!is_null($anak->keluarga)) {
     <?php } ?>
 <?php } ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('keluarga[ke]', 'Status Perkawinan', ['class'=>'col-sm-3 control-label']) }}
     <div class="col-sm-6">
         <label class="radio-inline">

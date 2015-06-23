@@ -51,11 +51,6 @@
 </aside>
 
 <script type="text/javascript">
-var app = angular.module("app", ['ngTouch', 'angucomplete'], function($interpolateProvider) {
-  $interpolateProvider.startSymbol('<%');
-  $interpolateProvider.endSymbol('%>');
-});
-
 app.controller('PendampinganCtrl',PendampinganCtrl);
 PendampinganCtrl.$inject = [];
 

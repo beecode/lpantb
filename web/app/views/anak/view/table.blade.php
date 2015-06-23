@@ -3,7 +3,9 @@
         <table class="table table-bordered table-hover table-responsive" >
             <thead>
                 <tr class="small">
-                    <th class="text-center">Kode</th>
+                    <!-- <th class="text-center">Kode</th> -->
+                    <th>No LKA</th>
+                    <th>Tanggal</th>
                     <th>Nama</th>
                     <th>Gender</th>
                     <th>Jenis Kasus</th>
@@ -12,11 +14,12 @@
                 </tr>
             </thead>
             <tbody class="small">
+              <?php $i = 1;?>
                 <?php foreach ($table as $val) { ?>
-                    <?php
-                    ?>
+
                     <tr>
-                        <td class="text-center">{{$val->id}}</td>
+                        <td>{{$val->form->first()->no_lka}}</td>
+                        <td>{{strftime( "%d-%B-%Y", strtotime($val->form->first()->tanggal))}}</td>
                         <td>{{$val->nama}}</td>
                         <td>{{$val->gender}}</td>
                         <td>
@@ -41,10 +44,11 @@
                         </td>
                         <td class="text-center">
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-info" title="Detail" 
+                                <a class="btn btn-small btn-info" title="Detail"
                                    href="{{ URL::to('/dash/anak/detailview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-th-list"></span>
                                 </a>
+                                <?php if (Auth::user()->level == "admin"){?>
                                 <a class="btn btn-small btn-info" title="File"
                                    href="{{ URL::to('/dash/anak/files/view/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-file"></span>
@@ -57,11 +61,13 @@
                                         data-toggle="modal" data-target="#anakpop{{$val->id}}">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
+                                <?php } ?>
                             </div>
                             @include('anak.view.modal')
                         </td>
 
                     </tr>
+
                 <?php } ?>
             </tbody>
         </table>
@@ -75,11 +81,12 @@
 
 <script type="text/javascript">
     $(".table").dataTable({
-        "bPaginate": false,
+        "bPaginate": true,
         "bLengthChange": false,
-        "bFilter": false,
+        "bFilter": true,
         "bSort": true,
         "bInfo": true,
-        "bAutoWidth": false
+        "bAutoWidth": true,
+        "order": [[ 1, "desc" ]]
     });
 </script>

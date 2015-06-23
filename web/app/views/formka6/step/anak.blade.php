@@ -6,14 +6,14 @@ if (isset($record)) {
 
 {{Form::input('hidden','anak[id]',$anak->id)}}
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[nama]', 'Nama', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3 ">
         <p class="form-control-static">{{ $anak->nama }}</p>
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('anak[jenis_kasus]', 'Jenis Kasus', ['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-3 ">
         <?php $c = 1; ?>

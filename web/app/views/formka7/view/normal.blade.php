@@ -3,11 +3,11 @@
         <table class="table table-bordered table-hover table-responsive" >
             <thead>
                 <tr class="small">
-                    <th class="text-center">Kode</th>
                     <th>No LKA</th>
                     <th>Tanggal</th>
                     <th>Anak</th>
                     <th>Jenis Kasus</th>
+                    <th>Intervensi</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -33,32 +33,39 @@
                                 <?php } ?>
                             <?php } ?>
                         </td>
+                        <td>
+                            <?php if ($anak->intervensi->first()) { ?>
+                                <?php foreach ($anak->intervensi as $vtl) { ?>
+                                    {{$vtl->jenis}}<br/>
+                                <?php } ?>
+                            <?php } ?>
+                        </td>
 
                         <td class="text-center">
-                          <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
-                            <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-info" title="Detail"
-                                   href="{{ URL::to('/dash/formka7/detailview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-th-list"></span>
-                                </a>
-                                <a class="btn btn-small btn-warning" title="Update"
-                                   href="{{ URL::to('/dash/formka7/updateview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-edit"></span>
-                                </a>
-                                <a class="btn btn-small btn-danger" title="Delete"
-                                   href="{{ URL::to('/dash/formka7/delete/'.$val->id) }}">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </a>
-                            </div>
-                          <?php } else { ?>
-                            <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                                <a class="btn btn-small btn-info" title="Detail"
-                                   href="{{ URL::to('/dash/formka7/detailview/'.$val->id) }}">
-                                    <span class=" glyphicon glyphicon-th-list"></span>
-                                </a>
-                            </div>
-                          <?php } ?>
-                        </td>
+                            <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
+                              <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
+                                  <a class="btn btn-small btn-info" title="Detail"
+                                     href="{{ URL::to('/dash/formka7/detailview/'.$val->id) }}">
+                                      <span class=" glyphicon glyphicon-th-list"></span>
+                                  </a>
+                                  <a class="btn btn-small btn-warning" title="Update"
+                                     href="{{ URL::to('/dash/formka7/updateview/'.$val->id) }}">
+                                      <span class=" glyphicon glyphicon-edit"></span>
+                                  </a>
+                                  <a class="btn btn-small btn-danger" title="Delete"
+                                     href="{{ URL::to('/dash/formka7/delete/'.$val->id) }}">
+                                      <span class="glyphicon glyphicon-trash"></span>
+                                  </a>
+                              </div>
+                              <?php } else { ?>
+                                <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
+                                    <a class="btn btn-small btn-info" title="Detail"
+                                       href="{{ URL::to('/dash/formka7/detailview/'.$val->id) }}">
+                                        <span class=" glyphicon glyphicon-th-list"></span>
+                                    </a>
+                                </div>
+                              <?php } ?>
+                          </td>
 
                     </tr>
                 <?php } ?>

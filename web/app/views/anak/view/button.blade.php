@@ -6,10 +6,5 @@
             Kembali
         </a>
     <?php } ?>
-    <a class="btn btn-default"
-       href="{{URL::to('/dash/formka1/addview')}}">
-        <span class="glyphicon glyphicon-plus"></span>
-        Add
-    </a>
 </div>
 <div class="clearfix"></div>

@@ -7,15 +7,6 @@
         </a>
     <?php } ?>
 
-    <?php if (Auth::user()->level == "admin"){?>
-      <a class="btn btn-default"
-         href="{{URL::to('/dash/formka7/preaddview')}}">
-          <span class="glyphicon glyphicon-plus"></span>
-          Tambah
-      </a>
-    <?php } ?>
-
-
     <a href="{{URL::to('dash/formka7/disposisi')}}" class="btn btn-default">
       Disposisi
       <label class="label label-danger">

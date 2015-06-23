@@ -38,26 +38,26 @@
               <?php } ?>
           </td>
           <td>
-            <?php $formka6=false; ?>
+            <?php $formka7=false; ?>
             <?php foreach($anak->form as $fm) { ?>
               <span class="btn btn-info btn-xs btn-flat">
                 {{strtoupper($fm->nama)}}
               </span>
               <?php
-                if ($fm->nama == "ka6"){
-                  $formka6 = true;
-                  $formka6_id = $fm->id;
-                  $formka6_obj = $fm;
+                if ($fm->nama == "ka7"){
+                  $formka7 = true;
+                  $formka7_id = $fm->id;
+                  $formka7_obj = $fm;
                 }
               ?>
             <?php } ?>
           </td>
           <td>
-            <?php if ($formka6==true){ ?>
+            <?php if ($formka7==true){ ?>
               <?php
                 $me = Auth::user();
                 $amICreateThis = false;
-                foreach($formka6_obj->user as $fmUser){
+                foreach($formka7_obj->user as $fmUser){
                   if ($fmUser->id == $me->id){
                     $amICreateThis = true;
                   }
@@ -66,31 +66,31 @@
               <?php if ($amICreateThis==true) { ?>
                 <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                     <a class="btn btn-small btn-info" title="Detail"
-                       href="{{ URL::to('/dash/formka6/pendampingan/view/'.$anak->id) }}">
+                       href="{{ URL::to('/dash/formka7/view/'.$res->id) }}">
                         <span class=" glyphicon glyphicon-th-list"></span>
                     </a>
                     <a class="btn btn-small btn-warning" title="Update"
-                       href="{{ URL::to('/dash/formka6/updateview/'.$val->id) }}">
+                       href="{{ URL::to('/dash/formka7/updateview/'.$res->id) }}">
                         <span class=" glyphicon glyphicon-edit"></span>
                     </a>
                     <a class="btn btn-small btn-danger" title="Delete"
-                       href="{{ URL::to('/dash/formka6/delete/'.$val->id) }}">
+                       href="{{ URL::to('/dash/formka7/delete/'.$res->id) }}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </div>
               <?php } else { ?>
                 <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                     <a class="btn btn-small btn-info" title="Detail"
-                       href="{{ URL::to('/dash/formka6/pendampingan/view/'.$anak->id) }}">
+                       href="{{ URL::to('/dash/formka7/view/'.$res->id) }}">
                         <span class=" glyphicon glyphicon-th-list"></span>
                     </a>
                 </div>
               <?php } ?>
             <?php } else { ?>
               <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
-                  <a class="btn btn-small btn-info" title="Detail"
-                     href="{{ URL::to('/dash/formka6/pendampingan/view/'.$anak->id) }}">
-                      <span class=" glyphicon glyphicon-th-list"></span>
+                  <a class="btn btn-small btn-default" title="Detail"
+                     href="{{ URL::to('/dash/formka7/addview/'.$anak->id) }}">
+                      <span class=" glyphicon glyphicon-plus"></span>
                   </a>
               </div>
             <?php } ?>

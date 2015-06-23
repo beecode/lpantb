@@ -3,7 +3,7 @@
 $form = null;
 ?>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('form[ha]', 'Rekomendasi',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-9">
         <?php $form['rekomendasi'] = (isset($record->rekomendasi)) ? $record->rekomendasi : null; ?>
@@ -11,7 +11,7 @@ $form = null;
     </div>
 </div>
 
-<div class="form-group">
+<div class="form-group has-primary">
     {{ Form::label('catatan', 'Catatan',['class'=>'col-sm-2 control-label']) }}
     <div class="col-sm-9">
         <?php $ct = (isset($record->catatan)) ? $record->catatan : null; ?>

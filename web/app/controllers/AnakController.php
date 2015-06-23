@@ -30,7 +30,7 @@ class AnakController extends BaseController {
             'page_title' => 'Anak',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Anak::orderBy('created_at','desc')->paginate(10),
+            'table' => Anak::orderBy('created_at','desc')->get(),
         ];
         return View::make('anak.view', $data);
     }

@@ -7,14 +7,6 @@
         </a>
     <?php } ?>
     <?php if (UserHelper::amIAdmin()){  ?>
-    <?php if (Auth::user()->level == "admin"){?>
-      <a class="btn btn-default"
-         href="{{URL::to('/dash/formka5/preaddview')}}">
-          <span class="glyphicon glyphicon-plus"></span>
-          Tambah
-      </a>
-    <?php } ?>
-
 
     <a href="{{URL::to('dash/formka5/assessment')}}" class="btn btn-default">
       Assessment
