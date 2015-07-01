@@ -39,11 +39,12 @@
                 href="{{ URL::to('/dash/formka1multi/updateview/'.$val->id) }}">
                 <span class=" glyphicon glyphicon-edit"></span>
               </a>
-              <a class="btn btn-small btn-danger" title="Delete"
-              href="{{ URL::to('/dash/formka1multi/delete/'.$val->id.'/'.$enc_lka) }}">
-              <span class="glyphicon glyphicon-trash"></span>
-            </a>
-          </div>
+                <a class="btn btn-small btn-danger" title="Delete"
+                    data-toggle="modal" data-target="#delmodal-{{$val->id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+              </div>
+              @include('formka1multi.view.delwarning')
           <?php } else { ?>
             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
               <a class="btn btn-small btn-info" title="Detail Form"

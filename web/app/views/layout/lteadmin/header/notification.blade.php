@@ -33,8 +33,8 @@
           Mark All As Read
         </a>
         |
-        <a href="{{URL::to('dash/setting/notification')}}" style="color: rgba(60,141,188,1);">
-          Setting Notification
+        <a href="#" ng-click="vm.deleteAll()" style="color: rgba(60,141,188,1);">
+          Delete All
         </a>
       </div>
     </li>
@@ -82,6 +82,7 @@ function NotifCtrl($http, $interval,$sce){
   vm.getNewNotifCount = getNewNotifCount;
   vm.showHTML = showHTML;
   vm.markAllRead = markAllRead;
+  vm.deleteAll = deleteNotifAll;
 
   vm.my_user_id = <?php echo Auth::user()->id; ?>;
   vm.countDown = 1;
@@ -93,7 +94,7 @@ function NotifCtrl($http, $interval,$sce){
   activate();
 
   function getNotif(){
-    var url = 'http://lpantb.dev/dash/notifserv/mynotif/'+vm.my_user_id;
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/mynotif/'+vm.my_user_id;
     $http.get(url)
     .success(function(data, status, header, config){
       vm.notif = data;
@@ -107,7 +108,7 @@ function NotifCtrl($http, $interval,$sce){
   }
 
   function getNewNotifCount(){
-    var url = 'http://lpantb.dev/dash/notifserv/mynotif/new/count/'+vm.my_user_id;
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/mynotif/new/count/'+vm.my_user_id;
     $http.get(url)
     .success(function(data, status, header, config){
       vm.notifNew = data;
@@ -120,7 +121,7 @@ function NotifCtrl($http, $interval,$sce){
   }
 
   function markAllRead() {
-    var url = 'http://lpantb.dev/dash/notifserv/markread';
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/markread';
     $http.get(url)
     .success(function(data, status, header, config){
       console.log(data);
@@ -133,24 +134,63 @@ function NotifCtrl($http, $interval,$sce){
     });
   }
 
+  function deleteNotifAll(){
+
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/deleteAll';
+    $http.get(url)
+    .success(function(data, status, header, config){
+      console.log(data);
+      activate();
+    })
+    .error(function(data, status, header, config){
+      console.log('data '+data);
+      console.log('status '+status);
+      console.log('header '+header);
+    });
+  }
+
+
   function showHTML($data){
     return $sce.trustAsHtml($data);
   }
 
+  function notifToaStr(notif){
+
+  }
+
   function activate(){
+    var last = vm.notifNew;
+    var c = 0;
     $interval(
       function(){
+        console.log('===========START==========');
+        console.log('counter=',c);
+        console.log('last=',last);
+        console.log('new=',vm.notifNew);
+        console.log('notif=>',vm.notif.length);
+        console.log('============END===========');
+
+        if (c>0 && last<vm.notifNew){ //ada yang baru
+          var end = vm.notifNew-last;
+          var start = 0;
+          for (i = start; i < end ; i++) {
+            var text = vm.notif[i].title +'<br/>'+vm.notif[i].desc;
+            toastr.info(text);
+          }
+        }
         getNotif();
         getNewNotifCount();
+        last = vm.notifNew;
+        c++;
       },
       vm.intervalTime
     );
+
+
+
     getNotif();
     getNewNotifCount();
   }
-
-
-
 
 }
 </script>

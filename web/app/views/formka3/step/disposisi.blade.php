@@ -79,7 +79,8 @@ function DisposisiCtrl(){
   vm.remove = remove;
   vm.change = change;
 
-
+  vm.user = <?php echo $user; ?>
+  
   <?php if (isset($dis->kepada)){?>
     vm.kepadaSelected = <?php echo $dis->kepada ?>;
     vm.kepada = <?php echo $dis->kepada ?>;
@@ -89,7 +90,7 @@ function DisposisiCtrl(){
     vm.list = [0];
   <?php } ?>
 
-  vm.user = <?php echo $user; ?>
+
 
 
   //Pencarian untuk user index array berdasarkan id object yang dipilih

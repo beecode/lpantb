@@ -18,7 +18,7 @@
         <select class="form-control"
                 ng-model="vm.kepada[parentIndex]"
                 ng-options="user.id as user.name for user in vm.user track by user.id"
-                ng-change="vm.change(parentIndex)">
+                ng-change="vm.change(parentIndex)" required="required">
         </select>
       </div>
 
@@ -35,26 +35,6 @@
         <i class="fa fa-plus"></i>
       </span>
     </div>
-
-    <!-- <div class="form-group">
-      <label class="col-sm-2 control-label">Kepada</label>
-      <div class="col-sm-10">
-      <pre><% vm.kepada %></pre>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-2 control-label">Kepada Selected</label>
-      <div class="col-sm-10">
-      <pre><% vm.kepadaSelected %></pre>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-2 control-label">List</label>
-      <div class="col-sm-10">
-      <pre><% vm.list %></pre>
-      </div>
-    </div> -->
-
 
     <div style="display: none;">
       <input type="text" name="disposisi[kepada]" value="<% vm.kepada %>">
@@ -78,18 +58,32 @@ function DisposisiCtrl(){
   vm.add = add;
   vm.remove = remove;
   vm.change = change;
+  // vm.activate  = activate;
 
+  vm.user = <?php echo $user; ?>
 
   <?php if (isset($dis->kepada)){?>
-    vm.kepadaSelected = <?php echo $dis->kepada ?>;
-    vm.kepada = <?php echo $dis->kepada ?>;
-    vm.list = <?php echo $dis->kepada ?>;
+    <?php if ($dis->kepada == "[]") { ?>
+      vm.kepadaSelected = vm.user[0];
+      vm.kepada =  [];
+      vm.list = [0];
+    <?php } else { ?>
+      vm.kepadaSelected = <?php echo $dis->kepada ?>;
+      vm.kepada = <?php echo $dis->kepada ?>;
+      vm.list = <?php echo $dis->kepada ?>;
+      <?php } ?>
   <?php } else { ?>
-    vm.kepada = [];
+    vm.kepadaSelected = vm.user[0];
+    vm.kepada =  [];
     vm.list = [0];
   <?php } ?>
 
-  vm.user = <?php echo $user; ?>
+  run();
+  function run(){
+    console.log(vm.user[0]);
+  }
+
+
 
 
   //Pencarian untuk user index array berdasarkan id object yang dipilih

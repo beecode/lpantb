@@ -178,6 +178,9 @@ class FormKA7Controller extends BaseController {
 
         JenisKasusDAO::attachAll($jk, $anak);
 
+        //notifikasi
+        FormKA7DisposisiHelper::addNotif($form->id);
+
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
         return Redirect::to('/dash/formka7');
     }
@@ -223,18 +226,34 @@ class FormKA7Controller extends BaseController {
         JenisKasusDAO::attachAll($jk, $anak);
         JenisKasusDAO::saveOrUpdate($jk, $anak);
 
+        //notifikasi
+        FormKA7DisposisiHelper::updateNotif($id);
+
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
         return Redirect::to('/dash/formka7');
     }
 
     public function delete($id) {
-        $form = FormDAO::delete($id);
-        if ($form) {
-            Session::flash('message', "Form with $id has been deleted!");
-        } else {
-            Session::flash('message', "Error, Form with $id not found!");
+      //notifikasi
+      FormKA7DisposisiHelper::deleteNotif($id);
+
+      $fm = Form::find($id);
+      $anak = $fm->anak->first();
+      $forms = $anak->form;
+
+      //delete semua form yang berkaitan
+      foreach ($forms as $form) {
+        if ($form->nama=="ka7"){
+            FormDAO::delete($form->id);
         }
-        return Redirect::to('/dash/formka7');
+      }
+
+      if ($fm) {
+        Session::flash('message', "Form with $id has been deleted!");
+      } else {
+        Session::flash('message', "Error, Form with $id not found!");
+      }
+      return Redirect::to('/dash/formka7');
     }
 
     public function search() {

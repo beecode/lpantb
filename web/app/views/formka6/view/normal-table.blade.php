@@ -52,11 +52,12 @@
                                      href="{{ URL::to('/dash/formka6/updateview/'.$val->id) }}">
                                       <span class=" glyphicon glyphicon-edit"></span>
                                   </a>
-                                  <a class="btn btn-small btn-danger" title="Delete"
-                                     href="{{ URL::to('/dash/formka6/delete/'.$val->id) }}">
-                                      <span class="glyphicon glyphicon-trash"></span>
-                                  </a>
-                              </div>
+                              <a class="btn btn-small btn-danger" title="Delete"
+                                  data-toggle="modal" data-target="#delmodal-{{$val->id}}">
+                                  <span class="glyphicon glyphicon-trash"></span>
+                              </a>
+                            </div>
+                            @include('formka6.view.delwarning')
                               <?php } else { ?>
                                 <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                     <a class="btn btn-small btn-info" title="Detail"

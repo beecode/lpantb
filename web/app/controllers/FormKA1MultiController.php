@@ -189,15 +189,21 @@ class FormKA1MultiController extends BaseController {
   }
 
   public function delete($id, $enc_lka) {
+
     //notifikasi
     NotifikasiFormLKAHelper::deleteNotif($id);
 
-    $form = FormDAO::delete($id);
-    if ($form) {
-      Session::flash('message', "Form with $id has been deleted!");
-    } else {
-      Session::flash('message', "Error, Form with $id not found!");
+    $fm = Form::find($id);
+    $anak = $fm->anak->first();
+    $forms = $anak->form;
+
+    //delete semua form yang berkaitan
+    foreach ($forms as $form) {
+      FormDAO::delete($form->id);
     }
+
+    //delete data anak
+    AnakDAO::delete($anak->id);
 
 
     $lka = base64_decode($enc_lka);
@@ -205,6 +211,11 @@ class FormKA1MultiController extends BaseController {
     //synchornize multiple total and sequence multiview
     FormMultiHelper::synchronize($lka);
 
+    if ($fm) {
+      Session::flash('message', "Form with $id has been deleted!");
+    } else {
+      Session::flash('message', "Error, Form with $id not found!");
+    }
 
     return Redirect::to('/dash/formka1multi/view/'.$enc_lka);
   }

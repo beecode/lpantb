@@ -58,6 +58,7 @@
 <script src="<?php echo URL::to('com/typeahead.js/bloodhound.min.js'); ?>"></script>
 <!--<script src="<?php echo URL::to('com/bootstrap-ajax-typeahead/js/bootstrap-typeahead.js'); ?>"></script>-->
 
+<script src="<?php echo URL::to('com/toastr/toastr.js'); ?>"></script>
 
 <script src="<?php echo URL::to('js/app.js'); ?>" type="text/javascript"></script>
 

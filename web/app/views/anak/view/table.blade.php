@@ -18,8 +18,29 @@
                 <?php foreach ($table as $val) { ?>
 
                     <tr>
-                        <td>{{$val->form->first()->no_lka}}</td>
-                        <td>{{strftime( "%d-%B-%Y", strtotime($val->form->first()->tanggal))}}</td>
+                      <?php
+                      $forms = $val->form;
+                      $form = false;
+                      foreach ($forms as $fm) {
+                        if ($fm->nama=="ka1" || $fm->nama=="ka2"){
+                          $form = $fm;
+                        }
+                      }
+                       ?>
+                        <td>
+                          <?php
+                            if ($form){
+                              echo $form->no_lka;
+                            }
+                          ?>
+                        </td>
+                        <td>
+                          <?php
+                            if ($form){
+                              echo strftime( "%d-%B-%Y", strtotime($form->tanggal));
+                            }
+                           ?>
+                        </td>
                         <td>{{$val->nama}}</td>
                         <td>{{$val->gender}}</td>
                         <td>
@@ -82,7 +103,7 @@
 <script type="text/javascript">
     $(".table").dataTable({
         "bPaginate": true,
-        "bLengthChange": false,
+        "bLengthChange": true,
         "bFilter": true,
         "bSort": true,
         "bInfo": true,

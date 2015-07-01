@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody class="small">
-        @include('formka2.view.rowcolumn')
+        @include('formka2.view.normal')
       </tbody>
     </table>
 <?php } else { ?>
@@ -26,13 +26,13 @@
   var config = {
     "bPaginate": true,
     "bLengthChange": true,
-    // "bFilter": true,
+    "bFilter": true,
     "bInfo": true,
-    // "bSort": true,
+    "bSort": true,
     "bAutoWidth": false,
-    // "order":[[2,'desc']],
+    "order":[[1,'desc']],
     // "aaSorting":[[2, 'desc']],
-    "ordering": false,
+    // "ordering": false,
   };
   $(".table").dataTable(config).fnFakeRowspan(0);
   </script>

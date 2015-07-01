@@ -14,9 +14,10 @@ use App\Models\Anak;
 use Illuminate\Support\Facades\Session;
 use App\Models\Intervensi;
 use App\DAO\FormDAO,
-    App\DAO\JenisKasusDAO;
-use Illuminate\Support\Facades\Auth;
+    App\DAO\JenisKasusDAO,
+    App\DAO\PendampinganDAO;
 
+use Illuminate\Support\Facades\Auth;
 use App\Helpers\FormKA6DisposisiHelper;
 
 /**
@@ -180,6 +181,9 @@ class FormKA6Controller extends BaseController {
 
         JenisKasusDAO::attachAll($jk, $anak);
 
+        //notifikasi
+        FormKA6DisposisiHelper::addNotif($form->id);
+
         Session::flash('message', "Form with No LKA $form->no_lka has been added!");
         return Redirect::to('/dash/formka6/pendampingan/view/' . $anak->id);
     }
@@ -226,18 +230,42 @@ class FormKA6Controller extends BaseController {
         JenisKasusDAO::attachAll($jk, $anak);
         JenisKasusDAO::saveOrUpdate($jk, $anak);
 
+        //notifikasi
+        FormKA6DisposisiHelper::updateNotif($id);
+
+
         Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
         return Redirect::to('dash/formka6');
     }
 
     public function delete($id) {
-        $form = FormDAO::delete($id);
-        if ($form) {
-            Session::flash('message', "Form with $id has been deleted!");
-        } else {
-            Session::flash('message', "Error, Form with $id not found!");
+      //notifikasi
+      FormKA6DisposisiHelper::deleteNotif($id);
+
+      $fm = Form::find($id);
+      $anak = $fm->anak->first();
+      $forms = $anak->form;
+
+      //delete semua form yang berkaitan
+      foreach ($forms as $form) {
+        if ($form->nama=="ka6" || $form->nama=="ka7"){
+              FormDAO::delete($form->id);
         }
-        return Redirect::to('/dash/formka6');
+      }
+
+      //delete data pendampingan
+      $pendamping = $anak->pendampingan;
+      foreach($pendamping as $pd){
+        PendampinganDAO::delete($pd->id);
+      }
+
+
+      if ($fm) {
+        Session::flash('message', "Form with $id has been deleted!");
+      } else {
+        Session::flash('message', "Error, Form with $id not found!");
+      }
+      return Redirect::to('/dash/formka6');
     }
 
     public function search() {

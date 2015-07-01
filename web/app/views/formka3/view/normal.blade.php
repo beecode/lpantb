@@ -55,11 +55,12 @@
                                    href="{{ URL::to('/dash/formka3/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a class="btn btn-small btn-danger" title="Delete"
-                                   href="{{ URL::to('/dash/formka3/delete/'.$val->id) }}">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </a>
-                            </div>
+                                  <a class="btn btn-small btn-danger" title="Delete"
+                                      data-toggle="modal" data-target="#delmodal-{{$val->id}}">
+                                      <span class="glyphicon glyphicon-trash"></span>
+                                  </a>
+                                </div>
+                          @include('formka3.view.delwarning')
                             <?php } else { ?>
                               <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                   <a class="btn btn-small btn-info" title="Detail"
@@ -91,8 +92,8 @@
         "bInfo": true,
         // "bSort": true,
         "bAutoWidth": false,
-        "order":[[2,'desc']],
-        "aaSorting":[[2,'desc']],
+        "order":[[1,'desc']],
+        "aaSorting":[[1,'desc']],
         "ordering": true,
     });
 </script>

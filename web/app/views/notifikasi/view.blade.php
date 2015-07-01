@@ -47,9 +47,24 @@
         @endif
         <div class="box box-primary" ng-controller="NotifikasiCtrl as vm">
             <div class="box-body">
+              <a class="btn btn-default" ng-click="vm.markAllRead()">
+                <span class="glyphicon glyphicon-list"></span>
+                Mark All As Read
+              </a>
+              <a class="btn btn-danger" ng-click="vm.deleteAll()">
+                <span class="glyphicon glyphicon-trash"></span>
+                Remove All
+              </a>
+              <br/>
+              <br/>
 
               <!-- inner menu: contains the actual data -->
               <ul class="menu list-unstyled" style="height:377px; overflow:auto;">
+                <div ng-show="vm.notif.length == 0">
+                  <div class="alert alert-info">
+                      Tidak ada notifikasi
+                  </div>
+                </div>
                 <!-- start message -->
                 <li ng-repeat="notif in vm.notif track by $index"
                     ng-class="{'notif-new': notif.status=='new', 'notif-read': notif.status=='read'}">
@@ -95,6 +110,7 @@ function NotifikasiCtrl($http, $interval,$sce){
   vm.showHTML = showHTML;
   vm.markAllRead = markAllRead;
   vm.delete = deleteNotif;
+  vm.deleteAll = deleteNotifAll;
 
   vm.my_user_id = <?php echo Auth::user()->id; ?>;
   vm.countDown = 1;
@@ -106,7 +122,7 @@ function NotifikasiCtrl($http, $interval,$sce){
   activate();
 
   function getNotif(){
-    var url = 'http://lpantb.dev/dash/notifserv/mynotif/'+vm.my_user_id;
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/mynotif/'+vm.my_user_id;
     $http.get(url)
     .success(function(data, status, header, config){
       vm.notif = data;
@@ -120,7 +136,7 @@ function NotifikasiCtrl($http, $interval,$sce){
   }
 
   function getNewNotifCount(){
-    var url = 'http://lpantb.dev/dash/notifserv/mynotif/new/count/'+vm.my_user_id;
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/mynotif/new/count/'+vm.my_user_id;
     $http.get(url)
     .success(function(data, status, header, config){
       vm.notifNew = data;
@@ -133,7 +149,7 @@ function NotifikasiCtrl($http, $interval,$sce){
   }
 
   function markAllRead() {
-    var url = 'http://lpantb.dev/dash/notifserv/markread';
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/markread';
     $http.get(url)
     .success(function(data, status, header, config){
       console.log(data);
@@ -153,7 +169,22 @@ function NotifikasiCtrl($http, $interval,$sce){
   function deleteNotif(index){
     var notif = vm.notif[index];
 
-    var url = 'http://lpantb.dev/dash/notifserv/delete/'+notif.id;
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/delete/'+notif.id;
+    $http.get(url)
+    .success(function(data, status, header, config){
+      console.log(data);
+      activate();
+    })
+    .error(function(data, status, header, config){
+      console.log('data '+data);
+      console.log('status '+status);
+      console.log('header '+header);
+    });
+  }
+
+  function deleteNotifAll(){
+
+    var url = 'http://<?php echo Request::server ("SERVER_NAME"); ?>/dash/notifserv/deleteAll';
     $http.get(url)
     .success(function(data, status, header, config){
       console.log(data);

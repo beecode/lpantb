@@ -22,19 +22,19 @@
         </div>
         @endif
         <div class="box box-primary" ng-app="app">
-            <div class="box-header">
-                <div class="box-tools pull-left">
-                  <?php $enc_lka = base64_encode($lka); ?>
-                    <a href="{{URL::to('dash/formka1multi/view/'.$enc_lka)}}" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
-                    </a>
-                </div>
-            </div>
+          <div class="box-header">
+              <div class="box-tools pull-left">
+                <?php $enc_lka = base64_encode($lka); ?>
+                  <a href="{{URL::to('dash/formka1multi/view/'.$enc_lka)}}" class="btn btn-primary">
+                      <span class="glyphicon glyphicon-chevron-left"></span> Back To Table View
+                  </a>
+              </div>
+          </div>
             <div class="box-body">
 
                 <form id="myWizard" method="POST" action="{{$form_url}}" class="form-horizontal">
                     <div class="row">
-                        <section class="step" data-step-title="Tanggal">
+                        <section class="step" data-step-title="No LKA">
                             @include('formka1multi.step.lka')
                         </section>
                         <section class="step" data-step-title="Pelapor">

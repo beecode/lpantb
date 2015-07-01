@@ -8,6 +8,12 @@ Route::get($pr_k1 . "/viewMe", $con . $fk1 . "@viewMe")->before('auth');
 Route::post($pr_k1 . "/viewYear", $con . $fk1 . "@viewYear")->before('auth');
 Route::get($pr_k1 . '/detailview/{id}', $con . $fk1 . '@detailView')->before('auth');
 
+Route::get($pr_k1 . "/preaddview", $con . $fk1 . "@preAddView")->before('auth');
+Route::post($pr_k1 . "/preadd", $con . $fk1 . "@preAdd")->before('auth');
+
+Route::get($pr_k1 . "/preaddmultiview", $con . $fk1 . "@preAddMultiView")->before('auth');
+Route::post($pr_k1 . "/preaddmulti", $con . $fk1 . "@preAddMulti")->before('auth');
+
 Route::get($pr_k1 . "/addview", $con . $fk1 . "@addView")->before('auth');
 Route::post($pr_k1 . "/add", $con . $fk1 . "@add")->before('auth');
 

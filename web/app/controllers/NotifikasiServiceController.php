@@ -38,6 +38,17 @@ class NotifikasiServiceController extends BaseController {
     }
   }
 
+  public function deleteAll(){
+    $user = Auth::user();
+    $notif = Notifikasi::where('action_to','=',$user->id)->get();
+    foreach ($notif as $nt){
+      $n = Notifikasi::find($nt->id);
+      if ($n){
+        $n->delete();
+      }
+    }
+  }
+
   public function delete($id){
     $nt = Notifikasi::find($id);
     $nt->delete();

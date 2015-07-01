@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Anak;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\FormMultiHelper;
+use App\Helpers\NotifikasiFormLKAHelper;
 
 /**
 * Description of Testerform1Controller
@@ -125,6 +126,9 @@ class FormKA2MultiController extends BaseController {
     //synchornize multiple total and sequence multiview
     FormMultiHelper::synchronize($fm['no_lka']);
 
+    //notifikasi
+    NotifikasiFormLKAHelper::addNotif($form->id);
+
 
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been added!");
@@ -178,6 +182,9 @@ class FormKA2MultiController extends BaseController {
     //synchornize multiple total and sequence multiview
     FormMultiHelper::synchronize($fm['no_lka']);
 
+    //notifikasi
+    NotifikasiFormLKAHelper::updateNotif($form->id);
+
     $lka = base64_encode($fm['no_lka']);
     Session::flash('message', "Form with No LKA $form->no_lka has been updated!");
 
@@ -185,17 +192,32 @@ class FormKA2MultiController extends BaseController {
   }
 
   public function delete($id, $enc_lka) {
-    $form = FormDAO::delete($id);
-    if ($form) {
+    //notifikasi
+    NotifikasiFormLKAHelper::deleteNotif($id);
+
+    $fm = Form::find($id);
+    $anak = $fm->anak->first();
+    $forms = $anak->form;
+
+    //delete semua form yang berkaitan
+    foreach ($forms as $form) {
+      FormDAO::delete($form->id);
+    }
+
+    //delete data anak
+    AnakDAO::delete($anak->id);
+
+
+    $lka = base64_decode($enc_lka);
+
+    //synchornize multiple total and sequence multiview
+    FormMultiHelper::synchronize($lka);
+
+    if ($fm) {
       Session::flash('message', "Form with $id has been deleted!");
     } else {
       Session::flash('message', "Error, Form with $id not found!");
     }
-
-    $lka = base64_decode($enc_lka);
-    //synchornize multiple total and sequence multiview
-    FormMultiHelper::synchronize($lka);
-
 
     return Redirect::to('/dash/formka2multi/view/'.$enc_lka);
   }

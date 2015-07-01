@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use App\Controllers\Interfaces\FeatureInterface;
 use Illuminate\Support\Facades\Response;
-
+use App\Models\Form;
 /**
  * Description of ServiceQueryController
  *
@@ -39,6 +39,16 @@ class ServiceQueryController extends BaseController {
 
         $pelapor = Pelapor::lists('nama');
         return Response::json($pelapor);
+    }
+
+    public function isLKAUnique(){
+      $q = Input::get('query');
+      $form = Form::where('no_lka','=',$q)->get();
+      if (count($form)>0){
+        return  Response::json(['status'=>false]);
+      } else {
+        return  Response::json(['status'=>true]);
+      }
     }
 
 }

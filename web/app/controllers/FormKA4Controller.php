@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Session;
 use App\Helpers\LocationHelper;
 use App\Helpers\PrintLog;
 use App\DAO\FormDAO,
-App\DAO\AnakDAO,
-App\DAO\GambaranFisikDAO,
-App\DAO\KeluargaDAO,
-App\DAO\AyahDAO,
-App\DAO\IbuDAO,
-App\DAO\IdentifikasiMasalahDAO,
-App\DAO\KondisiPsikososialDAO;
+    App\DAO\AnakDAO,
+    App\DAO\GambaranFisikDAO,
+    App\DAO\KeluargaDAO,
+    App\DAO\AyahDAO,
+    App\DAO\IbuDAO,
+    App\DAO\IdentifikasiMasalahDAO,
+    App\DAO\KondisiPsikososialDAO,
+    App\DAO\PendampingDAO;
 
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\KA3DisposisiHelper;
@@ -284,8 +285,26 @@ class FormKA4Controller extends BaseController {
     //notifikasi
     FormKA4DisposisiHelper::deleteNotif($id);
 
-    $form = FormDAO::delete($id);
-    if ($form) {
+    $fm = Form::find($id);
+    $anak = $fm->anak->first();
+    $forms = $anak->form;
+
+    //delete semua form yang berkaitan
+    foreach ($forms as $form) {
+      if ($form->nama=="ka4" || $form->nama=="ka5" ||
+          $form->nama=="ka6" || $form->nama=="ka7"){
+            FormDAO::delete($form->id);
+      }
+    }
+
+    //delete data pendampingan
+    $pendamping = $anak->pendampingan;
+    foreach($pendamping as $pd){
+      PendampinganDAO::delete($pd->id);
+    }
+
+
+    if ($fm) {
       Session::flash('message', "Form with $id has been deleted!");
     } else {
       Session::flash('message', "Error, Form with $id not found!");

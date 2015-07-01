@@ -96,10 +96,10 @@
         "bLengthChange": true,
         "bFilter": true,
         "bInfo": true,
-        // "bSort": true,
+        "bSort": true,
         "bAutoWidth": false,
-        "order":[[2,'desc']],
-        "aaSorting":[[2,'desc']],
+        "order":[[1,'desc']],
+        "aaSorting":[[1,'desc']],
         "ordering": true,
     });
 </script>

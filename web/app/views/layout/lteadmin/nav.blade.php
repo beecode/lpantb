@@ -28,7 +28,7 @@
                         <span>Notifikasi</span>
                     </a>
                 </li>
-                <li class="treeview">
+                <li class="treeview active">
                     @include('layout.lteadmin.nav.kasus')
                 </li>
                 <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "creator") {?>

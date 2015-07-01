@@ -1,5 +1,7 @@
 <link href="<?php echo URL::to('lte/http/css/bootstrap.css'); ?>"    rel="stylesheet" type="text/css">
 <link href="<?php echo URL::to('lte/http/font-awesome/css/font-awesome.min.css'); ?>"  rel="stylesheet" type="text/css">
+<link href="<?php echo URL::to('com/toastr/toastr.css'); ?>"    rel="stylesheet" type="text/css">
+
 
 <!--easy wizard-->
 <link href="<?php echo URL::to('lte/css/easywizard/jquery.snippet.min.css'); ?>" rel="stylesheet" type="text/css">

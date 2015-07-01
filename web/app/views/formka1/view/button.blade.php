@@ -8,14 +8,14 @@
     <?php } ?>
 
     <a class="btn btn-primary"
-       href="{{URL::to('/dash/formka1/addview')}}">
+       href="{{URL::to('/dash/formka1/preaddview')}}">
         <span class="glyphicon glyphicon-plus"></span>
         Tambah
     </a>
     <a class="btn btn-info"
-       href="{{URL::to('/dash/formka1/addmulti')}}">
+       href="{{URL::to('/dash/formka1/preaddmultiview')}}">
         <span class="glyphicon glyphicon-plus"></span>
-        Tambah Multi Kasus
+        Tambah Multi
     </a>
     &nbsp;&nbsp;
 

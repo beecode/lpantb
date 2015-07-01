@@ -93,5 +93,81 @@ class FormKA7DisposisiHelper{
   }
 
 
+  public static function addNotif($form_id){
+    //notifikasi ke admin
+    $user = Auth::user();
+    $user_from_id = $user->id;
+
+    $user_to = User::where('level','=','admin')->get();
+    foreach($user_to as $u){
+      NotifikasiFormHelper::formCreate($user_from_id, $u->id, $form_id);
+    }
+
+    $disposisi = FormKA7DisposisiHelper::getDisposisiKA5($form_id);
+    var_dump($disposisi);
+    foreach($disposisi as $dis){
+      if ($dis->id != $user_from_id){ //jika bukan diri sendiri
+        $user_to_id = $dis->id;
+        NotifikasiFormHelper::formCreate($user_from_id, $user_to_id, $form_id);
+      }
+    }
+  }
+
+  public static function updateNotif($form_id){
+    //notifikasi
+    $user = Auth::user();
+    $user_from_id = $user->id;
+
+    $user_to = User::where('level','=','admin')->get();
+    foreach($user_to as $u){
+      NotifikasiFormHelper::formUpdate($user_from_id, $u->id, $form_id);
+    }
+
+    $disposisi = FormKA7DisposisiHelper::getDisposisiKA5($form_id);
+    var_dump($disposisi);
+    foreach($disposisi as $dis){
+      if ($dis->id != $user_from_id){ //jika bukan diri sendiri
+        $user_to_id = $dis->id;
+        NotifikasiFormHelper::formUpdate($user_from_id, $user_to_id, $form_id);
+      }
+    }
+  }
+
+  public static function deleteNotif($form_id){
+    //notifikasi
+    $user = Auth::user();
+    $user_from_id = $user->id;
+
+    $user_to = User::where('level','=','admin')->get();
+    foreach($user_to as $u){
+      NotifikasiFormHelper::formDelete($user_from_id, $u->id, $form_id);
+    }
+
+
+    $disposisi = FormKA7DisposisiHelper::getDisposisiKA5($form_id);
+    var_dump($disposisi);
+    foreach($disposisi as $dis){
+      if ($dis->id != $user_from_id){ //jika bukan diri sendiri
+        $user_to_id = $dis->id;
+        NotifikasiFormHelper::formDelete($user_from_id, $user_to_id, $form_id);
+      }
+    }
+  }
+
+  public static function getDisposisiKA5($form_id){
+    $form = Form::find($form_id); //ambil form id
+    $fa  = $form->anak->first(); //ambil data anak dari form ini
+    $anak = Anak::find($fa->id); //ambil data anak berdasarkan id anak pada form ka4
+    $formAll = $anak->form; //ambil data banyak form dari anak
+    $formDis = null;
+    foreach($formAll as $fm){
+      if ($fm->nama=="ka5"){ //jika form sama dengan form ka3 maka
+        $formDis = $fm; //simpan data from ka3 ke $formDis
+      }
+    }
+    //ambil data disposisi
+    $disposisi = json_decode($formDis->disposisi->first()->kepada);
+    return $disposisi;
+  }
 
 }

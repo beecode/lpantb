@@ -94,6 +94,42 @@ class FormKA1Controller extends BaseController {
     return View::make('formka1.detail', $data);
   }
 
+  public function preAddView(){
+    $data = [
+      'page_title' => 'Kasus Anak 1 (KA1)',
+      'panel_title' => 'Form Add',
+      'form_url' => '/dash/formka1/preadd',
+      'form_status' => 'add',
+      'location_pelapor' => LocationHelper::location(),
+      'location_anak' => LocationHelper::location(),
+      'agama_lists' => Agama::lists('nama', 'nama'),
+
+    ];
+    return View::make('formka1.preadd', $data);
+  }
+
+  public function preAdd(){
+    $in = Input::get('penomoran');
+    if ($in['mode']=='auto'){
+      $preaddka1 = ['mode'=>'auto'];
+      Session::put('preaddka1',$preaddka1);
+      return Redirect::to('/dash/formka1/addview');
+    } else {
+      $lka = $in['lka'];
+      $tgl = $in['tanggal'];
+      $preaddka1 = [
+        'mode'=>'manual',
+        'lka'=>$lka,
+        'tanggal'=>$tgl,
+      ];
+      Session::put('preaddka1',$preaddka1);
+      print_r(Session::get('preaddka1'));
+      return Redirect::to('/dash/formka1/addview');
+    }
+  }
+
+
+
   public function addView() {
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
@@ -113,6 +149,8 @@ class FormKA1Controller extends BaseController {
     $an = Input::get('anak');
     $ct = Input::get('contact');
     $fm = Input::get('form');
+
+    $preaddka1 = Session::get('preaddka1');
 
     if (!isset($fm['no_lka'])){
       $fm['no_lka']=LKAHelper::getLKA();
@@ -153,41 +191,55 @@ class FormKA1Controller extends BaseController {
     return Redirect::to('/dash/formka1');
   }
 
-
-  public function addMultiView() {
+  public function preAddMultiView(){
     $data = [
       'page_title' => 'Kasus Anak 1 (KA1)',
       'panel_title' => 'Form Add',
-      'form_url' => '/dash/formka1/addmulti',
+      'form_url' => '/dash/formka1/preaddmulti',
       'form_status' => 'add',
       'location_pelapor' => LocationHelper::location(),
       'location_anak' => LocationHelper::location(),
       'agama_lists' => Agama::lists('nama', 'nama'),
+
     ];
-    return View::make('formka1.multi', $data);
+    return View::make('formka1.preaddmulti', $data);
   }
 
-  public function addMulti() {
-    $fm = Input::get('form');
+  public function preAddMulti(){
+    $in = Input::get('penomoran');
+    if ($in['mode']=='auto'){
+      $lka = LKAHelper::getLKA();
+      $tanggal = date('Y-m-d');
+      Session::put('multi.lka', $lka);
+      Session::put('multi.tanggal', $tanggal );
 
-    // inject lka if not set
-    if (!isset($fm['no_lka'])){
-      $fm['no_lka']=LKAHelper::getLKA();
+      $preaddmultika1 = [
+        'mode'=>'auto',
+        'lka'=>$lka,
+        'tanggal'=>$tanggal,
+        ];
+      Session::put('preaddmultika1',$preaddmultika1);
+
+      $lka = base64_encode($lka);
+      return Redirect::to('/dash/formka1multi/view/'.$lka);
+    } else {
+      $lka = $in['lka'];
+      $tanggal = date('Y-m-d');
+      Session::put('multi.lka', $lka);
+      Session::put('multi.tanggal', $tanggal );
+
+      $preaddmultika1 = [
+        'mode'=>'manual',
+        'lka'=>$lka,
+        'tanggal'=>$tanggal,
+      ];
+      Session::put('preaddmultika1',$preaddmultika1);
+
+      $lka = base64_encode($lka);
+      return Redirect::to('/dash/formka1multi/view/'.$lka);
     }
-
-    // inject tanggal if not set
-    if (!isset($fm['tanggal'])){
-      $fm['tanggal']=date('Y-m-d');
-    }
-
-    $lka = base64_encode($fm['no_lka']);
-
-    Session::put('multi.lka', $fm['no_lka']);
-    Session::put('multi.tanggal', $fm['tanggal']);
-
-
-    return Redirect::to('/dash/formka1multi/view/'.$lka);
   }
+
 
   public function updateView($id) {
     $rec = Form::find($id);
@@ -254,8 +306,20 @@ class FormKA1Controller extends BaseController {
     //notifikasi
     NotifikasiFormLKAHelper::deleteNotif($id);
 
-    $form = FormDAO::delete($id);
-    if ($form) {
+    $fm = Form::find($id);
+    $anak = $fm->anak->first();
+    $forms = $anak->form;
+
+    //delete semua form yang berkaitan
+    foreach ($forms as $form) {
+      FormDAO::delete($form->id);
+    }
+
+    //delete data anak
+    AnakDAO::delete($anak->id);
+
+
+    if ($fm) {
       Session::flash('message', "Form with $id has been deleted!");
     } else {
       Session::flash('message', "Error, Form with $id not found!");

@@ -33,9 +33,29 @@
 
                 <form id="myWizard" method="POST" action="{{$form_url}}" class="form-horizontal">
                     <div class="row">
-                        <section class="step" data-step-title="No LKA">
-                            @include('formka1.step.lka')
-                        </section>
+
+                        <?php
+                        $preadd = Session::get('preaddka1');
+                        if ($form_status=="add"){
+                          if ($preadd['mode']=="auto"){
+                        ?>
+                            <section class="step" data-step-title="No LKA">
+                                @include('formka1.step.lka')
+                            </section>
+                          <?php } else {
+                            $lka = $preadd['lka'];
+                            $tanggal = strftime( "%Y-%m-%d", strtotime($preadd['tanggal']));
+                            ?>
+                            {{Form::input('hidden','form[no_lka]',$lka)}}
+                            {{Form::input('hidden','form[tanggal]',$tanggal)}}
+                            {{Form::input('hidden','form[nama]','ka1')}}
+                          <?php } ?>
+                        <?php } else { ?>
+                          <section class="step" data-step-title="No LKA">
+                              @include('formka1.step.lka')
+                          </section>
+                        <?php } ?>
+
                         <section class="step" data-step-title="Pelapor">
                             @include('formka1.step.pelapor')
                         </section>

@@ -6,7 +6,7 @@
 <ul class="treeview-menu">
     <li>
         <a href="{{URL::to('dash/anak')}}">
-          <i class="fa fa-user"></i> Anak
+          <i class="fa fa-user"></i>Data Anak
         </a>
     </li>
     <li>

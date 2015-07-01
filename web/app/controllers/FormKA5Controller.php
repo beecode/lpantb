@@ -19,7 +19,8 @@ use App\DAO\FormDAO,
     App\DAO\IntervensiDAO,
     App\DAO\JenisKasusDAO,
     App\DAO\DisposisiDAO,
-    App\DAO\UserDAO;
+    App\DAO\UserDAO,
+    App\DAO\PendampinganDAO;
 
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\DisposisiHelper;
@@ -255,13 +256,34 @@ class FormKA5Controller extends BaseController {
     }
 
     public function delete($id) {
-        $form = FormDAO::delete($id);
-        if ($form) {
-            Session::flash('message', "Form with $id has been deleted!");
-        } else {
-            Session::flash('message', "Error, Form with $id not found!");
+
+      //notifikasi
+      NotifikasiDisposisiHelper::formDelete($id);
+
+      $fm = Form::find($id);
+      $anak = $fm->anak->first();
+      $forms = $anak->form;
+
+      //delete semua form yang berkaitan
+      foreach ($forms as $form) {
+        if ($form->nama=="ka5" || $form->nama=="ka6" || $form->nama=="ka7"){
+              FormDAO::delete($form->id);
         }
-        return Redirect::to('/dash/formka5');
+      }
+
+      //delete data pendampingan
+      $pendamping = $anak->pendampingan;
+      foreach($pendamping as $pd){
+        PendampinganDAO::delete($pd->id);
+      }
+
+
+      if ($fm) {
+        Session::flash('message', "Form with $id has been deleted!");
+      } else {
+        Session::flash('message', "Error, Form with $id not found!");
+      }
+      return Redirect::to('/dash/formka5');
     }
 
     public function search() {

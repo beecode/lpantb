@@ -17,6 +17,7 @@ use App\DAO\TindakLanjutDAO;
 use App\DAO\JenisKasusDAO;
 use App\DAO\DisposisiDAO;
 use App\DAO\UserDAO;
+use App\DAO\PendampinganDAO;
 use App\Helpers\PrintLog;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\NotifikasiDisposisiHelper;
@@ -270,14 +271,36 @@ class FormKA3Controller extends BaseController {
     }
 
     public function delete($id) {
-        //notifikasi
-        NotifikasiDisposisiHelper::formDelete($form->id);
 
-        $form = FormDAO::delete($id);
-        if ($form) {
-            Session::flash('message', "Form with $id has been deleted!");
+        //notifikasi
+        NotifikasiDisposisiHelper::formDelete($id);
+
+        $fm = Form::find($id);
+        $anak = $fm->anak->first();
+        $forms = $anak->form;
+
+        //delete semua form yang berkaitan
+        foreach ($forms as $form) {
+          if ($form->nama=="ka3" || $form->nama=="ka4" ||
+              $form->nama=="ka5" || $form->nama=="ka6" ||
+              $form->nama=="ka7"){
+
+                FormDAO::delete($form->id);
+
+          }
+        }
+
+        //delete data pendampingan
+        $pendamping = $anak->pendampingan;
+        foreach($pendamping as $pd){
+          PendampinganDAO::delete($pd->id);
+        }
+
+
+        if ($fm) {
+          Session::flash('message', "Form with $id has been deleted!");
         } else {
-            Session::flash('message', "Error, Form with $id not found!");
+          Session::flash('message', "Error, Form with $id not found!");
         }
         return Redirect::to('/dash/formka3');
     }
