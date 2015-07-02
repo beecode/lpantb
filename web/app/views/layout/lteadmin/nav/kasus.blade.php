@@ -20,7 +20,7 @@
         </a>
     </li>
     <li>
-        <a href="{{URL::to('dash/formka3')}}">
+        <a href="{{URL::to('dash/formka3/viewLKA')}}">
           <i class="fa fa-th-list"></i>Form KA3
         </a>
     </li>
@@ -30,7 +30,7 @@
         </a>
     </li>
     <li>
-        <a href="{{URL::to('dash/formka5')}}">
+        <a href="{{URL::to('dash/formka5/assessment')}}">
           <i class="fa fa-th-list"></i>Form KA5
         </a>
     </li>

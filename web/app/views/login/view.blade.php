@@ -1,5 +1,3 @@
-
-
 @extends('login.layout')
 @section('content')
 <div class="form-box" id="login-box">
@@ -22,8 +20,14 @@
             <button type="submit" class="btn bg-olive btn-block">Masuk Ke Dalam Aplikasi</button>
         </div>
     </form>
-
-
 </div>
+
+@if (Session::has('message'))
+<div class="alert alert-danger alert-dismissable">
+    <i class="fa fa-info"></i>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    {{ Session::get('message') }}
+</div>
+@endif
 
 @stop

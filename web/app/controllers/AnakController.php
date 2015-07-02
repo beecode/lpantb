@@ -68,11 +68,30 @@ class AnakController extends BaseController {
 
     public function delete($id) {
         $anak = Anak::find($id);
+
         $form = $anak->form;
-        //delete form juga
         foreach ($form as $fm) {
             FormDAO::delete($fm->id);
         }
+
+        $pendampingan = $anak->pendampingan;
+        foreach($pendampingan as $pen){
+          PendampinganDAO::delete($pen->id)
+        }
+
+        $files = $anak->files;
+        foreach($files as $fl){
+          FilesDAO::delete($fl->id);
+        }
+
+        $pelapor = $anak->pelapor-first();
+        $sumber = $anak->sumber_informasi->first();
+        $fisik = $anak->gambaran_fisik->first();
+        $identifikasi = $anak->identifikasi_masalah->first();
+        $psiko = $anak->kondisi_psikososial->first();
+        $contact = $anak->contact_person->first();
+        $keluarga = $anak->keluarga->first();
+
         $anak->delete();
         if ($anak) {
             Session::flash('message', "Form with $id has been deleted!");

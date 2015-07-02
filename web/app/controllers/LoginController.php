@@ -26,9 +26,11 @@ class LoginController extends BaseController {
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
+
             return Redirect::to('/login')
                             ->withErrors($validator)
                             ->withInput(Input::except('password'));
+
         } else {
             $userdata = array(
                 'username' => Input::get('username'),
@@ -44,6 +46,7 @@ class LoginController extends BaseController {
             if ($isAuth) {
                 return Redirect::intended('/dash');
             } else {
+                Session::flash('message', "Login Gagal!, Username atau/dan Password anda salah!");
                 return Redirect::to('/login');
             }
         }
