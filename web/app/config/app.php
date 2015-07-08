@@ -121,6 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+			// providers array:
+		'Chumper\Datatable\DatatableServiceProvider',
 
 	),
 
@@ -192,7 +194,8 @@ return array(
 		'UserHelper'			=> 'App\Helpers\UserHelper',
 		'SettingDAO'			=> 'App\DAO\SettingDAO',
 		'PrintLog'				=> 'App\Helpers\PrintLog',
-		'LKAHelper'				=> 'App\Helpers\LKAHelper'
+		'LKAHelper'				=> 'App\Helpers\LKAHelper',
+		'Datatable'		 		=> 'Chumper\Datatable\Facades\DatatableFacade',
 
 	),
 

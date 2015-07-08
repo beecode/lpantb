@@ -20,7 +20,14 @@
                         <span>Users</span>
                     </a>
                 </li>
-                  <?php } ?>
+                <?php }  else { ?>
+                  <li class="active">
+                      <a href="<?php echo URL::to('/dash/myaccount'); ?>">
+                          <i class="fa fa-users"></i>
+                          <span>Akun Saya</span>
+                      </a>
+                  </li>
+                <?php } ?>
 
                 <li class="active">
                     <a href="<?php echo URL::to('/dash/notifikasi/view'); ?>">

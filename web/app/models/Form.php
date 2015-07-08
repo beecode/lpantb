@@ -22,6 +22,7 @@ class Form extends Eloquent {
     public function Anak() {
         return $this->belongsToMany($this->ns . "Anak", "form_has_anak")->withPivot("anak_id");
     }
+    
 
     public function Disposisi() {
         return $this->hasMany($this->ns . "Disposisi");

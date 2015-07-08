@@ -12,6 +12,7 @@ use App\DAO\DesaDAO;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use Datatable;
 
 /**
  * Description of DesalurahController
@@ -28,6 +29,52 @@ class DesaController extends BaseController {
             'table' => Desa::paginate(10),
         ];
         return View::make('desa.view', $data);
+    }
+
+    public function viewAjax() {
+      $orm = Desa::All();
+      $dt = Datatable::collection($orm)
+      ->showColumns('id','nama')
+      ->addColumn('kecamatan',
+        function($model){
+            return $model->kecamatan->nama;
+        }
+      )
+      ->addColumn('kabkota',
+        function($model){
+            return $model->kecamatan->kabkota->nama;
+        }
+      )
+      ->addColumn('provinsi',
+        function($model){
+            return $model->kecamatan->kabkota->provinsi->nama;
+        }
+      )
+      ->addColumn('aksi',
+        function ($model){
+          return $this->buttonAksi($model->id);
+        }
+      )
+      ->make(true);
+
+        return $dt;
+    }
+
+    private function buttonAksi($id){
+      $updateURL = URL::to('dash/setting/desa/updateview/'.$id);
+      $deleteURL = URL::to('dash/setting/desa/delete/'.$id);
+
+      $out = "";
+      $out = $out."<div class='btn btn-group btn-group-sm' style='margin: 0px; padding: 0px; text-align:center;'>";
+      $out = $out."<a class='btn btn-small btn-success' title='Update' href='$updateURL'>";
+      $out = $out.'<span class=" glyphicon glyphicon-edit"></span>';
+      $out = $out.'</a>';
+      $out = $out."<a class='btn btn-small btn-danger' title='Delete' href='$deleteURL'>";
+      $out = $out.'<span class="glyphicon glyphicon-trash"></span>';
+      $out = $out.'</a>';
+      $out = $out.'</div>';
+
+      return $out;
     }
 
     /**

@@ -51,6 +51,7 @@ require "routes/kabkota.php";
 require "routes/kecamatan.php";
 require "routes/desa.php";
 require "routes/user.php";
+require "routes/myaccount.php";
 require "routes/agama.php";
 require "routes/location.php";
 require "routes/serviceQuery.php";

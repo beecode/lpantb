@@ -75,28 +75,46 @@ class AnakController extends BaseController {
         }
 
         $pendampingan = $anak->pendampingan;
-        foreach($pendampingan as $pen){
-          PendampinganDAO::delete($pen->id)
+        if ($pendampingan){
+          foreach($pendampingan as $pen){
+            PendampinganDAO::delete($pen->id);
+          }
         }
 
         $files = $anak->files;
-        foreach($files as $fl){
-          FilesDAO::delete($fl->id);
+        if ($files){
+          foreach($files as $fl){
+            FilesDAO::delete($fl->id);
+          }
         }
 
-        $pelapor = $anak->pelapor-first();
-        $sumber = $anak->sumber_informasi->first();
-        $fisik = $anak->gambaran_fisik->first();
-        $identifikasi = $anak->identifikasi_masalah->first();
-        $psiko = $anak->kondisi_psikososial->first();
-        $contact = $anak->contact_person->first();
-        $keluarga = $anak->keluarga->first();
+        $pelapor = $anak->pelapor->first();
+        if ($pelapor) $pelapor->delete();
 
+        $sumber = $anak->sumber_informasi->first();
+        if ($sumber) $sumber->delete();
+
+        $keluarga = $anak->keluarga;
+        if ($keluarga) $keluarga->delete();
+
+        $fisik = $anak->gambaran_fisik;
+        if ($fisik) $fisik->delete();
+
+        $identifikasi = $anak->identifikasi_masalah;
+        if ($identifikasi) $identifikasi->delete();
+
+        $psiko = $anak->kondisi_psikososial;
+        if ($psiko) $psiko->delete();
+
+        $contact = $anak->contact_person;
+        if ($contact) $contact->delete();
+
+        $nama_anak = $anak->nama;
         $anak->delete();
         if ($anak) {
-            Session::flash('message', "Form with $id has been deleted!");
+            Session::flash('message', "Anak dengan Nama $nama_anak been deleted!");
         } else {
-            Session::flash('message', "Error, Form with $id not found!");
+            Session::flash('message', "Error, Anak dengan Nama $nama_anak tidak ditemukan!");
         }
         return Redirect::to('/dash/anak');
     }

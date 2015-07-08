@@ -24,11 +24,6 @@
                 @include('kecamatan.view.button')
                 @include('kecamatan.view.table')
             </div>
-            <div class="box-footer">
-                <div class="text-center" style="margin: 0px;">
-                    <?php echo $table->appends(array_except(Input::query(), Paginator::getPageName()))->links() ?>
-                </div>
-            </div>
     </section>
 </aside>
 @stop

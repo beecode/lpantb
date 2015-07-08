@@ -114,7 +114,7 @@ class ProvinsiController extends BaseController implements FeatureInterface {
             'page_title' => 'Provinsi',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Provinsi::paginate(6),
+            'table' => Provinsi::all(),
         ];
         return View::make('provinsi.view', $data);
     }

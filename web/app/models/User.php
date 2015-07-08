@@ -22,7 +22,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'user';
-    
+    private $ns = "App\\Models\\";
+
     public function Form() {
         return $this->belongsToMany($this->ns . "Form", "user_has_form")->withPivot("form_id");
     }

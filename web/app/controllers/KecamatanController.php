@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 
+use Datatable;
+use URL;;
+
 /**
  * Description of KecamatanController
  *
@@ -24,10 +27,52 @@ class KecamatanController extends BaseController {
             'page_title' => 'Kecamatan',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Kecamatan::with("kabkota")->paginate(6),
+            'table' => Kecamatan::with("kabkota")->get(),
         ];
         return View::make('kecamatan.view', $data);
     }
+
+    public function viewAjax() {
+      $orm = Kecamatan::with("kabkota")->get();
+      $dt = Datatable::collection($orm)
+      ->showColumns('id','nama')
+      ->addColumn('kabkota',
+        function($model){
+            return $model->kabkota->nama;
+        }
+      )
+      ->addColumn('provinsi',
+        function($model){
+            return $model->kabkota->provinsi->nama;
+        }
+      )
+      ->addColumn('aksi',
+        function ($model){
+          return $this->buttonAksi($model->id);
+        }
+      )
+      ->make();
+
+        return $dt;
+    }
+
+    private function buttonAksi($id){
+      $updateURL = URL::to('dash/setting/kecamatan/updateview/'.$id);
+      $deleteURL = URL::to('dash/setting/kecamatan/delete/'.$id);
+
+      $out = "";
+      $out = $out."<div class='btn btn-group btn-group-sm' style='margin: 0px; padding: 0px; text-align:center;'>";
+      $out = $out."<a class='btn btn-small btn-success' title='Update' href='$updateURL'>";
+      $out = $out.'<span class=" glyphicon glyphicon-edit"></span>';
+      $out = $out.'</a>';
+      $out = $out."<a class='btn btn-small btn-danger' title='Delete' href='$deleteURL'>";
+      $out = $out.'<span class="glyphicon glyphicon-trash"></span>';
+      $out = $out.'</a>';
+      $out = $out.'</div>';
+
+      return $out;
+    }
+
 
     public function addView() {
         $data = [

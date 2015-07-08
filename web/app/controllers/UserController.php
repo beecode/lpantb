@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Redirect;
  */
 class UserController extends BaseController {
 
-  
+
 
     public function view() {
         $data = [
@@ -72,13 +72,72 @@ class UserController extends BaseController {
     }
 
     public function delete($id) {
-        $form = UserDAO::delete($id);
-        if ($form) {
-            Session::flash('message', "User dengan id $id berhasil dihapus!");
+
+        $user = User::find($id);
+        $fms = $user->form;
+
+        foreach($fms as $fm){
+          if ($fm->nama == "ka1" || $fm->nama == "ka2"){
+            $anak = $fm->anak->first();
+            if ($anak){
+              $form = $anak->form;
+              foreach ($form as $fm) {
+                  FormDAO::delete($fm->id);
+              }
+
+              $pendampingan = $anak->pendampingan;
+              if ($pendampingan){
+                foreach($pendampingan as $pen){
+                  PendampinganDAO::delete($pen->id);
+                }
+              }
+
+              $files = $anak->files;
+              if ($files){
+                foreach($files as $fl){
+                  FilesDAO::delete($fl->id);
+                }
+              }
+
+              $pelapor = $anak->pelapor->first();
+              if ($pelapor) $pelapor->delete();
+
+              $sumber = $anak->sumber_informasi->first();
+              if ($sumber) $sumber->delete();
+
+              $keluarga = $anak->keluarga;
+              if ($keluarga) $keluarga->delete();
+
+              $fisik = $anak->gambaran_fisik;
+              if ($fisik) $fisik->delete();
+
+              $identifikasi = $anak->identifikasi_masalah;
+              if ($identifikasi) $identifikasi->delete();
+
+              $psiko = $anak->kondisi_psikososial;
+              if ($psiko) $psiko->delete();
+
+              $contact = $anak->contact_person;
+              if ($contact) $contact->delete();
+
+              $nama_anak = $anak->nama;
+              $anak->delete();
+            }
+          }
+        }
+        $nama = $user->name;
+        UserDAO::delete($id);
+
+        if ($user) {
+            Session::flash('message', "User dengan Nama $nama berhasil dihapus!");
         } else {
-            Session::flash('message', "Error, User dengan id $id tidak ditemukan!");
+            Session::flash('message', "Error, User dengan Nama $nama tidak ditemukan!");
         }
         return Redirect::to('/dash/user');
+    }
+
+    public function myaccount(){
+
     }
 
     public function search() {

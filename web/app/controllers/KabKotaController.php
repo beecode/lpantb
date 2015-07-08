@@ -131,7 +131,7 @@ class KabKotaController extends BaseController implements FeatureInterface {
             'page_title' => 'Kabupaten / Kota',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => KabKota::paginate(6),
+            'table' => KabKota::all(),
         ];
         return View::make('kabkota.view', $data);
     }

@@ -11,6 +11,13 @@
         <span class="glyphicon glyphicon-plus"></span>
         Tambah
     </a>
+
+    <?php $id = Auth::user()->id; ?>
+    <a class="btn btn-default"
+       href="{{URL::to('/dash/user/updateview/'.$id)}}">
+        <span class="glyphicon glyphicon-user"></span>
+        Akun Saya
+    </a>
 </div>
 <div class="clearfix"></div>
 <br>

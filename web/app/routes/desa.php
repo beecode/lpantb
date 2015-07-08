@@ -4,6 +4,8 @@ $desa = 'DesaController';
 $pr_ds = '/dash/setting/desa';
 //Crud Route
 Route::get($pr_ds, $con . $desa . "@view")->before('auth');
+Route::get($pr_ds . "/ajax", $con . $desa . "@viewAjax")->before('auth');
+
 Route::get($pr_ds . "/addview", $con . $desa . "@addView")->before('auth');
 Route::post($pr_ds . "/add", $con . $desa . "@add")->before('auth');
 Route::get($pr_ds . '/updateview/{id}', $con . $desa . '@updateView')->before('auth');

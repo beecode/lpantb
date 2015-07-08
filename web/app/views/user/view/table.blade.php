@@ -15,6 +15,7 @@
             </thead>
             <tbody class="small">
                 <?php foreach ($table as $val) { ?>
+                  <?php if ($val->id != Auth::user()->id){ ?>
                     <tr>
                         <!-- <td class="text-center">{{$val->id}}</td> -->
                         <td>{{$val->name}}</td>
@@ -33,21 +34,28 @@
                           }
                           ?>
                         </td>
+
                         <td class="text-center">
+                            <?php if ($val->level != "admin" && $val->level != "creator"){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                 <a class="btn btn-small btn-warning" title="Update"
                                    href="{{ URL::to('/dash/user/updateview/'.$val->id) }}">
                                     <span class=" glyphicon glyphicon-edit"></span>
                                 </a>
                                 <a class="btn btn-small btn-danger" title="Delete"
-                                   href="{{ URL::to('/dash/user/delete/'.$val->id) }}">
+                                    data-toggle="modal" data-target="#delmodal-{{$val->id}}">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
+                              </div>
+                              @include('user.view.delwarning')
                             </div>
+                            <?php } ?>
                         </td>
 
                     </tr>
                 <?php } ?>
+              <?php } ?>
+
             </tbody>
         </table>
     <?php } else { ?>

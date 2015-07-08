@@ -35,12 +35,15 @@
 </div>
 
 <script type="text/javascript">
-    $("#tables").dataTable({
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bSort": true,
+    $(".table").dataTable({
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
         "bInfo": true,
-        "bAutoWidth": false
+        // "bSort": true,
+        "bAutoWidth": false,
+        "order":[[0,'asc']],
+        "aaSorting":[[0,'asc']],
+        "ordering": true,
     });
 </script>
