@@ -27,7 +27,7 @@ class KecamatanController extends BaseController {
             'page_title' => 'Kecamatan',
             'panel_title' => 'Table View',
             'location' => 'view',
-            'table' => Kecamatan::with("kabkota")->get(),
+            'table' => Kecamatan::with("kabkota")->paginate(10),
         ];
         return View::make('kecamatan.view', $data);
     }
