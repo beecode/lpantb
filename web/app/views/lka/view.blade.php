@@ -49,7 +49,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Contoh Hasil Nomer LKA</label>
             <div class="col-sm-4">
-              <span class="form-control">{{$number}}.01/<% vm.part %>/{{RomanHelper::numberToRoman(date('m'))}}/{{date('Y')}}</span>
+              <span class="form-control">{{$number}}/<% vm.part %>/{{RomanHelper::numberToRoman(date('m'))}}/{{date('Y')}}</span>
             </div>
           </div>
         </form>
