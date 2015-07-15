@@ -33,10 +33,19 @@
 
         <!-- info row -->
         <div class="row invoice-info">
-            <div class="col-xs-12" style="text-align:center;">
+          <?php if ($mode=="filter"){  ?>
+            <div class="col-xs-12" style="text-align:center">
               <hr/>
-              Grafik ini di filter dari {{date('l, d F Y',strtotime($start))}} sampai dengan {{date('l, d F Y',strtotime($end))}}
+              Grafik ini di filter dari {{date('l, d F Y',strtotime($start))}}
+              sampai dengan {{date('l, d F Y',strtotime($end))}}
             </div>
+          <?php } else { ?>
+            <div class="col-xs-12" style="text-align:center">
+              <hr/>
+              Grafik ini adalah akumulasi seluruh data kasus anak yang pernah di inputkan
+              hingga tahun {{date('Y')}}
+            </div>
+          <?php } ?>
             <div class="col-xs-12">
               <div id="holder"></div>
               <script type="text/javascript">
@@ -91,20 +100,6 @@
                       <div class="knob-label">Usia 11 - 18 Tahun</div>
                   </div>
                   <script type="text/javascript">$(".knob").knob({});</script>
-                  <script type="text/javascript">
-                      Morris.Bar({
-                          element: 'usia',
-                          data: [
-                              {x: 'Usia 0 - 5', y:<?php echo $usia['0-5']; ?>},
-                              {x: 'Usia 6 - 10', y:<?php echo $usia['6-10']; ?>},
-                              {x: 'Usia 11 - 18', y:<?php echo $usia['11-18']; ?>}
-                          ],
-                          xkey: 'x',
-                          ykeys: ['y'],
-                          labels: ['Usia']
-                      });
-
-                  </script>
               </div>
             </div>
 
@@ -139,8 +134,21 @@
             </div>
         </div>
         <div class="row no-print">
+          <?php
+          if ($mode=="filter"){
+            $url = "dash/filter";
+            $sy = $var_get['start_year'];
+            $sm = $var_get['start_month'];
+            $ey = $var_get['end_year'];
+            $em = $var_get['end_month'];
+            $filter_opt = "?start_month=$sm&start_year=$sy&end_month=$em&end_year=$ey";
+            $url = $url.$filter_opt;
+          } else {
+            $url = "dash";
+          }
+          ?>
             <div class="col-xs-12" style="margin-top:61px;">
-                <a href="{{URL::to('dash')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
+                <a href="{{URL::to($url)}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
                 <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
             </div>
         </div>

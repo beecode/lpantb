@@ -33,11 +33,19 @@
 
         <!-- info row -->
         <div class="row invoice-info">
-            <div class="col-xs-12">
+          <?php if ($mode=="filter"){  ?>
+            <div class="col-xs-12" style="text-align:center">
               <hr/>
-              Grafik ini di filter dari tanggal {{date('l, d F Y',strtotime($start))}}
+              Grafik ini di filter dari {{date('l, d F Y',strtotime($start))}}
               sampai dengan {{date('l, d F Y',strtotime($end))}}
             </div>
+          <?php } else { ?>
+            <div class="col-xs-12" style="text-align:center">
+              <hr/>
+              Grafik ini adalah akumulasi seluruh data kasus anak yang pernah di inputkan
+              hingga tahun {{date('Y')}}
+            </div>
+          <?php } ?>
             <div class="col-xs-12">
                 <div id="jenis" style="width:62%; padding-left:50px;"></div>
                 <script type="text/javascript">
@@ -70,7 +78,7 @@
 
             <div class="col-xs-12">
               <br/>
-              <table class="table table-small" style="font-size:12px;">
+              <table class="table table-small">
                   <tr>
                       <th class="text-center" rowspan="2">No</th>
                       <th rowspan="2">Jenis Kasus</th>
@@ -119,8 +127,21 @@
           </div>
         </div>
         <div class="row no-print">
+          <?php
+          if ($mode=="filter"){
+            $url = "dash/filter";
+            $sy = $var_get['start_year'];
+            $sm = $var_get['start_month'];
+            $ey = $var_get['end_year'];
+            $em = $var_get['end_month'];
+            $filter_opt = "?start_month=$sm&start_year=$sy&end_month=$em&end_year=$ey";
+            $url = $url.$filter_opt;
+          } else {
+            $url = "dash";
+          }
+          ?>
             <div class="col-xs-12" style="margin-top:61px;">
-                <a href="{{URL::to('dash/formka1')}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
+                <a href="{{URL::to($url)}}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Back</a>
                 <button class="btn btn-default pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
             </div>
         </div>

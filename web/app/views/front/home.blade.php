@@ -10,10 +10,10 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        @include('front.chart.jenis')
-        @include('front.chart.lokasi')
-        @include('front.chart.pendidikan')
         @include('front.chart.usia')
+        @include('front.chart.pendidikan')
+        @include('front.chart.lokasi')
+        @include('front.chart.jenis')
     </section>
 </aside>
 @stop

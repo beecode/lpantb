@@ -51,11 +51,6 @@
             </table>
         </div>
     </div>
-
-
-<!--    <pre>
-    <?php // print_r($lokasi) ?>
-    </pre>-->
 </div>
 
 <script type="text/javascript">

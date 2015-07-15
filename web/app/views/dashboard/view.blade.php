@@ -22,10 +22,10 @@
       </div>
       @endif
         @include('dashboard.chart.filter')
-        @include('dashboard.chart.jenis')
-        @include('dashboard.chart.lokasi')
-        @include('dashboard.chart.pendidikan')
         @include('dashboard.chart.usia')
+        @include('dashboard.chart.pendidikan')
+        @include('dashboard.chart.lokasi')
+        @include('dashboard.chart.jenis')
     </section>
 </aside>
 @stop

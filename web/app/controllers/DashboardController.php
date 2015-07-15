@@ -83,16 +83,44 @@ class DashboardController extends BaseController {
     public function printPrev($name){
       $in = Input::all();
       if (empty($in)){
-        echo 'Filter is not Active';
+        $data = [
+            'panel_title' => $name,
+            'mode'=>'normal',
+            'var_get'=>$in,
+        ];
+
+        switch ($name) {
+          case 'jenis':
+            $jenis = ['jenis' => ReportDAO::jenisKasus()];
+            $data = array_merge($data, $jenis);
+            break;
+          case 'usia':
+            $usia = ['usia' => ReportDAO::usia()];
+            $data = array_merge($data, $usia);
+            break;
+          case 'pendidikan':
+            $pendidikan = ['pendidikan' => ReportDAO::pendidikan()];
+            $data = array_merge($data, $pendidikan);
+            break;
+          case 'lokasi':
+            $lokasi = ['lokasi' => ReportDAO::lokasi()];
+            $data = array_merge($data, $lokasi);
+            break;
+          default:
+            # code...
+            break;
+        }
+
+
       } else {
         $start = $in['start_year']."-".$in['start_month']."-01";
         $end = $in['end_year']."-".$in['end_month']."-31";
         $data = [
             'panel_title' => $name,
-            'location'=>'filter',
+            'mode'=>'filter',
             'var_get'=>$in,
             'start'=>$start,
-            'end'=>$end
+            'end'=>$end,
         ];
 
         switch ($name) {
@@ -117,10 +145,11 @@ class DashboardController extends BaseController {
             break;
         }
 
-        $data = array_merge($data, $this->basic);
-        return View::make('dashboard.print.'.$name, $data);
       }
 
+
+      $data = array_merge($data, $this->basic);
+      return View::make('dashboard.print.'.$name, $data);
 
     }
 
