@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -45,7 +46,6 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 | and wonderful application we have whipped up for them.
 |
 */
-
-setlocale (LC_TIME, 'INDONESIA');
-
+setlocale (LC_TIME, 'id_ID');
 $app->run();
+setlocale (LC_TIME, 'id_ID');

@@ -19,6 +19,7 @@ class DashboardController extends BaseController {
     public function view() {
         $data = [
             'panel_title' => 'dashboard',
+            'location'=>'view',
             'usia' => ReportDAO::usia(),
             'pendidikan' => ReportDAO::pendidikan(),
             'lokasi' => ReportDAO::lokasi(),
@@ -37,7 +38,7 @@ class DashboardController extends BaseController {
             ],
         ];
         $data = array_merge($data, $this->basic);
-        return View::make('dashboard.home', $data);
+        return View::make('dashboard.view', $data);
     }
 
     public function filter() {
@@ -59,6 +60,8 @@ class DashboardController extends BaseController {
           $end = $in['end_year']."-".$in['end_month']."-31";
           $data = [
               'panel_title' => 'dashboard',
+              'location'=>'filter',
+              'var_get'=>$in,
               'usia' => ReportDAO::usia($start, $end),
               'pendidikan' => ReportDAO::pendidikan($start, $end),
               'lokasi' => ReportDAO::lokasi($start, $end),
@@ -72,9 +75,53 @@ class DashboardController extends BaseController {
               ],
           ];
           $data = array_merge($data, $this->basic);
-          return View::make('dashboard.home', $data);
+          return View::make('dashboard.view', $data);
         }
       }
+    }
+
+    public function printPrev($name){
+      $in = Input::all();
+      if (empty($in)){
+        echo 'Filter is not Active';
+      } else {
+        $start = $in['start_year']."-".$in['start_month']."-01";
+        $end = $in['end_year']."-".$in['end_month']."-31";
+        $data = [
+            'panel_title' => $name,
+            'location'=>'filter',
+            'var_get'=>$in,
+            'start'=>$start,
+            'end'=>$end
+        ];
+
+        switch ($name) {
+          case 'jenis':
+            $jenis = ['jenis' => ReportDAO::jenisKasus($start, $end)];
+            $data = array_merge($data, $jenis);
+            break;
+          case 'usia':
+            $usia = ['usia' => ReportDAO::usia($start, $end)];
+            $data = array_merge($data, $usia);
+            break;
+          case 'pendidikan':
+            $pendidikan = ['pendidikan' => ReportDAO::pendidikan($start, $end)];
+            $data = array_merge($data, $pendidikan);
+            break;
+          case 'lokasi':
+            $lokasi = ['lokasi' => ReportDAO::lokasi($start, $end)];
+            $data = array_merge($data, $lokasi);
+            break;
+          default:
+            # code...
+            break;
+        }
+
+        $data = array_merge($data, $this->basic);
+        return View::make('dashboard.print.'.$name, $data);
+      }
+
+
     }
 
     private function monthOption(){
@@ -110,5 +157,7 @@ class DashboardController extends BaseController {
       }
       return $year;
     }
+
+
 
 }

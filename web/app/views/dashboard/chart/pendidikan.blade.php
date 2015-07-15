@@ -1,9 +1,27 @@
 <div class="col-md-6">
     <div class="box box-primary">
-        <div class="box-header">
-            <h4 class="box-title">Pendidikan</h4>
-        </div>
         <div  class="box-body">
+          <div class="pull-left">
+            <h4>Pendidikan</h4>
+          </div>
+          <div class="pull-right">
+            <?php
+            $pendidikan_url = "dash/print/pendidikan";
+            if ($location=="filter"){
+              $sy = $var_get['start_year'];
+              $sm = $var_get['start_month'];
+              $ey = $var_get['end_year'];
+              $em = $var_get['end_month'];
+              $filter_opt = "?start_month=$sm&start_year=$sy&end_month=$em&end_year=$ey";
+              $pendidikan_url = $pendidikan_url.$filter_opt;
+            }
+            ?>
+              <a class="btn btn-warning" href="<?php echo URL::to($pendidikan_url); ?>">
+              <span class="fa fa-print"></span>
+              Preview
+            </a>
+          </div>
+          <div class="clearfix"></div>
             <div id="pendidikan"></div>
             <br/>
             <table class="table">
@@ -74,5 +92,3 @@
     });
 
 </script>
-
-

@@ -1,10 +1,28 @@
 
 <div class="col-md-6">
     <div class="box box-primary">
-        <div class="box-header">
-            <h2 class="box-title">Usia</h2>
-        </div>
         <div  class="box-body">
+          <div class="pull-left">
+            <h4>Usia</h4>
+          </div>
+          <div class="pull-right">
+            <?php
+            $usia_url = "dash/print/usia";
+            if ($location=="filter"){
+              $sy = $var_get['start_year'];
+              $sm = $var_get['start_month'];
+              $ey = $var_get['end_year'];
+              $em = $var_get['end_month'];
+              $filter_opt = "?start_month=$sm&start_year=$sy&end_month=$em&end_year=$ey";
+              $usia_url = $usia_url.$filter_opt;
+            }
+            ?>
+              <a class="btn btn-warning" href="<?php echo URL::to($usia_url); ?>">
+              <span class="fa fa-print"></span>
+              Preview
+            </a>
+          </div>
+          <div class="clearfix"></div>
             <div id="holder"></div>
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-6 text-center">

@@ -1,9 +1,28 @@
 <div class="col-md-6">
     <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">Jenis Kasus</h3>
-        </div>
         <div  class="box-body">
+          <div class="pull-left">
+            <h4>Jenis Kasus</h4>
+          </div>
+          <div class="pull-right">
+            <?php
+            $jenis_url = "dash/print/jenis";
+            if ($location=="filter"){
+              $sy = $var_get['start_year'];
+              $sm = $var_get['start_month'];
+              $ey = $var_get['end_year'];
+              $em = $var_get['end_month'];
+              $filter_opt = "?start_month=$sm&start_year=$sy&end_month=$em&end_year=$ey";
+              $jenis_url = $jenis_url.$filter_opt;
+            }
+            ?>
+            <a class="btn btn-warning" href="<?php echo URL::to($jenis_url); ?>">
+              <span class="fa fa-print"></span>
+              Preview
+            </a>
+          </div>
+          <div class="clearfix"></div>
+
             <div id="jenis"></div>
             <br/>
             <table class="table">
@@ -92,5 +111,3 @@
     });
 
 </script>
-
-

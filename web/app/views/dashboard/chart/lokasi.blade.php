@@ -1,9 +1,28 @@
 <div class="col-md-6">
     <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">Lokasi</h3>
-        </div>
         <div  class="box-body">
+          <div class="pull-left">
+            <h4>Lokasi</h4>
+          </div>
+          <div class="pull-right">
+            <?php
+            $lokasi_url = "dash/print/lokasi";
+            if ($location=="filter"){
+              $sy = $var_get['start_year'];
+              $sm = $var_get['start_month'];
+              $ey = $var_get['end_year'];
+              $em = $var_get['end_month'];
+              $filter_opt = "?start_month=$sm&start_year=$sy&end_month=$em&end_year=$ey";
+              $lokasi_url = $lokasi_url.$filter_opt;
+            }
+            ?>
+              <a class="btn btn-warning" href="<?php echo URL::to($lokasi_url); ?>">
+              <span class="fa fa-print"></span>
+              Preview
+            </a>
+          </div>
+          <div class="clearfix"></div>
+
             <div id="lokasi"></div>
             <br/>
             <table class="table">
@@ -68,5 +87,3 @@
     });
 
 </script>
-
-
