@@ -45,32 +45,48 @@ if (isset($record)) {
 
 
 
-    <?php
-    $aday = "";
-    $amonth = "";
-    $ayear = "";
-    if (isset($anak->tanggal_lahir)) {
-        $ar = \App\Helpers\DateHelper::toArray($anak->tanggal_lahir);
-        $aday = $ar['day'];
-        $amonth = $ar['month'];
-        $ayear = $ar['year'];
-    }
-    ?>
-
     {{ Form::label('tgl', 'Tanggal Lahir',['class'=>'col-sm-2 control-label']) }}
-    <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 70px; ">
-        <?php // $aday = (isset($anak->tanggal_lahir)) ? date('d', $anak->tanggal_lahir) : null; ?>
-        {{ Form::text('anak[tanggal_lahir][day]', $aday, ['class' => 'form-control','placeholder'=>'Hari'])  }}
+    <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 80px; ">
+        <?php $anak['tanggal_lahir'] = (isset($anak->tanggal_lahir)) ? $anak->tanggal_lahir : null; ?>
+        <?php
+          $hari_list = [];
+          $hari_list["Hari"] = "Hari";
+          for ($h = 1; $h<=31; $h++){
+            $hari_list[$h] = $h;
+          }
+        ?>
+        {{ Form::select('anak[tanggal_lahir]',
+                                             $hari_list ,
+                                             $anak['tanggal_lahir'],
+                                             ['class'=>'form-control'])
+        }}
     </div>
-    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 65px;">
-        <?php // $amonth = (isset($anak->tanggal_lahir)) ? date('m', $anak->tanggal_lahir) : null; ?>
-        {{ Form::text('anak[tanggal_lahir][month]', $amonth, ['class' => 'form-control','placeholder'=>'Bulan'])  }}
+    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 89px;">
+        <?php $anak['bulan_lahir'] = (isset($anak->bulan_lahir)) ? $anak->bulan_lahir : null; ?>
+        <?php
+          $bulan_list = [];
+          $bulan_list["Bulan"] = "Bulan";
+          for ($b = 1; $b<=12; $b++){
+            $bulan_list[$b] = $b;
+          }
+        ?>
+        {{ Form::select('anak[bulan_lahir]', $bulan_list, $anak['bulan_lahir'], ['class'=>'form-control'])}}
     </div>
-    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 65px;">
-        <?php // $ayear = (isset($anak->tanggal_lahir)) ? date('Y', $anak->tanggal_lahir) : null; ?>
-        {{ Form::text('anak[tanggal_lahir][year]', $ayear, ['class' => 'form-control','placeholder'=>'Tahun'])  }}
+    <div class="col-sm-2" style="margin: 0px; padding: 0px; width: 89px;">
+      <?php $anak['tahun_lahir'] = (isset($anak->tahun_lahir)) ? $anak->tahun_lahir : null; ?>
+      <?php
+      $year_start = 1910;
+      $year_end = date("Y");
+      $tahun_list = [];
+      $tahun_list["Tahun"] = "Tahun";
+      for ($i = $year_start; $i<=$year_end; $i++){
+        $tahun_list[$i]=$i;
+      }
+      ?>
+      {{ Form::select('anak[tahun_lahir]', $tahun_list, $anak['tahun_lahir'], ['class'=>'form-control'])}}
     </div>
 </div>
+
 
 <div class="form-group has-primary">
     {{ Form::label('anak[agama]', 'Agama', ['class'=>'col-sm-2 control-label']) }}

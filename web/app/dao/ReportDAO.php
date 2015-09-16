@@ -106,9 +106,18 @@ class ReportDAO {
         $anak = ReportDAO::getAnakBetween($start, $end);
         $out = ReportDAO::getKabupatenNTB();
         $total = 0;
+
         foreach ($anak as $val) {
             $kabupaten = $val->desa->kecamatan->kabkota->nama;
-            $out[$kabupaten] ++;
+            if ($val->gender =="Laki-Laki"){
+              $out[$kabupaten]['p'] = $out[$kabupaten]['p'] + 1;
+            }
+            if ($val->gender =="Perempuan"){
+                $out[$kabupaten]['w'] = $out[$kabupaten]['w'] + 1;
+            }
+            $out[$kabupaten]['total']  ++;
+              $out[$kabupaten]['total'] = $out[$kabupaten]['total'] + 1;
+
             $total++;
         }
         $out['Total'] = $total;
@@ -135,7 +144,7 @@ class ReportDAO {
         $kabkota = KabKota::where('provinsi_id', '=', $prov->id)->get();
         $out = [];
         foreach ($kabkota as $val) {
-            $kab = [$val->nama => 0];
+            $kab = [$val->nama=>['total'=>0,'p'=>0,'w'=>0]];
             $out = array_merge($out, $kab);
         }
 
@@ -143,7 +152,7 @@ class ReportDAO {
     }
 
     /**
-     * 
+     *
      * @param string $start example 1998-12-25
      * @param string $end example 1999-12-25
      * @return boolean | Anak

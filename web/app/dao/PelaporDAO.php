@@ -55,14 +55,16 @@ class PelaporDAO {
     }
 
     public static function exchangeArray($pr, $pel) {
-        $pr->nama = $pel['nama'];
-        $pr->gender = $pel['gender'];
-        $pr->tempat_lahir = $pel['tempat_lahir'];
-        $pr->tanggal_lahir = DateHelper::toDate($pel['tanggal_lahir']);
-        $pr->pekerjaan = $pel['pekerjaan'];
-        $pr->alamat = $pel['alamat'];
-        $pr->agama = $pel['agama'];
-        $pr->telp = $pel['telp'];
+        $pr->nama = isset($pel['nama']) ? $pel['nama'] : null;
+        $pr->gender = isset($pel['gender']) ? $pel['gender'] : null;
+        $pr->tempat_lahir = isset($pel['tempat_lahir']) ? $pel['tempat_lahir'] : null;
+        $pr->tanggal_lahir =isset($pel['tanggal_lahir']) ? $pel['tanggal_lahir'] : null;
+        $pr->bulan_lahir =isset($pel['bulan_lahir']) ? $pel['bulan_lahir'] : null;
+        $pr->tahun_lahir =isset($pel['tahun_lahir']) ? $pel['tahun_lahir'] : null;
+        $pr->pekerjaan = isset($pel['pekerjaan']) ? $pel['pekerjaan'] : null;
+        $pr->alamat = isset($pel['alamat']) ? $pel['alamat'] : null;
+        $pr->agama = isset($pel['agama']) ? $pel['agama'] : null;
+        $pr->telp = isset($pel['telp']) ? $pel['telp'] : null;
 
         return $pr;
     }

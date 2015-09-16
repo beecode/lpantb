@@ -21,29 +21,45 @@ if (isset($record)) {
 
 
 
-    <?php
-    $sday = "";
-    $smonth = "";
-    $syear = "";
-    if (isset($sumber->tanggal)) {
-        $ar = \App\Helpers\DateHelper::toArray($sumber->tanggal);
-        $sday = $ar['day'];
-        $smonth = $ar['month'];
-        $syear = $ar['year'];
-    }
-    ?>
-    {{ Form::label('tgl', 'Tanggal Informasi',['class'=>'col-sm-2 control-label']) }}
-    <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 70px; ">
-        <?php // $sday = (isset($sumber->tanggal_informasi)) ? date('d', $sumber->tanggal_informasi) : null; ?>
-        {{ Form::text('sumber[tanggal_informasi][day]', $sday, ['class' => 'form-control','placeholder'=>'Hari'])  }}
+    {{ Form::label('tgl', 'Tanggal Lahir',['class'=>'col-sm-2 control-label']) }}
+    <div class="col-sm-1" style="margin-right:  0px; padding-right: 0px; width: 80px; ">
+        <?php $sumber['tanggal_lahir'] = (isset($sumber->tanggal_lahir)) ? $sumber->tanggal_lahir : null; ?>
+        <?php
+          $hari_list = [];
+          $hari_list["Hari"] = "Hari";
+          for ($h = 1; $h<=31; $h++){
+            $hari_list[$h] = $h;
+          }
+        ?>
+        {{ Form::select('sumber[tanggal_lahir]',
+                                             $hari_list ,
+                                             $sumber['tanggal_lahir'],
+                                             ['class'=>'form-control'])
+        }}
     </div>
-    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 65px;">
-        <?php // $smonth = (isset($sumber->tanggal_informasi)) ? date('m', $sumber->tanggal_informasi) : null; ?>
-        {{ Form::text('sumber[tanggal_informasi][month]', $smonth, ['class' => 'form-control','placeholder'=>'Bulan'])  }}
+    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 89px;">
+        <?php $sumber['bulan_lahir'] = (isset($sumber->bulan_lahir)) ? $sumber->bulan_lahir : null; ?>
+        <?php
+          $bulan_list = [];
+          $bulan_list["Bulan"] = "Bulan";
+          for ($b = 1; $b<=12; $b++){
+            $bulan_list[$b] = $b;
+          }
+        ?>
+        {{ Form::select('sumber[bulan_lahir]', $bulan_list, $sumber['bulan_lahir'], ['class'=>'form-control'])}}
     </div>
-    <div class="col-sm-1" style="margin: 0px; padding: 0px; width: 65px;">
-        <?php // $syear = (isset($sumber->tanggal_informasi)) ? date('Y', $sumber->tanggal_informasi) : null; ?>
-        {{ Form::text('sumber[tanggal_informasi][year]', $syear, ['class' => 'form-control','placeholder'=>'Tahun'])  }}
+    <div class="col-sm-2" style="margin: 0px; padding: 0px; width: 89px;">
+      <?php $sumber['tahun_lahir'] = (isset($sumber->tahun_lahir)) ? $sumber->tahun_lahir : null; ?>
+      <?php
+      $year_start = 1910;
+      $year_end = date("Y");
+      $tahun_list = [];
+      $tahun_list["Tahun"] = "Tahun";
+      for ($i = $year_start; $i<=$year_end; $i++){
+        $tahun_list[$i]=$i;
+      }
+      ?>
+      {{ Form::select('sumber[tahun_lahir]', $tahun_list, $sumber['tahun_lahir'], ['class'=>'form-control'])}}
     </div>
 </div>
 

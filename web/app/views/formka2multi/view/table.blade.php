@@ -6,6 +6,7 @@
           <th>Tanggal</th>
           <th>Sumber</th>
           <th>Anak</th>
+          <th>User Pembuat</th>
           <th class="text-center">Aksi</th>
         </tr>
       </thead>
@@ -28,6 +29,7 @@
                 <span class=" glyphicon glyphicon-th-list"></span>
               </a>
             </td>
+            <td><?php echo $val->user->first()->name; ?></td>
             <td class="text-center">
               <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
                 <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
@@ -39,10 +41,12 @@
                 href="{{ URL::to('/dash/formka2multi/updateview/'.$val->id) }}">
                 <span class=" glyphicon glyphicon-edit"></span>
               </a>
+              <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>
               <a class="btn btn-small btn-danger" title="Delete"
                   data-toggle="modal" data-target="#delmodal-{{$val->id}}">
                   <span class="glyphicon glyphicon-trash"></span>
               </a>
+              <?php } ?>
             </div>
             @include('formka2multi.view.delwarning')
           <?php } else { ?>

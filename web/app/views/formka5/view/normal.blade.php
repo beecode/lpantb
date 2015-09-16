@@ -8,6 +8,7 @@
                     <th>Anak</th>
                     <th>Jenis Kasus</th>
                     <th>Intervensi</th>
+                    <th>User Pembuat</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -40,7 +41,7 @@
                                 <?php } ?>
                             <?php } ?>
                         </td>
-
+                        <td><?php echo $val->user->first()->name; ?></td>
                         <td class="text-center">
                           <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">

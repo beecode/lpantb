@@ -7,6 +7,7 @@
                     <th>No LKA</th>
                     <th>Tanggal</th>
                     <th>Anak</th>
+                    <th>User Pembuat</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                                 <span class=" glyphicon glyphicon-th-list"></span>
                             </a>
                         </td>
+                        <td><?php echo $val->user->first()->name; ?></td>
                         <td class="text-center">
                           <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">

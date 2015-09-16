@@ -81,12 +81,13 @@
                     </div>
 
                   <?php if ($form_status == "edit"){ ?>
-                    <?php if (Auth::user()->level == "creator"){ ?>
+                    <?php if (Auth::user()->level == "developer"){ ?>
                         <div class="form-group">
                             {{ Form::label('Level', 'Level', ['class'=>'col-sm-2 control-label']) }}
                             <div class="col-sm-3">
                                 <?php
                                 $list = [
+                                    'developer' => 'Developer',
                                     'admin' => 'Administrator',
                                     'operator' => 'Operator',
                                 ];
@@ -113,12 +114,13 @@
                     <?php } ?>
 
                   <?php } else { // form add?>
-                    <?php if (Auth::user()->level == "creator"){ ?>
+                    <?php if (Auth::user()->level == "developer"){ ?>
                         <div class="form-group">
                             {{ Form::label('Level', 'Level', ['class'=>'col-sm-2 control-label']) }}
                             <div class="col-sm-3">
                                 <?php
                                 $list = [
+                                    'developer'=>'Developer',
                                     'admin' => 'Administrator',
                                     'operator' => 'Operator',
                                 ];

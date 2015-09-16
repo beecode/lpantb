@@ -19,21 +19,25 @@
           <i class="fa fa-th-list"></i>Form KA2
         </a>
     </li>
+    <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>
     <li>
         <a href="{{URL::to('dash/formka3/viewLKA')}}">
           <i class="fa fa-th-list"></i>Form KA3
         </a>
     </li>
+    <?php } ?>
     <li>
         <a href="{{URL::to('dash/formka4')}}">
           <i class="fa fa-th-list"></i>Form KA4
         </a>
     </li>
+    <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>
     <li>
         <a href="{{URL::to('dash/formka5/assessment')}}">
           <i class="fa fa-th-list"></i>Form KA5
         </a>
     </li>
+    <?php } ?>
     <li>
         <a href="{{URL::to('dash/formka6')}}">
           <i class="fa fa-th-list"></i>Form KA6

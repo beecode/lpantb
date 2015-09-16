@@ -25,8 +25,8 @@
                         <!-- <td>{{$val->password}}</td> -->
                         <td>
                           <?php
-                          if ($val->level == "creator"){
-                            echo "Creator";
+                          if ($val->level == "developer"){
+                            echo "Developer";
                           } else if ($val->level == "admin"){
                             echo "Administrator";
                           } else {
@@ -36,7 +36,7 @@
                         </td>
 
                         <td class="text-center">
-                            <?php if ($val->level != "admin" && $val->level != "creator"){ ?>
+                            <?php if ($val->level != "admin" && $val->level != "developer"){ ?>
                             <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
                                 <a class="btn btn-small btn-warning" title="Update"
                                    href="{{ URL::to('/dash/user/updateview/'.$val->id) }}">

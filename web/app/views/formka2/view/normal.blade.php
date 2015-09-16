@@ -16,6 +16,7 @@
           <td>{{strftime( "%d-%B-%Y", strtotime($val->tanggal))}}</td>
           <td><?php echo !is_null($sumber) ? $sumber->sumber : ""; ?></td>
           <td><?php echo !is_null($anak) ? $anak->nama : ""; ?></td>
+          <td><?php echo $val->user->first()->name; ?></td>
           <td class="text-center">
             <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
               <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">
@@ -27,10 +28,12 @@
                    href="{{ URL::to('/dash/formka2/updateview/'.$val->id) }}">
                     <span class=" glyphicon glyphicon-edit"></span>
                 </a>
+                <?php  if (Auth::user()->level == "admin" || Auth::user()->level == "developer") {?>
                 <a class="btn btn-small btn-danger" title="Delete"
                     data-toggle="modal" data-target="#delmodal-{{$val->id}}">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
+                <?php } ?>
               </div>
               @include('formka2.view.delwarning')
         <?php } else { ?>

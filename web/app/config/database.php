@@ -56,7 +56,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'lpantb',
-			'username'  => 'lpantb',
+			'username'  => 'root',
 			'password'  => '1261',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

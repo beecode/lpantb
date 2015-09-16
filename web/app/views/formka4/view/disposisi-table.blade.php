@@ -7,6 +7,7 @@
         <th>Nama Anak</th>
         <th>Pelapor/Sumber</th>
         <th>Progress Kasus</th>
+        <th>User Pembuat</th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -41,6 +42,7 @@
               ?>
             <?php } ?>
           </td>
+          <td><?php echo $res->user->first()->name; ?></td>
           <td>
             <?php if ($formka4==true){ ?>
               <?php

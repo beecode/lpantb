@@ -34,6 +34,7 @@
           <td>{{strftime( "%d-%B-%Y", strtotime($val->tanggal))}}</td>
           <td><?php echo !is_null($pelapor) ? $pelapor->nama : ""; ?></td>
           <td><?php echo !is_null($anak) ? $anak->nama : ""; ?></td>
+          <td><?php echo $val->user->name; ?></td>
           <td class="text-center">
             <?php if (UserHelper::isLoggedUserIncluded($val->user)){ ?>
               <div class="btn btn-group btn-group-sm" style="margin: 0px; padding: 0px;">

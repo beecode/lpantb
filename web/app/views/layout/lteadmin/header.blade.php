@@ -1,5 +1,5 @@
 <header class="header">
-  <a href="<?php echo URL::to('/admin/index'); ?>" class="logo">
+  <a href="<?php echo URL::to('/dash'); ?>" class="logo">
     <!-- Add the class icon to your logo image or logo icon to add the margining -->
     Dashboard LPA
   </a>

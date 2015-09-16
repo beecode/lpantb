@@ -7,6 +7,7 @@
           <th>Tanggal</th>
           <th>Sumber Informasi</th>
           <th>Anak</th>
+          <th>User Pembuat</th>
           <th class="text-center">Aksi</th>
         </tr>
       </thead>

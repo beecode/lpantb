@@ -57,10 +57,12 @@ class AnakDAO {
         $anak->gender = isset($an['gender']) ? $an['gender'] : null;
         $anak->umur = isset($an['umur']) ? $an['umur'] : null;
         $anak->umur_satuan = isset($an['umur_satuan']) ? $an['umur_satuan'] : null;
-        $anak->tanggal_lahir = isset($an['tanggal_lahir']) ? DateHelper::toDate($an['umur_satuan']) : null;
+        $anak->tanggal_lahir = isset($an['tanggal_lahir']) ? $an['tanggal_lahir'] : null;
+        $anak->bulan_lahir = isset($an['bulan_lahir']) ? $an['bulan_lahir'] : null;
+        $anak->tahun_lahir = isset($an['tahun_lahir']) ? $an['tahun_lahir'] : null;
+        $anak->tempat_lahir = isset($an['tempat_lahir']) ? $an['tempat_lahir'] : null;
         $anak->alamat = isset($an['alamat']) ? $an['alamat'] : null;
         $anak->agama = isset($an['agama']) ? $an['agama'] : null;
-        $anak->tempat_lahir = isset($an['tempat_lahir']) ? $an['tempat_lahir'] : null;
         $anak->pendidikan = isset($an['pendidikan']) ? $an['pendidikan'] : null;
         $anak->suku = isset($an['suku']) ? $an['suku'] : null;
         $anak->anak_ke = isset($an['anak_ke']) ? $an['anak_ke'] : null;
